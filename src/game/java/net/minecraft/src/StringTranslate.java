@@ -7,6 +7,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import net.lax1dude.eaglercraft.EagRuntime;
+import net.lax1dude.eaglercraft.HString;
 
 public class StringTranslate {
 	private static StringTranslate field_20165_a = new StringTranslate();
@@ -32,7 +33,7 @@ public class StringTranslate {
 
 	public String func_20160_a(String var1, Object... var2) {
 		String var3 = this.field_20164_b.getProperty(var1, var1);
-		return String.format(var3, var2);
+		return HString.format(var3, var2);
 	}
 
 	public String func_20161_b(String var1) {

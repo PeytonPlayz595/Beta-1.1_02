@@ -61,6 +61,19 @@ public class ResourcePack {
 	private static boolean uploaded = false;
 	
 	public static boolean uploadResourcePack(String name, byte[] data, IProgressUpdate progress) throws IOException {
+		List<ResourcePack> existingPacks = getExistingResourcePacks();
+		
+		vigg: for(;;) {
+			for(int i = 0, l = existingPacks.size(); i < l; ++i) {
+				ResourcePack rp = existingPacks.get(i);
+				if(rp.name.equalsIgnoreCase(name)) {
+					name = name + "-";
+					continue vigg;
+				}
+			}
+			break;
+		}
+		
 		VFile2 texturePackDir = new VFile2(mc.mcDataDir, "texturePacks");
 		VFile2 saveDir = new VFile2(texturePackDir, name);
 		
@@ -133,9 +146,9 @@ public class ResourcePack {
 		obj.put("files", arr);
 		new VFile2(saveDir, "files.txt").setAllChars(obj.toString());
 		
-		VFile2 existingPacks = new VFile2(texturePackDir, "packs.txt");
-		if(existingPacks.exists()) {
-			obj = new JSONObject(existingPacks.getAllChars());
+		VFile2 packsFile = new VFile2(texturePackDir, "packs.txt");
+		if(packsFile.exists()) {
+			obj = new JSONObject(packsFile.getAllChars());
 			arr = obj.getJSONArray("packs");
 			arr.put(name);
 		} else {
@@ -144,7 +157,7 @@ public class ResourcePack {
 			arr.put(name);
 			obj.put("packs", arr);
 		}
-		existingPacks.setAllChars(obj.toString());
+		packsFile.setAllChars(obj.toString());
 		
 		progress.setLoadingProgress(100);
 		
