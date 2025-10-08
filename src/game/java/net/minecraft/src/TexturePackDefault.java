@@ -1,7 +1,5 @@
 package net.minecraft.src;
 
-import java.io.IOException;
-
 import net.lax1dude.eaglercraft.opengl.ImageData;
 import net.minecraft.client.Minecraft;
 

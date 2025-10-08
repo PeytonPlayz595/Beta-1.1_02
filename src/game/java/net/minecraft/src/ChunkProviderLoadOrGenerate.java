@@ -46,7 +46,6 @@ public class ChunkProviderLoadOrGenerate implements IChunkProvider {
 		if(var1 == this.lastQueriedChunkXPos && var2 == this.lastQueriedChunkZPos && this.lastQueriedChunk != null) {
 			return this.lastQueriedChunk;
 		} else {
-			long hash = ChunkCoordIntPair.chunkXZ2Int(var1, var2);
 			Chunk chunk;
 			if(!this.chunkExists(var1, var2)) {
 				chunk = dummyChunk;
@@ -65,7 +64,7 @@ public class ChunkProviderLoadOrGenerate implements IChunkProvider {
 					}
 				}
 
-				this.chunks.put(hash, var6);
+				this.chunks.put(ChunkCoordIntPair.chunkXZ2Int(var1, var2), var6);
 				chunk = var6;
 				var6.func_4143_d();
 				if(chunk != null) {
@@ -75,17 +74,21 @@ public class ChunkProviderLoadOrGenerate implements IChunkProvider {
 				if(chunk != null && !chunk.isTerrainPopulated && this.chunkExists(var1 + 1, var2 + 1) && this.chunkExists(var1, var2 + 1) && this.chunkExists(var1 + 1, var2)) {
 					this.populate(this, var1, var2);
 				}
+				
+				int i = var1 - 1;
+				int j = var2 + 1;
+				int k = var2 - 1;
 
-				if(this.chunkExists(var1 - 1, var2) && !this.provideChunk(var1 - 1, var2).isTerrainPopulated && this.chunkExists(var1 - 1, var2 + 1) && this.chunkExists(var1, var2 + 1) && this.chunkExists(var1 - 1, var2)) {
-					this.populate(this, var1 - 1, var2);
+				if(this.chunkExists(i, var2) && !this.provideChunk(i, var2).isTerrainPopulated && this.chunkExists(i, j) && this.chunkExists(var1, j) && this.chunkExists(i, var2)) {
+					this.populate(this, i, var2);
 				}
 
-				if(this.chunkExists(var1, var2 - 1) && !this.provideChunk(var1, var2 - 1).isTerrainPopulated && this.chunkExists(var1 + 1, var2 - 1) && this.chunkExists(var1, var2 - 1) && this.chunkExists(var1 + 1, var2)) {
-					this.populate(this, var1, var2 - 1);
+				if(this.chunkExists(var1, k) && !this.provideChunk(var1, k).isTerrainPopulated && this.chunkExists(var1 + 1, k) && this.chunkExists(var1, k) && this.chunkExists(var1 + 1, var2)) {
+					this.populate(this, var1, k);
 				}
 
-				if(this.chunkExists(var1 - 1, var2 - 1) && !this.provideChunk(var1 - 1, var2 - 1).isTerrainPopulated && this.chunkExists(var1 - 1, var2 - 1) && this.chunkExists(var1, var2 - 1) && this.chunkExists(var1 - 1, var2)) {
-					this.populate(this, var1 - 1, var2 - 1);
+				if(this.chunkExists(i, k) && !this.provideChunk(i, k).isTerrainPopulated && this.chunkExists(i, k) && this.chunkExists(var1, k) && this.chunkExists(i, var2)) {
+					this.populate(this, i, k);
 				}
 			} else {
 				chunk = dummyChunk;

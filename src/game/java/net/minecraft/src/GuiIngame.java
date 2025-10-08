@@ -17,7 +17,7 @@ import org.lwjgl.opengl.GL12;
 
 public class GuiIngame extends Gui {
 	private static RenderItem itemRenderer = new RenderItem();
-	private List chatMessageList = new ArrayList();
+	private List<ChatLine> chatMessageList = new ArrayList<>();
 	private Random rand = new Random();
 	private Minecraft mc;
 	public String field_933_a = null;

@@ -10,7 +10,7 @@ import org.apache.logging.log4j.Logger;
 
 public class CraftingManager {
 	private static final CraftingManager instance = new CraftingManager();
-	private List recipes = new ArrayList();
+	private List<CraftingRecipe> recipes = new ArrayList<>();
 	private Logger LOGGER = LogManager.getLogger();
 
 	public static final CraftingManager getInstance() {
@@ -92,9 +92,9 @@ public class CraftingManager {
 			}
 		}
 
-		HashMap var12;
+		HashMap<Character, Integer> var12;
 		int var15;
-		for(var12 = new HashMap(); var4 < var2.length; var4 += 2) {
+		for(var12 = new HashMap<>(); var4 < var2.length; var4 += 2) {
 			Character var13 = (Character)var2[var4];
 			var15 = 0;
 			if(var2[var4 + 1] instanceof Item) {

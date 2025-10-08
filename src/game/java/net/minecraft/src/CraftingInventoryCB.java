@@ -1,34 +1,31 @@
 package net.minecraft.src;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public abstract class CraftingInventoryCB {
-	public List field_20123_d = new ArrayList();
-	public List field_20122_e = new ArrayList();
+	public List<ItemStack> field_20123_d = new ArrayList<>();
+	public List<Slot> field_20122_e = new ArrayList<>();
 	public int unusedList = 0;
 	private short craftMatrix = 0;
-	protected List field_20121_g = new ArrayList();
-	private Set craftResult = new HashSet();
+	protected List<ICrafting> field_20121_g = new ArrayList<>();
 
 	protected void func_20117_a(Slot var1) {
 		var1.field_20007_a = this.field_20122_e.size();
 		this.field_20122_e.add(var1);
-		this.field_20123_d.add((Object)null);
+		this.field_20123_d.add((ItemStack)null);
 	}
 
 	public void func_20114_a() {
 		for(int var1 = 0; var1 < this.field_20122_e.size(); ++var1) {
-			ItemStack var2 = ((Slot)this.field_20122_e.get(var1)).getStack();
-			ItemStack var3 = (ItemStack)this.field_20123_d.get(var1);
+			ItemStack var2 = this.field_20122_e.get(var1).getStack();
+			ItemStack var3 = this.field_20123_d.get(var1);
 			if(!ItemStack.func_20107_a(var3, var2)) {
 				var3 = var2 == null ? null : var2.copy();
 				this.field_20123_d.set(var1, var3);
 
 				for(int var4 = 0; var4 < this.field_20121_g.size(); ++var4) {
-					((ICrafting)this.field_20121_g.get(var4)).func_20159_a(this, var1, var3);
+					this.field_20121_g.get(var4).func_20159_a(this, var1, var3);
 				}
 			}
 		}
@@ -36,7 +33,7 @@ public abstract class CraftingInventoryCB {
 	}
 
 	public Slot func_20118_a(int var1) {
-		return (Slot)this.field_20122_e.get(var1);
+		return this.field_20122_e.get(var1);
 	}
 
 	public ItemStack func_20116_a(int var1, int var2, EntityPlayer var3) {

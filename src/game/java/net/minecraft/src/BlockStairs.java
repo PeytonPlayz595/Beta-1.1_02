@@ -38,7 +38,7 @@ public class BlockStairs extends Block {
 		return super.shouldSideBeRendered(var1, var2, var3, var4, var5);
 	}
 
-	public void getCollidingBoundingBoxes(World var1, int var2, int var3, int var4, AxisAlignedBB var5, ArrayList var6) {
+	public void getCollidingBoundingBoxes(World var1, int var2, int var3, int var4, AxisAlignedBB var5, ArrayList<AxisAlignedBB> var6) {
 		int var7 = var1.getBlockMetadata(var2, var3, var4);
 		if(var7 == 0) {
 			this.setBlockBounds(0.0F, 0.0F, 0.0F, 0.5F, 0.5F, 1.0F);

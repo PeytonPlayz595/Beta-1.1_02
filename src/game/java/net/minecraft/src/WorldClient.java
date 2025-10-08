@@ -7,12 +7,12 @@ import java.util.Set;
 import net.lax1dude.eaglercraft.internal.vfs2.VFile2;
 
 public class WorldClient extends World {
-	private LinkedList field_1057_z = new LinkedList();
+	private LinkedList<WorldBlockPositionType> field_1057_z = new LinkedList<>();
 	private NetClientHandler sendQueue;
 	private ChunkProviderClient C;
 	private MCHashTable field_1055_D = new MCHashTable();
-	private Set E = new HashSet();
-	private Set field_1053_F = new HashSet();
+	private Set<Entity> E = new HashSet<>();
+	private Set<Entity> field_1053_F = new HashSet<>();
 
 	public WorldClient(NetClientHandler var1, long var2, int var4) {
 		super("MpServer", WorldProvider.func_4101_a(var4), var2);

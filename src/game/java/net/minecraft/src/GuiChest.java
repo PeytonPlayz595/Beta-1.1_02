@@ -26,7 +26,6 @@ public class GuiChest extends GuiContainer {
 	}
 
 	protected void drawGuiContainerBackgroundLayer(float var1) {
-		int var2 = this.mc.renderEngine.getTexture("/gui/container.png");
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		TextureLocation.guiContainer.bindTexture();
 		int var3 = (this.width - this.xSize) / 2;

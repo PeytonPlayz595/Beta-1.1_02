@@ -52,7 +52,7 @@ public class EntityPigZombie extends EntityZombie {
 
 	public boolean attackEntityFrom(Entity var1, int var2) {
 		if(var1 instanceof EntityPlayer) {
-			List var3 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
+			List<Entity> var3 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(32.0D, 32.0D, 32.0D));
 
 			for(int var4 = 0; var4 < var3.size(); ++var4) {
 				Entity var5 = (Entity)var3.get(var4);

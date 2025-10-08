@@ -6,7 +6,7 @@ public class InventoryBasic implements IInventory {
 	private String field_20072_a;
 	private int field_20071_b;
 	private ItemStack[] field_20074_c;
-	private List field_20073_d;
+	private List<IInvBasic> field_20073_d;
 
 	public InventoryBasic(String var1, int var2) {
 		this.field_20072_a = var1;
@@ -64,7 +64,7 @@ public class InventoryBasic implements IInventory {
 	public void onInventoryChanged() {
 		if(this.field_20073_d != null) {
 			for(int var1 = 0; var1 < this.field_20073_d.size(); ++var1) {
-				((IInvBasic)this.field_20073_d.get(var1)).func_20134_a(this);
+				this.field_20073_d.get(var1).func_20134_a(this);
 			}
 		}
 

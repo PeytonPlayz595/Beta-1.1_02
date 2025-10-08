@@ -8,10 +8,10 @@ import java.util.Iterator;
 import java.util.Map;
 
 public class NBTTagCompound extends NBTBase {
-	private Map tagMap = new HashMap();
+	private Map<Object, NBTBase> tagMap = new HashMap<>();
 
 	void writeTagContents(DataOutput var1) throws IOException {
-		Iterator var2 = this.tagMap.values().iterator();
+		Iterator<NBTBase> var2 = this.tagMap.values().iterator();
 
 		while(var2.hasNext()) {
 			NBTBase var3 = (NBTBase)var2.next();

@@ -19,7 +19,6 @@ import net.minecraft.src.EnumOptions;
 import net.minecraft.src.GLAllocation;
 import net.minecraft.src.GameSettings;
 import net.minecraft.src.GuiChat;
-import net.minecraft.src.GuiConflictWarning;
 import net.minecraft.src.GuiGameOver;
 import net.minecraft.src.GuiIngame;
 import net.minecraft.src.GuiIngameMenu;
@@ -31,8 +30,6 @@ import net.minecraft.src.ItemRenderer;
 import net.minecraft.src.ItemStack;
 import net.minecraft.src.LoadingScreenRenderer;
 import net.minecraft.src.MathHelper;
-import net.minecraft.src.MinecraftError;
-import net.minecraft.src.MinecraftException;
 import net.minecraft.src.ModelBiped;
 import net.minecraft.src.MouseHelper;
 import net.minecraft.src.MovementInputFromOptions;
@@ -389,14 +386,7 @@ public class Minecraft {
 
 					for(int var6 = 0; var6 < this.timer.elapsedTicks; ++var6) {
 						++this.ticksRan;
-
-						try {
-							this.runTick();
-						} catch (MinecraftException var14) {
-							this.theWorld = null;
-							this.func_6261_a((World)null);
-							this.displayGuiScreen(new GuiConflictWarning());
-						}
+						this.runTick();
 					}
 
 					long var20 = EagRuntime.nanoTime() - var19;
@@ -454,7 +444,6 @@ public class Minecraft {
 						var1 += 1000L;
 					}
 				}
-			} catch (MinecraftError var16) {
 			} catch (Throwable var17) {
 				this.theWorld = null;
 				LOGGER.error(var17);

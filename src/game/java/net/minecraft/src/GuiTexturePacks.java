@@ -8,7 +8,6 @@ import org.lwjgl.opengl.GL11;
 import net.lax1dude.eaglercraft.EagRuntime;
 import net.lax1dude.eaglercraft.EagUtils;
 import net.lax1dude.eaglercraft.internal.FileChooserResult;
-import net.lax1dude.eaglercraft.internal.vfs2.VFile2;
 import net.peyton.eagler.minecraft.ResourcePack;
 import net.peyton.eagler.minecraft.Tessellator;
 
@@ -66,7 +65,7 @@ public class GuiTexturePacks extends GuiScreen {
 			this.field_6454_o += 20;
 		}
 
-		List var4 = this.mc.texturePackList.availableTexturePacks();
+		List<TexturePackBase> var4 = this.mc.texturePackList.availableTexturePacks();
 		int var5;
 		if(Mouse.isButtonDown(0)) {
 			if(this.field_6455_n == -1) {

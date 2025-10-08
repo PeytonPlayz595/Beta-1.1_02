@@ -37,8 +37,8 @@ public class WorldRenderer {
 	public int field_1732_z;
 	public boolean field_1747_A;
 	private boolean isInitialized = false;
-	public List tileEntityRenderers = new ArrayList();
-	private List field_1737_F;
+	public List<TileEntity> tileEntityRenderers = new ArrayList<>();
+	private List<TileEntity> field_1737_F;
 	public boolean isVisibleFromPosition = false;
 	public double visibleFromX;
 	public double visibleFromY;
@@ -46,7 +46,7 @@ public class WorldRenderer {
 	private boolean needsBoxUpdate = false;
 	public boolean isInFrustrumFully = false;
 
-	public WorldRenderer(World var1, List var2, int var3, int var4, int var5, int var6, int var7) {
+	public WorldRenderer(World var1, List<TileEntity> var2, int var3, int var4, int var5, int var6, int var7) {
 		this.worldObj = var1;
 		this.field_1737_F = var2;
 		this.sizeWidth = this.sizeHeight = this.sizeDepth = var6;
@@ -104,7 +104,7 @@ public class WorldRenderer {
 				this.skipRenderPass[hashset] = true;
 			}
 
-			HashSet var26 = new HashSet();
+			HashSet<TileEntity> var26 = new HashSet<>();
 			var26.addAll(this.tileEntityRenderers);
 			this.tileEntityRenderers.clear();
 			byte one = 1;
@@ -181,7 +181,7 @@ public class WorldRenderer {
 				GL11.glFlushList(glRenderList + 1);
 			}
 
-			HashSet var27 = new HashSet();
+			HashSet<TileEntity> var27 = new HashSet<>();
 			var27.addAll(this.tileEntityRenderers);
 			var27.removeAll(var26);
 			this.field_1737_F.addAll(var27);

@@ -117,7 +117,7 @@ public class Pathfinder {
 		if(var7 != null) {
 			int var8 = 0;
 
-			for(boolean var9 = false; var3 > 0; --var3) {
+			for(; var3 > 0; --var3) {
 				int var10 = this.getVerticalOffset(var1, var2, var3 - 1, var4, var5);
 				if(var10 <= 0) {
 					break;

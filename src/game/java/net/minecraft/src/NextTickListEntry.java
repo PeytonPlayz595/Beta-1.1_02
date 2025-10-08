@@ -1,6 +1,6 @@
 package net.minecraft.src;
 
-public class NextTickListEntry implements Comparable {
+public class NextTickListEntry implements Comparable<Object> {
 	private static long nextTickEntryID = 0L;
 	public int xCoord;
 	public int yCoord;

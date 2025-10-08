@@ -12,7 +12,7 @@ public class Packet60 extends Packet {
 	public double field_12235_b;
 	public double field_12239_c;
 	public float field_12238_d;
-	public Set field_12237_e;
+	public Set<ChunkPosition> field_12237_e;
 
 	public void readPacketData(DataInputStream var1) throws IOException {
 		this.field_12236_a = var1.readDouble();
@@ -20,7 +20,7 @@ public class Packet60 extends Packet {
 		this.field_12239_c = var1.readDouble();
 		this.field_12238_d = var1.readFloat();
 		int var2 = var1.readInt();
-		this.field_12237_e = new HashSet();
+		this.field_12237_e = new HashSet<>();
 		int var3 = (int)this.field_12236_a;
 		int var4 = (int)this.field_12235_b;
 		int var5 = (int)this.field_12239_c;
@@ -43,7 +43,7 @@ public class Packet60 extends Packet {
 		int var2 = (int)this.field_12236_a;
 		int var3 = (int)this.field_12235_b;
 		int var4 = (int)this.field_12239_c;
-		Iterator var5 = this.field_12237_e.iterator();
+		Iterator<ChunkPosition> var5 = this.field_12237_e.iterator();
 
 		while(var5.hasNext()) {
 			ChunkPosition var6 = (ChunkPosition)var5.next();

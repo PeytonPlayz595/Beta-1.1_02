@@ -384,7 +384,7 @@ public class EntityMinecart extends Entity implements IInventory {
 			}
 
 			this.setRotation(this.rotationYaw, this.rotationPitch);
-			List var15 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand((double)0.2F, 0.0D, (double)0.2F));
+			List<Entity> var15 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand((double)0.2F, 0.0D, (double)0.2F));
 			if(var15 != null && var15.size() > 0) {
 				for(int var45 = 0; var45 < var15.size(); ++var45) {
 					Entity var17 = (Entity)var15.get(var45);

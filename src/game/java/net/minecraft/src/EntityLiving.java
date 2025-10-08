@@ -627,7 +627,7 @@ public class EntityLiving extends Entity {
 		this.moveForward *= 0.98F;
 		this.randomYawVelocity *= 0.9F;
 		this.moveEntityWithHeading(this.moveStrafing, this.moveForward);
-		List var10 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand((double)0.2F, 0.0D, (double)0.2F));
+		List<Entity> var10 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand((double)0.2F, 0.0D, (double)0.2F));
 		if(var10 != null && var10.size() > 0) {
 			for(int var4 = 0; var4 < var10.size(); ++var4) {
 				Entity var11 = (Entity)var10.get(var4);

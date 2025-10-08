@@ -146,7 +146,7 @@ public abstract class EntityPlayer extends EntityLiving {
 		this.field_774_f += (var1 - this.field_774_f) * 0.4F;
 		this.field_9328_R += (var2 - this.field_9328_R) * 0.8F;
 		if(this.health > 0) {
-			List var3 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(1.0D, 0.0D, 1.0D));
+			List<Entity> var3 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand(1.0D, 0.0D, 1.0D));
 			if(var3 != null) {
 				for(int var4 = 0; var4 < var3.size(); ++var4) {
 					Entity var5 = (Entity)var3.get(var4);

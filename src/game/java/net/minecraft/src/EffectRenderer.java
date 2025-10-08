@@ -1,17 +1,14 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.List;
 import net.lax1dude.eaglercraft.Random;
-import org.lwjgl.opengl.GL11;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.peyton.eagler.minecraft.Tessellator;
 import net.peyton.eagler.minecraft.TextureLocation;
 
 public class EffectRenderer {
 	protected World worldObj;
-	private List[] field_1728_b = new List[4];
-	private RenderEngine field_1731_c;
+	private ObjectArrayList<ObjectArrayList<EntityFX>> field_1728_b = new ObjectArrayList<>(4);
 	private Random rand = new Random();
 
 	public EffectRenderer(World var1, RenderEngine var2) {
@@ -19,34 +16,31 @@ public class EffectRenderer {
 			this.worldObj = var1;
 		}
 
-		this.field_1731_c = var2;
-
 		for(int var3 = 0; var3 < 4; ++var3) {
-			this.field_1728_b[var3] = new ArrayList();
+			this.field_1728_b.add(var3, new ObjectArrayList<>());
 		}
 
 	}
 
 	public void func_1192_a(EntityFX var1) {
 		int var2 = var1.func_404_c();
-		this.field_1728_b[var2].add(var1);
+		this.field_1728_b.get(var2).add(var1);
 	}
 
 	public void func_1193_a() {
 		for(int var1 = 0; var1 < 4; ++var1) {
-			for(int var2 = 0; var2 < this.field_1728_b[var1].size(); ++var2) {
-				EntityFX var3 = (EntityFX)this.field_1728_b[var1].get(var2);
+			ObjectArrayList<EntityFX> list = this.field_1728_b.get(var1);
+			for(int var2 = 0; var2 < list.size(); ++var2) {
+				EntityFX var3 = list.get(var2);
 				var3.onUpdate();
 				if(var3.isDead) {
-					this.field_1728_b[var1].remove(var2--);
+					list.remove(var2--);
 				}
 			}
 		}
 
 	}
 
-	private TextureLocation particles = new TextureLocation("/particles.png");
-	private TextureLocation items = new TextureLocation("/particles.png");
 	public void func_1189_a(Entity var1, float var2) {
 		float var3 = MathHelper.cos(var1.rotationYaw * (float)Math.PI / 180.0F);
 		float var4 = MathHelper.sin(var1.rotationYaw * (float)Math.PI / 180.0F);
@@ -58,7 +52,9 @@ public class EffectRenderer {
 		EntityFX.field_658_n = var1.lastTickPosZ + (var1.posZ - var1.lastTickPosZ) * (double)var2;
 
 		for(int var8 = 0; var8 < 3; ++var8) {
-			if(this.field_1728_b[var8].size() != 0) {
+			ObjectArrayList<EntityFX> list = this.field_1728_b.get(var8);
+			int size = list.size();
+			if(size != 0) {
 				TextureLocation var9 = null;
 				if(var8 == 0) {
 					var9 = TextureLocation.particles;
@@ -78,24 +74,25 @@ public class EffectRenderer {
 				Tessellator var10 = Tessellator.instance;
 				var10.startDrawingQuads();
 
-				for(int var11 = 0; var11 < this.field_1728_b[var8].size(); ++var11) {
-					EntityFX var12 = (EntityFX)this.field_1728_b[var8].get(var11);
+				for(int var11 = 0; var11 < size; ++var11) {
+					EntityFX var12 = list.get(var11);
 					var12.func_406_a(var10, var2, var3, var7, var4, var5, var6);
 				}
 
 				var10.draw();
 			}
 		}
-
 	}
 
 	public void func_1187_b(Entity var1, float var2) {
 		byte var3 = 3;
-		if(this.field_1728_b[var3].size() != 0) {
+		ObjectArrayList<EntityFX> list = this.field_1728_b.get(var3);
+		int size = list.size();
+		if(size != 0) {
 			Tessellator var4 = Tessellator.instance;
 
-			for(int var5 = 0; var5 < this.field_1728_b[var3].size(); ++var5) {
-				EntityFX var6 = (EntityFX)this.field_1728_b[var3].get(var5);
+			for(int var5 = 0; var5 < size; ++var5) {
+				EntityFX var6 = list.get(var5);
 				var6.func_406_a(var4, var2, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F);
 			}
 
@@ -106,7 +103,7 @@ public class EffectRenderer {
 		this.worldObj = var1;
 
 		for(int var2 = 0; var2 < 4; ++var2) {
-			this.field_1728_b[var2].clear();
+			this.field_1728_b.get(var2).clear();
 		}
 
 	}
@@ -168,6 +165,6 @@ public class EffectRenderer {
 	}
 
 	public String func_1190_b() {
-		return "" + (this.field_1728_b[0].size() + this.field_1728_b[1].size() + this.field_1728_b[2].size());
+		return "" + (this.field_1728_b.get(0).size() + this.field_1728_b.get(1).size() + this.field_1728_b.get(2).size());
 	}
 }

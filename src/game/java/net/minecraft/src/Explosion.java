@@ -15,7 +15,7 @@ public class Explosion {
 	public double field_12254_d;
 	public Entity field_12253_e;
 	public float field_12252_f;
-	public Set field_12251_g = new HashSet();
+	public Set<ChunkPosition> field_12251_g = new HashSet<>();
 
 	public Explosion(World var1, Entity var2, double var3, double var5, double var7, float var9) {
 		this.field_12249_i = var1;
@@ -81,7 +81,7 @@ public class Explosion {
 		int var29 = MathHelper.floor_double(this.field_12255_c + (double)this.field_12252_f + 1.0D);
 		int var7 = MathHelper.floor_double(this.field_12254_d - (double)this.field_12252_f - 1.0D);
 		int var30 = MathHelper.floor_double(this.field_12254_d + (double)this.field_12252_f + 1.0D);
-		List var9 = this.field_12249_i.getEntitiesWithinAABBExcludingEntity(this.field_12253_e, AxisAlignedBB.getBoundingBoxFromPool((double)var3, (double)var5, (double)var7, (double)var4, (double)var29, (double)var30));
+		List<Entity> var9 = this.field_12249_i.getEntitiesWithinAABBExcludingEntity(this.field_12253_e, AxisAlignedBB.getBoundingBoxFromPool((double)var3, (double)var5, (double)var7, (double)var4, (double)var29, (double)var30));
 		Vec3D var31 = Vec3D.createVector(this.field_12256_b, this.field_12255_c, this.field_12254_d);
 
 		for(int var11 = 0; var11 < var9.size(); ++var11) {
@@ -105,7 +105,7 @@ public class Explosion {
 		}
 
 		this.field_12252_f = var1;
-		ArrayList var32 = new ArrayList();
+		ArrayList<ChunkPosition> var32 = new ArrayList<>();
 		var32.addAll(this.field_12251_g);
 		if(this.field_12257_a) {
 			for(int var34 = var32.size() - 1; var34 >= 0; --var34) {
@@ -125,7 +125,7 @@ public class Explosion {
 
 	public void func_12247_b() {
 		this.field_12249_i.playSoundEffect(this.field_12256_b, this.field_12255_c, this.field_12254_d, "random.explode", 4.0F, (1.0F + (this.field_12249_i.rand.nextFloat() - this.field_12249_i.rand.nextFloat()) * 0.2F) * 0.7F);
-		ArrayList var1 = new ArrayList();
+		ArrayList<ChunkPosition> var1 = new ArrayList<>();
 		var1.addAll(this.field_12251_g);
 
 		for(int var2 = var1.size() - 1; var2 >= 0; --var2) {

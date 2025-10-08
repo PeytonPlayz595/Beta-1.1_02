@@ -4,9 +4,8 @@ import com.carrotsearch.hppc.LongHashSet;
 import com.carrotsearch.hppc.LongSet;
 import com.carrotsearch.hppc.cursors.LongCursor;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.peyton.eagler.minecraft.suppliers.EntitySupplier;
-
-import java.util.Iterator;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -42,7 +41,6 @@ public final class SpawnerAnimals {
 
 		var1 = 0;
 
-		label113:
 		for(int var28 = 0; var28 < EnumCreatureType.values().length; ++var28) {
 			EnumCreatureType var29 = EnumCreatureType.values()[var28];
 			if(var0.countEntities(var29.field_4278_c) <= var29.maxNumberOfEntityType * eligibleChunksForSpawning.size() / 256) {
@@ -55,7 +53,7 @@ public final class SpawnerAnimals {
 					int var10;
 					int var11;
 					int var12;
-					EntitySupplier<Entity>[] var33;
+					ObjectArrayList<EntitySupplier<Entity>> var33;
 					do {
 						do {
 							do {
@@ -63,9 +61,9 @@ public final class SpawnerAnimals {
 									MobSpawnerBase var32 = var0.func_4075_a().func_4074_a(chunkXPos, chunkZPos);
 									var33 = var32.getEntitiesForType(var29);
 								} while(var33 == null);
-							} while(var33.length == 0);
+							} while(var33.size() == 0);
 
-							var8 = var0.rand.nextInt(var33.length);
+							var8 = var0.rand.nextInt(var33.size());
 							ChunkPosition var9 = getRandomSpawningPointInChunk(var0, chunkXPos * 16, chunkZPos * 16);
 							var10 = var9.x;
 							var11 = var9.y;
@@ -97,7 +95,7 @@ public final class SpawnerAnimals {
 									if(var26 >= 576.0F) {
 										EntityLiving var34;
 										try {
-											var34 = (EntityLiving)var33[var8].createEntity(var0);
+											var34 = (EntityLiving)var33.get(var8).createEntity(var0);
 										} catch (Exception var27) {
 											LOGGER.debug(var27);
 											return var1;

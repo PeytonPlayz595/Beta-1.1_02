@@ -6,7 +6,7 @@ import net.lax1dude.eaglercraft.Random;
 
 public class BlockRedstoneTorch extends BlockTorch {
 	private boolean torchActive = false;
-	private static List torchUpdates = new ArrayList();
+	private static List<RedstoneUpdateInfo> torchUpdates = new ArrayList<>();
 
 	public int getBlockTextureFromSideAndMetadata(int var1, int var2) {
 		return var1 == 1 ? Block.redstoneWire.getBlockTextureFromSideAndMetadata(var1, var2) : super.getBlockTextureFromSideAndMetadata(var1, var2);

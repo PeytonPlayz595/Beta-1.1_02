@@ -8,7 +8,7 @@ import org.lwjgl.opengl.GL11;
 import net.peyton.eagler.minecraft.FontRenderer;
 
 public class RenderManager {
-	private Map entityRenderMap = new HashMap();
+	private Map<Class<? extends Entity>, Render> entityRenderMap = new HashMap<>();
 	public static RenderManager instance = new RenderManager();
 	private FontRenderer field_1218_p;
 	public static double renderPosX;
@@ -51,19 +51,19 @@ public class RenderManager {
 		this.entityRenderMap.put(EntityMinecart.class, new RenderMinecart());
 		this.entityRenderMap.put(EntityBoat.class, new RenderBoat());
 		this.entityRenderMap.put(EntityFish.class, new RenderFish());
-		Iterator var1 = this.entityRenderMap.values().iterator();
+		Iterator<Render> var1 = this.entityRenderMap.values().iterator();
 
 		while(var1.hasNext()) {
-			Render var2 = (Render)var1.next();
-			var2.setRenderManager(this);
+			var1.next().setRenderManager(this);
 		}
 
 	}
 
-	public Render getEntityClassRenderObject(Class var1) {
+	@SuppressWarnings("unchecked")
+	public Render getEntityClassRenderObject(Class<? extends Entity> var1) {
 		Render var2 = (Render)this.entityRenderMap.get(var1);
 		if(var2 == null && var1 != Entity.class) {
-			var2 = this.getEntityClassRenderObject(var1.getSuperclass());
+			var2 = this.getEntityClassRenderObject((Class<? extends Entity>)var1.getSuperclass());
 			this.entityRenderMap.put(var1, var2);
 		}
 

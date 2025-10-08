@@ -12,19 +12,16 @@ public class LoadingScreenRenderer implements IProgressUpdate {
 	private Minecraft mc;
 	private String field_1007_c = "";
 	private long field_1006_d = EagRuntime.steadyTimeMillis();
-	private boolean field_1005_e = false;
 
 	public LoadingScreenRenderer(Minecraft var1) {
 		this.mc = var1;
 	}
 
 	public void printText(String var1) {
-		this.field_1005_e = false;
 		this.func_597_c(var1);
 	}
 
 	public void func_594_b(String var1) {
-		this.field_1005_e = true;
 		this.func_597_c(this.field_1007_c);
 	}
 

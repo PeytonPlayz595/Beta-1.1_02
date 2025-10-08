@@ -270,7 +270,7 @@ public class EntityBoat extends Entity {
 
 			this.rotationYaw = (float)((double)this.rotationYaw + var16);
 			this.setRotation(this.rotationYaw, this.rotationPitch);
-			List var18 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand((double)0.2F, 0.0D, (double)0.2F));
+			List<Entity> var18 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox.expand((double)0.2F, 0.0D, (double)0.2F));
 			if(var18 != null && var18.size() > 0) {
 				for(int var26 = 0; var26 < var18.size(); ++var26) {
 					Entity var20 = (Entity)var18.get(var26);

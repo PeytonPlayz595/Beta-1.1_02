@@ -233,7 +233,7 @@ public abstract class Entity {
 
 	public boolean isOffsetPositionInLiquid(double var1, double var3, double var5) {
 		AxisAlignedBB var7 = this.boundingBox.getOffsetBoundingBox(var1, var3, var5);
-		List var8 = this.worldObj.getCollidingBoundingBoxes(this, var7);
+		List<AxisAlignedBB> var8 = this.worldObj.getCollidingBoundingBoxes(this, var7);
 		return var8.size() > 0 ? false : !this.worldObj.getIsAnyLiquid(var7);
 	}
 
@@ -274,7 +274,7 @@ public abstract class Entity {
 				}
 			}
 
-			List var35 = this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox.addCoord(var1, var3, var5));
+			List<AxisAlignedBB> var35 = this.worldObj.getCollidingBoundingBoxes(this, this.boundingBox.addCoord(var1, var3, var5));
 
 			for(int var20 = 0; var20 < var35.size(); ++var20) {
 				var3 = ((AxisAlignedBB)var35.get(var20)).func_1172_b(this.boundingBox, var3);

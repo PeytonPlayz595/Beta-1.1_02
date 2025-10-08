@@ -1,7 +1,5 @@
 package net.minecraft.src;
 
-import org.lwjgl.opengl.GL11;
-
 import net.peyton.eagler.minecraft.TextureLocation;
 
 public class TextureFX {

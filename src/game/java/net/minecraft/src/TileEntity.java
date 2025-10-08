@@ -9,8 +9,8 @@ import org.apache.logging.log4j.Logger;
 import net.peyton.eagler.minecraft.suppliers.TileEntitySupplier;
 
 public class TileEntity {
-	private static Map<String, TileEntitySupplier> nameToClassMap = new HashMap();
-	private static Map classToNameMap = new HashMap();
+	private static Map<String, TileEntitySupplier<TileEntity>> nameToClassMap = new HashMap<>();
+	private static Map<Class<? extends TileEntity>, String> classToNameMap = new HashMap<>();
 	public World worldObj;
 	public int xCoord;
 	public int yCoord;
@@ -18,8 +18,8 @@ public class TileEntity {
 	
 	private static Logger LOGGER = LogManager.getLogger();
 
-	private static void addMapping(Class var0, TileEntitySupplier var2, String var1) {
-		if(classToNameMap.containsKey(var1)) {
+	private static void addMapping(Class<? extends TileEntity> var0, TileEntitySupplier<TileEntity> var2, String var1) {
+		if(classToNameMap.containsValue(var1)) {
 			throw new IllegalArgumentException("Duplicate id: " + var1);
 		} else {
 			nameToClassMap.put(var1, var2);
@@ -52,7 +52,7 @@ public class TileEntity {
 		TileEntity var1 = null;
 
 		try {
-			TileEntitySupplier var2 = nameToClassMap.get(var0.getString("id"));
+			TileEntitySupplier<TileEntity> var2 = nameToClassMap.get(var0.getString("id"));
 			if(var2 != null) {
 				var1 = (TileEntity)var2.createTileEntity();
 			}

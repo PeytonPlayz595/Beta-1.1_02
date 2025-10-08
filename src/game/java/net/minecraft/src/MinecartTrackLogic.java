@@ -9,12 +9,12 @@ class MinecartTrackLogic {
 	private int field_1164_d;
 	private int field_1163_e;
 	private int field_1162_f;
-	private List field_1161_g;
+	private List<ChunkPosition> field_1161_g;
 	final BlockMinecartTrack field_1160_a;
 
 	public MinecartTrackLogic(BlockMinecartTrack var1, World var2, int var3, int var4, int var5) {
 		this.field_1160_a = var1;
-		this.field_1161_g = new ArrayList();
+		this.field_1161_g = new ArrayList<>();
 		this.worldObj = var2;
 		this.field_1165_c = var3;
 		this.field_1164_d = var4;

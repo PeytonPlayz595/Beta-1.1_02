@@ -104,10 +104,6 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 		double var42;
 		int var75;
 		if(var9 == 1) {
-			boolean var64 = false;
-			boolean var65 = false;
-			boolean var21 = false;
-			boolean var68 = false;
 			double var70 = 0.0D;
 			double var73 = 0.0D;
 			var75 = 0;
@@ -150,12 +146,6 @@ public class NoiseGeneratorPerlin extends NoiseGenerator {
 			var19 = 0;
 			double var20 = 1.0D / var17;
 			var22 = -1;
-			boolean var23 = false;
-			boolean var24 = false;
-			boolean var25 = false;
-			boolean var26 = false;
-			boolean var27 = false;
-			boolean var28 = false;
 			double var29 = 0.0D;
 			var31 = 0.0D;
 			double var33 = 0.0D;

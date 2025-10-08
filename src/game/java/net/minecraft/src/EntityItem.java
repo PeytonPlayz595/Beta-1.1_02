@@ -2,7 +2,6 @@ package net.minecraft.src;
 
 public class EntityItem extends Entity {
 	public ItemStack item;
-	private int field_803_e;
 	public int age = 0;
 	public int delayBeforeCanPickup;
 	private int health = 5;
@@ -63,7 +62,6 @@ public class EntityItem extends Entity {
 			this.motionY *= -0.5D;
 		}
 
-		++this.field_803_e;
 		++this.age;
 		if(this.age >= 6000) {
 			this.setEntityDead();

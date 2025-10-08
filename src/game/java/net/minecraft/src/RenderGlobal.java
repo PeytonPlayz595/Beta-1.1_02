@@ -1,8 +1,6 @@
 package net.minecraft.src;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 import net.lax1dude.eaglercraft.EagRuntime;
@@ -19,10 +17,10 @@ import org.lwjgl.opengl.GL11;
 
 public class RenderGlobal implements IWorldAccess {
 	private long lastMovedTime = EagRuntime.steadyTimeMillis();
-	public List field_1458_a = new ArrayList();
+	public List<TileEntity> field_1458_a = new ArrayList<>();
 	private World worldObj;
 	private RenderEngine renderEngine;
-	private List worldRenderersToUpdate = new ArrayList();
+	private List<WorldRenderer> worldRenderersToUpdate = new ArrayList<>();
 	private WorldRenderer[] sortedWorldRenderers;
 	private WorldRenderer[] worldRenderers;
 	private int renderChunksWide;
@@ -274,7 +272,7 @@ public class RenderGlobal implements IWorldAccess {
 			TileEntityRenderer.staticPlayerX = var4.lastTickPosX + (var4.posX - var4.lastTickPosX) * (double)var3;
 			TileEntityRenderer.staticPlayerY = var4.lastTickPosY + (var4.posY - var4.lastTickPosY) * (double)var3;
 			TileEntityRenderer.staticPlayerZ = var4.lastTickPosZ + (var4.posZ - var4.lastTickPosZ) * (double)var3;
-			List var5 = this.worldObj.func_658_i();
+			List<Entity> var5 = this.worldObj.func_658_i();
 			this.field_1423_J = var5.size();
 
 			int var6;
@@ -394,9 +392,6 @@ public class RenderGlobal implements IWorldAccess {
 			this.field_1416_Q = 0;
 		}
 
-		double var5 = var1.lastTickPosX + (var1.posX - var1.lastTickPosX) * var3;
-		double var7 = var1.lastTickPosY + (var1.posY - var1.lastTickPosY) * var3;
-		double var9 = var1.lastTickPosZ + (var1.posZ - var1.lastTickPosZ) * var3;
 		double var11 = var1.posX - this.field_1453_f;
 		double var13 = var1.posY - this.field_1452_g;
 		double var15 = var1.posZ - this.field_1451_h;
@@ -600,13 +595,13 @@ public class RenderGlobal implements IWorldAccess {
 				if(i != null) {
 					++numValid;
 					if(!i.needsUpdate) {
-						this.worldRenderersToUpdate.set(dstIndex, (Object)null);
+						this.worldRenderersToUpdate.set(dstIndex, (WorldRenderer)null);
 					} else {
 						float wr = i.distanceToEntity(var1);
 						if(wr <= 256.0F && this.isActingNow()) {
 							i.updateRenderer();
 							i.needsUpdate = false;
-							this.worldRenderersToUpdate.set(dstIndex, (Object)null);
+							this.worldRenderersToUpdate.set(dstIndex, (WorldRenderer)null);
 							++num;
 						} else {
 							if(wr > 256.0F && num >= maxNum) {
@@ -635,7 +630,7 @@ public class RenderGlobal implements IWorldAccess {
 			if(wrBest != null) {
 				wrBest.updateRenderer();
 				wrBest.needsUpdate = false;
-				this.worldRenderersToUpdate.set(indexBest, (Object)null);
+				this.worldRenderersToUpdate.set(indexBest, (WorldRenderer)null);
 				++num;
 				float var15 = distSqBest / 5.0F;
 
@@ -651,7 +646,7 @@ public class RenderGlobal implements IWorldAccess {
 						if(diffDistSq < var15) {
 							var17.updateRenderer();
 							var17.needsUpdate = false;
-							this.worldRenderersToUpdate.set(var16, (Object)null);
+							this.worldRenderersToUpdate.set(var16, (WorldRenderer)null);
 							++num;
 						}
 					}
@@ -666,7 +661,7 @@ public class RenderGlobal implements IWorldAccess {
 				dstIndex = 0;
 
 				for(var16 = 0; var16 < this.worldRenderersToUpdate.size(); ++var16) {
-					Object var18 = this.worldRenderersToUpdate.get(var16);
+					WorldRenderer var18 = this.worldRenderersToUpdate.get(var16);
 					if(var18 != null && var16 != dstIndex) {
 						this.worldRenderersToUpdate.set(dstIndex, var18);
 						++dstIndex;

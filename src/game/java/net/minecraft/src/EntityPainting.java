@@ -24,7 +24,7 @@ public class EntityPainting extends Entity {
 		this.field_9322_d = var2;
 		this.field_9321_e = var3;
 		this.field_9320_f = var4;
-		ArrayList var6 = new ArrayList();
+		ArrayList<EnumArt> var6 = new ArrayList<>();
 		EnumArt[] var7 = EnumArt._VALUES;
 		int var8 = var7.length;
 
@@ -157,7 +157,7 @@ public class EntityPainting extends Entity {
 				}
 			}
 
-			List var9 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox);
+			List<Entity> var9 = this.worldObj.getEntitiesWithinAABBExcludingEntity(this, this.boundingBox);
 
 			for(var7 = 0; var7 < var9.size(); ++var7) {
 				if(var9.get(var7) instanceof EntityPainting) {

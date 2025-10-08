@@ -16,9 +16,7 @@ import com.carrotsearch.hppc.ObjectIntMap;
 import com.carrotsearch.hppc.cursors.IntObjectCursor;
 import com.carrotsearch.hppc.cursors.ObjectIntCursor;
 
-import net.lax1dude.eaglercraft.EagRuntime;
 import net.lax1dude.eaglercraft.beta.SpriteSheetTexture;
-import net.lax1dude.eaglercraft.internal.PlatformOpenGL;
 import net.lax1dude.eaglercraft.internal.buffer.ByteBuffer;
 import net.lax1dude.eaglercraft.internal.buffer.IntBuffer;
 import net.lax1dude.eaglercraft.opengl.ImageData;
@@ -319,11 +317,11 @@ public class RenderEngine {
 //
 //	}
 
-	private int averageColor(int var1, int var2) {
-		int var3 = (var1 & -16777216) >> 24 & 255;
-		int var4 = (var2 & -16777216) >> 24 & 255;
-		return (var3 + var4 >> 1 << 24) + ((var1 & 16711422) + (var2 & 16711422) >> 1);
-	}
+//	private int averageColor(int var1, int var2) {
+//		int var3 = (var1 & -16777216) >> 24 & 255;
+//		int var4 = (var2 & -16777216) >> 24 & 255;
+//		return (var3 + var4 >> 1 << 24) + ((var1 & 16711422) + (var2 & 16711422) >> 1);
+//	}
 
 	private int weightedAverageColor(int var1, int var2) {
 		int var3 = (var1 & -16777216) >> 24 & 255;

@@ -1,5 +1,6 @@
 package net.minecraft.src;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.peyton.eagler.minecraft.suppliers.EntitySupplier;
 import net.peyton.java.awt.Color;
 
@@ -21,10 +22,22 @@ public class MobSpawnerBase {
 	public byte topBlock = (byte)Block.grass.blockID;
 	public byte fillerBlock = (byte)Block.dirt.blockID;
 	public int field_6502_q = 5169201;
-	protected EntitySupplier[] biomeMonsters = new EntitySupplier[]{EntitySpider::new, EntityZombie::new, EntitySkeleton::new, EntityCreeper::new};
-	protected EntitySupplier[] biomeCreatures = new EntitySupplier[]{EntitySheep::new, EntityPig::new, EntityChicken::new, EntityCow::new};
+	protected ObjectArrayList<EntitySupplier<Entity>> biomeMonsters = new ObjectArrayList<>();
+	protected ObjectArrayList<EntitySupplier<Entity>> biomeCreatures = new ObjectArrayList<>();
 	private static MobSpawnerBase[] biomeLookupTable = new MobSpawnerBase[4096];
 
+	public MobSpawnerBase() {
+		biomeMonsters.add(EntitySpider::new);
+		biomeMonsters.add(EntityZombie::new);
+		biomeMonsters.add(EntitySkeleton::new);
+		biomeMonsters.add(EntityCreeper::new);
+		
+		biomeCreatures.add(EntitySheep::new);
+		biomeCreatures.add(EntityPig::new);
+		biomeCreatures.add(EntityChicken::new);
+		biomeCreatures.add(EntityCow::new);
+	}
+	
 	public static void generateBiomeLookup() {
 		for(int var0 = 0; var0 < 64; ++var0) {
 			for(int var1 = 0; var1 < 64; ++var1) {
@@ -79,7 +92,7 @@ public class MobSpawnerBase {
 		return Color.getHSBColor(224.0F / 360.0F - var1 * 0.05F, 0.5F + var1 * 0.1F, 1.0F).getRGB();
 	}
 
-	public EntitySupplier[] getEntitiesForType(EnumCreatureType var1) {
+	public ObjectArrayList<EntitySupplier<Entity>> getEntitiesForType(EnumCreatureType var1) {
 		return var1 == EnumCreatureType.monster ? this.biomeMonsters : (var1 == EnumCreatureType.creature ? this.biomeCreatures : null);
 	}
 

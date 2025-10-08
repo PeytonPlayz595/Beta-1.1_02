@@ -1,6 +1,5 @@
 package net.minecraft.src;
 
-import java.util.HashMap;
 import java.util.IdentityHashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -27,19 +26,19 @@ public class TileEntityRenderer {
 	private TileEntityRenderer() {
 		this.specialRendererMap.put(TileEntitySign.class, new TileEntitySignRenderer());
 		this.specialRendererMap.put(TileEntityMobSpawner.class, new TileEntityMobSpawnerRenderer());
-		Iterator var1 = this.specialRendererMap.values().iterator();
+		Iterator<TileEntitySpecialRenderer> var1 = this.specialRendererMap.values().iterator();
 
 		while(var1.hasNext()) {
-			TileEntitySpecialRenderer var2 = (TileEntitySpecialRenderer)var1.next();
-			var2.setTileEntityRenderer(this);
+			var1.next().setTileEntityRenderer(this);
 		}
 
 	}
 
-	public TileEntitySpecialRenderer getSpecialRendererForClass(Class var1) {
+	@SuppressWarnings("unchecked")
+	public TileEntitySpecialRenderer getSpecialRendererForClass(Class<? extends TileEntity> var1) {
 		TileEntitySpecialRenderer var2 = (TileEntitySpecialRenderer)this.specialRendererMap.get(var1);
 		if(var2 == null && var1 != TileEntity.class) {
-			var2 = this.getSpecialRendererForClass(var1.getSuperclass());
+			var2 = this.getSpecialRendererForClass((Class<? extends TileEntity>)var1.getSuperclass());
 			this.specialRendererMap.put(var1, var2);
 		}
 
