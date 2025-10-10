@@ -15,7 +15,6 @@ import net.minecraft.src.EntityClientPlayerMP;
 import net.minecraft.src.EntityPlayer;
 import net.minecraft.src.EntityPlayerSP;
 import net.minecraft.src.EntityRenderer;
-import net.minecraft.src.EnumOptions;
 import net.minecraft.src.GLAllocation;
 import net.minecraft.src.GameSettings;
 import net.minecraft.src.GuiChat;
@@ -798,10 +797,6 @@ public class Minecraft {
 												if(Keyboard.getEventKey() == Keyboard.KEY_1 + var4) {
 													this.thePlayer.inventory.currentItem = var4;
 												}
-											}
-
-											if(Keyboard.getEventKey() == this.gameSettings.keyBindToggleFog.keyCode) {
-												this.gameSettings.setOptionValue(EnumOptions.RENDER_DISTANCE, !Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) && !Keyboard.isKeyDown(Keyboard.KEY_RSHIFT) ? 1 : -1);
 											}
 										}
 									}

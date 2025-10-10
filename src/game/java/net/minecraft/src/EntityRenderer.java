@@ -122,7 +122,7 @@ public class EntityRenderer {
 			var3 = 60.0F;
 		}
 		
-		if(Keyboard.isKeyDown(this.mc.gameSettings.ofKeyBindZoom.keyCode)) {
+		if(Keyboard.isKeyDown(this.mc.gameSettings.ofKeyBindZoom.keyCode) && this.mc.inGameHasFocus) {
 			if(!this.zoomMode) {
 				this.zoomMode = true;
 				this.smoothCamera = true;
