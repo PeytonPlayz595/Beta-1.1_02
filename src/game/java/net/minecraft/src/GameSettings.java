@@ -26,6 +26,7 @@ public class GameSettings {
 	public boolean fancyGraphics = true;
 	public String skin = "Default";
 	public KeyBinding ofKeyBindZoom = new KeyBinding("Zoom", Keyboard.KEY_C);
+	public KeyBinding keyBindScreenshot = new KeyBinding("Screenshot", Keyboard.KEY_F2);
 	public KeyBinding keyBindForward = new KeyBinding("key.forward", 17);
 	public KeyBinding keyBindLeft = new KeyBinding("key.left", 30);
 	public KeyBinding keyBindBack = new KeyBinding("key.back", 31);
@@ -35,7 +36,7 @@ public class GameSettings {
 	public KeyBinding keyBindDrop = new KeyBinding("key.drop", 16);
 	public KeyBinding keyBindChat = new KeyBinding("key.chat", 20);
 	public KeyBinding keyBindSneak = new KeyBinding("key.sneak", 42);
-	public KeyBinding[] keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.ofKeyBindZoom};
+	public KeyBinding[] keyBindings = new KeyBinding[]{this.keyBindForward, this.keyBindLeft, this.keyBindBack, this.keyBindRight, this.keyBindJump, this.keyBindSneak, this.keyBindDrop, this.keyBindInventory, this.keyBindChat, this.ofKeyBindZoom, this.keyBindScreenshot};
 	protected Minecraft mc;
 	private VFile2 optionsFile;
 	public int difficulty = 2;

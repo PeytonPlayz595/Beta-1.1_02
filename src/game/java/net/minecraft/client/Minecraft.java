@@ -782,7 +782,7 @@ public class Minecraft {
 												this.gameSettings.thirdPersonView = !this.gameSettings.thirdPersonView;
 											}
 											
-											if(Keyboard.getEventKey() == Keyboard.KEY_F2) {
+											if(Keyboard.getEventKey() == this.gameSettings.keyBindScreenshot.keyCode) {
 												this.ingameGUI.addChatMessage("Saved Screenshot As: " + PlatformApplication.saveScreenshot());
 											}
 
