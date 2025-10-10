@@ -3,6 +3,7 @@ package net.minecraft.client;
 import net.lax1dude.eaglercraft.EagRuntime;
 import net.lax1dude.eaglercraft.beta.TextureNewClockFX;
 import net.lax1dude.eaglercraft.beta.TextureNewCompassFX;
+import net.lax1dude.eaglercraft.internal.PlatformApplication;
 import net.lax1dude.eaglercraft.internal.PlatformOpenGL;
 import net.lax1dude.eaglercraft.internal.vfs2.VFile2;
 import net.lax1dude.eaglercraft.minecraft.EaglerFontRenderer;
@@ -779,6 +780,10 @@ public class Minecraft {
 
 											if(Keyboard.getEventKey() == Keyboard.KEY_F5) {
 												this.gameSettings.thirdPersonView = !this.gameSettings.thirdPersonView;
+											}
+											
+											if(Keyboard.getEventKey() == Keyboard.KEY_F2) {
+												this.ingameGUI.addChatMessage("Saved Screenshot As: " + PlatformApplication.saveScreenshot());
 											}
 
 											if(Keyboard.getEventKey() == this.gameSettings.keyBindInventory.keyCode) {
