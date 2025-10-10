@@ -599,10 +599,12 @@ public class RenderGlobal implements IWorldAccess {
 					} else {
 						float wr = i.distanceToEntity(var1);
 						if(wr <= 256.0F && this.isActingNow()) {
-							i.updateRenderer();
-							i.needsUpdate = false;
-							this.worldRenderersToUpdate.set(dstIndex, (WorldRenderer)null);
-							++num;
+							if (num < maxNum) {
+								i.updateRenderer();
+								i.needsUpdate = false;
+								this.worldRenderersToUpdate.set(dstIndex, (WorldRenderer)null);
+								++num;
+							}
 						} else {
 							if(wr > 256.0F && num >= maxNum) {
 								break;
@@ -628,26 +630,28 @@ public class RenderGlobal implements IWorldAccess {
 
 			int var16;
 			if(wrBest != null) {
-				wrBest.updateRenderer();
-				wrBest.needsUpdate = false;
-				this.worldRenderersToUpdate.set(indexBest, (WorldRenderer)null);
-				++num;
-				float var15 = distSqBest / 5.0F;
+				if (num < maxNum) {
+					wrBest.updateRenderer();
+					wrBest.needsUpdate = false;
+					this.worldRenderersToUpdate.set(indexBest, (WorldRenderer)null);
+					++num;
+					float var15 = distSqBest / 5.0F;
 
-				for(var16 = 0; var16 < this.worldRenderersToUpdate.size() && num < maxNum; ++var16) {
-					WorldRenderer var17 = (WorldRenderer)this.worldRenderersToUpdate.get(var16);
-					if(var17 != null) {
-						float distSq = var17.distanceToEntity(var1);
-						if(!var17.isInFrustrum) {
-							distSq *= (float)NOT_IN_FRUSTRUM_MUL;
-						}
+					for(var16 = 0; var16 < this.worldRenderersToUpdate.size() && num < maxNum; ++var16) {
+						WorldRenderer var17 = (WorldRenderer)this.worldRenderersToUpdate.get(var16);
+						if(var17 != null) {
+							float distSq = var17.distanceToEntity(var1);
+							if(!var17.isInFrustrum) {
+								distSq *= (float)NOT_IN_FRUSTRUM_MUL;
+							}
 
-						float diffDistSq = Math.abs(distSq - distSqBest);
-						if(diffDistSq < var15) {
-							var17.updateRenderer();
-							var17.needsUpdate = false;
-							this.worldRenderersToUpdate.set(var16, (WorldRenderer)null);
-							++num;
+							float diffDistSq = Math.abs(distSq - distSqBest);
+							if(diffDistSq < var15) {
+								var17.updateRenderer();
+								var17.needsUpdate = false;
+								this.worldRenderersToUpdate.set(var16, (WorldRenderer)null);
+								++num;
+							}
 						}
 					}
 				}

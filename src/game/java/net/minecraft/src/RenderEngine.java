@@ -18,7 +18,7 @@ import com.carrotsearch.hppc.cursors.ObjectIntCursor;
 
 import net.lax1dude.eaglercraft.beta.SpriteSheetTexture;
 import net.lax1dude.eaglercraft.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.internal.buffer.IntBuffer;
+import net.lax1dude.eaglercraft.opengl.EaglercraftGPU;
 import net.lax1dude.eaglercraft.opengl.ImageData;
 import net.peyton.eagler.minecraft.TextureLocation;
 
@@ -26,7 +26,6 @@ public class RenderEngine {
 	public static boolean useMipmaps = false;
 	private ObjectIntMap<String> textureMap = new ObjectIntHashMap<>();
 	private IntObjectMap<ImageData> textureNameToImageMap = new IntObjectHashMap<>();
-	private IntBuffer singleIntBuffer = GLAllocation.createDirectIntBuffer(1);
 	private ByteBuffer imageData = GLAllocation.createDirectByteBuffer(1048576);
 	private List<TextureFX> field_1604_f = new ArrayList<TextureFX>();
 	private List<SpriteSheetTexture> textureSpriteList = new ArrayList<SpriteSheetTexture>();
@@ -41,6 +40,22 @@ public class RenderEngine {
 		this.field_6527_k = var1;
 		this.options = var2;
 	}
+	
+	public int getTextureWidth(TextureLocation location) {
+		ImageData image = textureNameToImageMap.get(location.getTextureID());
+		if (image != null) {
+			return image.width;
+		}
+		return 0;
+	}
+	
+	public int getTextureHeight(TextureLocation location) {
+		ImageData image = textureNameToImageMap.get(location.getTextureID());
+		if (image != null) {
+			return image.height;
+		}
+		return 0;
+	}
 
 	public int getTexture(String var1) {
 		TexturePackBase var2 = this.field_6527_k.selectedTexturePack;
@@ -49,9 +64,7 @@ public class RenderEngine {
 			return var3;
 		} else {
 			try {
-				this.singleIntBuffer.clear();
-				GLAllocation.generateTextureNames(this.singleIntBuffer);
-				int var5 = this.singleIntBuffer.get(0);
+				int var5 = EaglercraftGPU.generateTexture();
 				if (var1.startsWith("##")) {
 					this.setupTexture(
 							this.unwrapImageByColumns(
@@ -92,9 +105,7 @@ public class RenderEngine {
 	}
 
 	public int allocateAndSetupTexture(ImageData var1) {
-		this.singleIntBuffer.clear();
-		GLAllocation.generateTextureNames(this.singleIntBuffer);
-		int var2 = this.singleIntBuffer.get(0);
+		int var2 = EaglercraftGPU.generateTexture();
 		this.setupTexture(var1, var2);
 		this.textureNameToImageMap.put(var2, var1);
 		return var2;
@@ -189,10 +200,7 @@ public class RenderEngine {
 
 	public void deleteTexture(int var1) {
 		this.textureNameToImageMap.remove(var1);
-		this.singleIntBuffer.clear();
-		this.singleIntBuffer.put(var1);
-		this.singleIntBuffer.flip();
-		GL11.glDeleteTextures(this.singleIntBuffer);
+		GL11.glDeleteTexture(var1);
 	}
 
 	public int getTextureForDownloadableImage(String var1, String var2) {
