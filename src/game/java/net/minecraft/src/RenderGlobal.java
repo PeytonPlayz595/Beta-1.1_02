@@ -459,13 +459,7 @@ public class RenderGlobal implements IWorldAccess {
 		
 		//this.mc.entityRenderer.disableLightmap(var4);
 
-		this.func_944_a(var3, var4);
 		return var6;
-	}
-
-	public void func_944_a(int var1, double var2) {
-		//this.mc.entityRenderer.enableLightmap(var2);
-		//this.mc.entityRenderer.disableLightmap(var2);
 	}
 
 	public void func_945_d() {

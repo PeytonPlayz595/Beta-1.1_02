@@ -108,7 +108,7 @@ public class WorldRenderer {
 			var26.addAll(this.tileEntityRenderers);
 			this.tileEntityRenderers.clear();
 			byte one = 1;
-			ChunkCache chunkcache = new ChunkCache(this.worldObj, var24 - one, yMin - one, zMin - one, xMax + one, yMax + one, zMax + one);
+			RenderRegionCache chunkcache = new RenderRegionCache(this.worldObj, var24 - one, yMin - one, zMin - one, xMax + one, yMax + one, zMax + one, one);
 			RenderBlocks renderblocks = new RenderBlocks(chunkcache);
 			Tessellator tessellator = Tessellator.instance;
 

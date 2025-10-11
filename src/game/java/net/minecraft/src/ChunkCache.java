@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
 public class ChunkCache implements IBlockAccess {
-	private int field_1060_a;
-	private int field_1059_b;
+	protected int field_1060_a;
+	protected int field_1059_b;
 	private Chunk[][] field_1062_c;
 	private World worldObj;
 
