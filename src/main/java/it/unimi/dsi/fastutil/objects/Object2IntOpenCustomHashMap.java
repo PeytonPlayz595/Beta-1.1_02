@@ -48,8 +48,6 @@ import java.util.NoSuchElementException;
 import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.ints.AbstractIntCollection;
 import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
 
 /**
  * A type-specific hash map with a fast, small-footprint implementation whose
@@ -638,7 +636,6 @@ public class Object2IntOpenCustomHashMap<K> extends AbstractObject2IntMap<K>
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

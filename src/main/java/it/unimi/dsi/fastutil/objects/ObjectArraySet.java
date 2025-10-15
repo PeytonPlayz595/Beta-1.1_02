@@ -137,7 +137,6 @@ public class ObjectArraySet<K> extends AbstractObjectSet<K> implements java.io.S
 		return ObjectIterators.wrap((K[]) a, 0, size);
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final Object k) {
 		return findKey(k) != -1;
 	}
@@ -147,7 +146,6 @@ public class ObjectArraySet<K> extends AbstractObjectSet<K> implements java.io.S
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean remove(final Object k) {
 		final int pos = findKey(k);
 		if (pos == -1)
@@ -216,7 +214,6 @@ public class ObjectArraySet<K> extends AbstractObjectSet<K> implements java.io.S
 			s.writeObject(a[i]);
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		a = new Object[size];

@@ -96,7 +96,6 @@ public class ByteOpenHashSet extends AbstractByteSet implements java.io.Serializ
 	 * @param expected the expected number of elements in the hash set.
 	 * @param f        the load factor.
 	 */
-	@SuppressWarnings("unchecked")
 	public ByteOpenHashSet(final int expected, final float f) {
 		if (f <= 0 || f > 1)
 			throw new IllegalArgumentException("Load factor must be greater than 0 and smaller than or equal to 1");
@@ -308,7 +307,6 @@ public class ByteOpenHashSet extends AbstractByteSet implements java.io.Serializ
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final byte k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -326,7 +324,6 @@ public class ByteOpenHashSet extends AbstractByteSet implements java.io.Serializ
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final byte k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -470,7 +467,6 @@ public class ByteOpenHashSet extends AbstractByteSet implements java.io.Serializ
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();
@@ -581,7 +577,6 @@ public class ByteOpenHashSet extends AbstractByteSet implements java.io.Serializ
 	 *
 	 * @param newN the new size
 	 */
-	@SuppressWarnings("unchecked")
 	protected void rehash(final int newN) {
 		int i = 0, pos;
 		final boolean used[] = this.used;
@@ -618,7 +613,6 @@ public class ByteOpenHashSet extends AbstractByteSet implements java.io.Serializ
 	 *
 	 * @return a deep copy of this set.
 	 */
-	@SuppressWarnings("unchecked")
 	public ByteOpenHashSet clone() {
 		ByteOpenHashSet c;
 		try {
@@ -659,7 +653,6 @@ public class ByteOpenHashSet extends AbstractByteSet implements java.io.Serializ
 			s.writeByte(i.nextByte());
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		n = arraySize(size, f);

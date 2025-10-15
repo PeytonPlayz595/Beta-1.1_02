@@ -42,7 +42,6 @@ import it.unimi.dsi.fastutil.floats.FloatCollection;
 import it.unimi.dsi.fastutil.floats.AbstractFloatCollection;
 import it.unimi.dsi.fastutil.floats.FloatIterator;
 import it.unimi.dsi.fastutil.floats.AbstractFloatIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -299,6 +298,7 @@ public abstract class AbstractObject2FloatMap<K> extends AbstractObject2FloatFun
 		return entrySet().containsAll(m.entrySet());
 	}
 
+	@SuppressWarnings("unchecked")
 	public String toString() {
 		final StringBuilder s = new StringBuilder();
 		final ObjectIterator<? extends Map.Entry<K, Float>> i = entrySet().iterator();

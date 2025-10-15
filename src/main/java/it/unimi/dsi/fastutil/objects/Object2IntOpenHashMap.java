@@ -48,8 +48,6 @@ import java.util.NoSuchElementException;
 import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.ints.AbstractIntCollection;
 import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
 
 /**
  * A type-specific hash map with a fast, small-footprint implementation.
@@ -347,7 +345,6 @@ public class Object2IntOpenHashMap<K> extends AbstractObject2IntMap<K>
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public int removeInt(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -382,7 +379,6 @@ public class Object2IntOpenHashMap<K> extends AbstractObject2IntMap<K>
 		return (null);
 	}
 
-	@SuppressWarnings("unchecked")
 	public int getInt(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -395,7 +391,6 @@ public class Object2IntOpenHashMap<K> extends AbstractObject2IntMap<K>
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -616,7 +611,6 @@ public class Object2IntOpenHashMap<K> extends AbstractObject2IntMap<K>
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

@@ -288,7 +288,6 @@ public class ObjectOpenHashSet<K> extends AbstractObjectSet<K> implements java.i
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -306,7 +305,6 @@ public class ObjectOpenHashSet<K> extends AbstractObjectSet<K> implements java.i
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -326,7 +324,6 @@ public class ObjectOpenHashSet<K> extends AbstractObjectSet<K> implements java.i
 	 * @return the element of this set that is equal to the given key, or
 	 *         <code>null</code>.
 	 */
-	@SuppressWarnings("unchecked")
 	public K get(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -473,7 +470,6 @@ public class ObjectOpenHashSet<K> extends AbstractObjectSet<K> implements java.i
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

@@ -42,7 +42,6 @@ import it.unimi.dsi.fastutil.doubles.DoubleCollection;
 import it.unimi.dsi.fastutil.doubles.AbstractDoubleCollection;
 import it.unimi.dsi.fastutil.doubles.DoubleIterator;
 import it.unimi.dsi.fastutil.doubles.AbstractDoubleIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -299,6 +298,7 @@ public abstract class AbstractObject2DoubleMap<K> extends AbstractObject2DoubleF
 		return entrySet().containsAll(m.entrySet());
 	}
 
+	@SuppressWarnings("unchecked")
 	public String toString() {
 		final StringBuilder s = new StringBuilder();
 		final ObjectIterator<? extends Map.Entry<K, Double>> i = entrySet().iterator();

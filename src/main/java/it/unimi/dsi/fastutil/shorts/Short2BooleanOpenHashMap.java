@@ -110,7 +110,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 	 * @param expected the expected number of elements in the hash set.
 	 * @param f        the load factor.
 	 */
-	@SuppressWarnings("unchecked")
 	public Short2BooleanOpenHashMap(final int expected, final float f) {
 		if (f <= 0 || f > 1)
 			throw new IllegalArgumentException("Load factor must be greater than 0 and smaller than or equal to 1");
@@ -294,7 +293,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final short k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -311,7 +309,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Boolean remove(final Object ok) {
 		final short k = ((((Short) (ok)).shortValue()));
 		// The starting point.
@@ -342,7 +339,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 		return (null);
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean get(final short k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -355,7 +351,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final short k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -576,7 +571,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();
@@ -873,7 +867,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 	 *
 	 * @param newN the new size
 	 */
-	@SuppressWarnings("unchecked")
 	protected void rehash(final int newN) {
 		int i = 0, pos;
 		final boolean used[] = this.used;
@@ -914,7 +907,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 	 *
 	 * @return a deep copy of this map.
 	 */
-	@SuppressWarnings("unchecked")
 	public Short2BooleanOpenHashMap clone() {
 		Short2BooleanOpenHashMap c;
 		try {
@@ -966,7 +958,6 @@ public class Short2BooleanOpenHashMap extends AbstractShort2BooleanMap
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		n = arraySize(size, f);

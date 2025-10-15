@@ -47,14 +47,12 @@ public class IntComparators {
 	}
 
 	/** A type-specific comparator mimicking the natural order. */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static final IntComparator NATURAL_COMPARATOR = new AbstractIntComparator() {
 		public final int compare(final int a, final int b) {
 			return ((a) < (b) ? -1 : ((a) == (b) ? 0 : 1));
 		}
 	};
 	/** A type-specific comparator mimicking the opposite of the natural order. */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static final IntComparator OPPOSITE_COMPARATOR = new AbstractIntComparator() {
 		public final int compare(final int a, final int b) {
 			return -((a) < (b) ? -1 : ((a) == (b) ? 0 : 1));

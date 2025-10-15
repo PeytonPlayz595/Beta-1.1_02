@@ -690,6 +690,12 @@ public class GlStateManager extends RealOpenGLEnums {
 			//}
 		}
 	}
+	
+	public static void bindTexture2(int texture) {
+		_wglBindTexture(GL_TEXTURE_2D, EaglercraftGPU.mapTexturesGL.get(texture));
+		boundTexture[activeTexture] = texture;
+		updateAnisotropicPatch();
+	}
 
 	public static void bindTexture3D(int texture) {
 		if (texture != boundTexture[activeTexture]) {

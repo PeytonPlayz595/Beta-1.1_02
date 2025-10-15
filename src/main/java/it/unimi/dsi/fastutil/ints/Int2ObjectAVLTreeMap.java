@@ -114,7 +114,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 	 * Otherwise, we generate on-the-fly an anonymous class that wraps the
 	 * non-specific {@link Comparator} and makes it into a type-specific one.
 	 */
-	@SuppressWarnings("unchecked")
 	private void setActualComparator() {
 
 		/*
@@ -251,7 +250,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 	 *         when k1 &lt; k2, k1 = k2 or k1 &gt; k2, respectively).
 	 */
 
-	@SuppressWarnings("unchecked")
 	final int compare(final int k1, final int k2) {
 		return actualComparator == null ? ((k1) < (k2) ? -1 : ((k1) == (k2) ? 0 : 1))
 				: actualComparator.compare(k1, k2);
@@ -540,7 +538,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 	 * been deleted.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public V remove(final int k) {
 		modified = false;
 
@@ -1142,7 +1139,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 	 * public void prettyPrint() { System.err.println("size: " + count); if (tree !=
 	 * null) tree.prettyPrint(); }
 	 */
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final int k) {
 		return findKey(k) != null;
 	}
@@ -1155,7 +1151,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 		return count == 0;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V get(final int k) {
 		final Entry<V> e = findKey(k);
 		return e == null ? defRetValue : e.value;
@@ -1732,7 +1727,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 			return values;
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean containsKey(final int k) {
 			return in(k) && Int2ObjectAVLTreeMap.this.containsKey(k);
 		}
@@ -1748,7 +1742,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 			return false;
 		}
 
-		@SuppressWarnings("unchecked")
 		public V get(final int k) {
 			final Int2ObjectAVLTreeMap.Entry<V> e;
 			final int kk = k;
@@ -1769,7 +1762,6 @@ public class Int2ObjectAVLTreeMap<V> extends AbstractInt2ObjectSortedMap<V> impl
 			return modified ? (this.defRetValue) : (oldValue);
 		}
 
-		@SuppressWarnings("unchecked")
 		public V remove(final int k) {
 			modified = false;
 			if (!in(k))

@@ -294,7 +294,6 @@ public class Int2ObjectOpenHashMap<V> extends AbstractInt2ObjectMap<V>
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V remove(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -311,7 +310,6 @@ public class Int2ObjectOpenHashMap<V> extends AbstractInt2ObjectMap<V>
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V remove(final Object ok) {
 		final int k = ((((Integer) (ok)).intValue()));
 		// The starting point.
@@ -342,7 +340,6 @@ public class Int2ObjectOpenHashMap<V> extends AbstractInt2ObjectMap<V>
 		return (this.defRetValue);
 	}
 
-	@SuppressWarnings("unchecked")
 	public V get(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -355,7 +352,6 @@ public class Int2ObjectOpenHashMap<V> extends AbstractInt2ObjectMap<V>
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -570,7 +566,6 @@ public class Int2ObjectOpenHashMap<V> extends AbstractInt2ObjectMap<V>
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

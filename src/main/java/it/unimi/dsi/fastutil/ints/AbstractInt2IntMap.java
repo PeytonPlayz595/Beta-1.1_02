@@ -39,10 +39,6 @@
  */
 package it.unimi.dsi.fastutil.ints;
 
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.AbstractIntCollection;
-import it.unimi.dsi.fastutil.ints.IntIterator;
-import it.unimi.dsi.fastutil.ints.AbstractIntIterator;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.Iterator;
@@ -90,7 +86,6 @@ public abstract class AbstractInt2IntMap extends AbstractInt2IntFunction impleme
 	 *
 	 * @param m a map.
 	 */
-	@SuppressWarnings("unchecked")
 	public void putAll(Map<? extends Integer, ? extends Integer> m) {
 		int n = m.size();
 		final Iterator<? extends Map.Entry<? extends Integer, ? extends Integer>> i = m.entrySet().iterator();

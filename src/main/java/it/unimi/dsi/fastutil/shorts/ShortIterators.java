@@ -113,7 +113,6 @@ public class ShortIterators {
 	 * The class of this objects represent an abstract empty iterator that can
 	 * iterate as a type-specific (list) iterator.
 	 */
-	@SuppressWarnings("rawtypes")
 	public final static EmptyIterator EMPTY_ITERATOR = new EmptyIterator();
 
 	/** An iterator returning a single element. */
@@ -317,7 +316,6 @@ public class ShortIterators {
 	 * @return an array containing the elements returned by the iterator (at most
 	 *         <ocde>max</code>).
 	 */
-	@SuppressWarnings("unchecked")
 	public static short[] unwrap(final ShortIterator i, int max) {
 		if (max < 0)
 			throw new IllegalArgumentException("The maximum number of elements (" + max + ") is negative");
@@ -555,12 +553,10 @@ public class ShortIterators {
 			return i.previousIndex();
 		}
 
-		@SuppressWarnings("unchecked")
 		public void set(short k) {
 			i.set((Short.valueOf(k)));
 		}
 
-		@SuppressWarnings("unchecked")
 		public void add(short k) {
 			i.add((Short.valueOf(k)));
 		}
@@ -771,7 +767,6 @@ public class ShortIterators {
 	public static class UnmodifiableIterator extends AbstractShortIterator {
 		final protected ShortIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableIterator(final ShortIterator i) {
 			this.i = i;
 		}
@@ -803,7 +798,6 @@ public class ShortIterators {
 	public static class UnmodifiableBidirectionalIterator extends AbstractShortBidirectionalIterator {
 		final protected ShortBidirectionalIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableBidirectionalIterator(final ShortBidirectionalIterator i) {
 			this.i = i;
 		}
@@ -849,7 +843,6 @@ public class ShortIterators {
 	public static class UnmodifiableListIterator extends AbstractShortListIterator {
 		final protected ShortListIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableListIterator(final ShortListIterator i) {
 			this.i = i;
 		}

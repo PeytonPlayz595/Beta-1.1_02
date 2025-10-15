@@ -138,7 +138,6 @@ public class LongLinkedOpenHashSet extends AbstractLongSortedSet implements java
 	 * @param expected the expected number of elements in the hash set.
 	 * @param f        the load factor.
 	 */
-	@SuppressWarnings("unchecked")
 	public LongLinkedOpenHashSet(final int expected, final float f) {
 		if (f <= 0 || f > 1)
 			throw new IllegalArgumentException("Load factor must be greater than 0 and smaller than or equal to 1");
@@ -361,7 +360,6 @@ public class LongLinkedOpenHashSet extends AbstractLongSortedSet implements java
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -380,7 +378,6 @@ public class LongLinkedOpenHashSet extends AbstractLongSortedSet implements java
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -832,7 +829,6 @@ public class LongLinkedOpenHashSet extends AbstractLongSortedSet implements java
 			return index - 1;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			ensureIndexKnown();
 			if (curr == -1)
@@ -988,7 +984,6 @@ public class LongLinkedOpenHashSet extends AbstractLongSortedSet implements java
 	 *
 	 * @param newN the new size
 	 */
-	@SuppressWarnings("unchecked")
 	protected void rehash(final int newN) {
 		int i = first, prev = -1, newPrev = -1, t, pos;
 		long k;
@@ -1041,7 +1036,6 @@ public class LongLinkedOpenHashSet extends AbstractLongSortedSet implements java
 	 *
 	 * @return a deep copy of this set.
 	 */
-	@SuppressWarnings("unchecked")
 	public LongLinkedOpenHashSet clone() {
 		LongLinkedOpenHashSet c;
 		try {
@@ -1083,7 +1077,6 @@ public class LongLinkedOpenHashSet extends AbstractLongSortedSet implements java
 			s.writeLong(i.nextLong());
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		n = arraySize(size, f);

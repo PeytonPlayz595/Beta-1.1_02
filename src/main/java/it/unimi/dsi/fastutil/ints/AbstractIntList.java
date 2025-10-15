@@ -366,7 +366,6 @@ public abstract class AbstractIntList extends AbstractIntCollection implements I
 	 * @throws ClassCastException if the argument is not a list.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public int compareTo(final List<? extends Integer> l) {
 		if (l == this)
 			return 0;

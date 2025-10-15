@@ -175,22 +175,18 @@ public class DoubleLists {
 		// ITERATORS.EMPTY_ITERATOR; throw new IndexOutOfBoundsException(
 		// String.valueOf( i ) ); }
 		@Deprecated
-		@SuppressWarnings("unchecked")
 		public DoubleIterator doubleIterator() {
 			return DoubleIterators.EMPTY_ITERATOR;
 		}
 
-		@SuppressWarnings("unchecked")
 		public DoubleListIterator listIterator() {
 			return DoubleIterators.EMPTY_ITERATOR;
 		}
 
-		@SuppressWarnings("unchecked")
 		public DoubleListIterator iterator() {
 			return DoubleIterators.EMPTY_ITERATOR;
 		}
 
-		@SuppressWarnings("unchecked")
 		public DoubleListIterator listIterator(int i) {
 			if (i == 0)
 				return DoubleIterators.EMPTY_ITERATOR;
@@ -264,7 +260,6 @@ public class DoubleLists {
 	 * of any (sorted) type-specific list.
 	 */
 
-	@SuppressWarnings("rawtypes")
 	public static final EmptyList EMPTY_LIST = new EmptyList();
 
 	/**
@@ -323,7 +318,6 @@ public class DoubleLists {
 			return a;
 		}
 
-		@SuppressWarnings("unchecked")
 		public DoubleListIterator listIterator() {
 			return DoubleIterators.singleton(element);
 		}
@@ -341,7 +335,6 @@ public class DoubleLists {
 			return l;
 		}
 
-		@SuppressWarnings("unchecked")
 		public DoubleList subList(final int from, final int to) {
 			ensureIndex(from);
 			ensureIndex(to);

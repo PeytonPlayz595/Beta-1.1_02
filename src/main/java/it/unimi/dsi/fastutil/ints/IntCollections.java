@@ -102,7 +102,6 @@ public class IntCollections {
 			return c.isEmpty();
 		}
 
-		@SuppressWarnings("unchecked")
 		public IntBidirectionalIterator iterator() {
 			return IntIterators.EMPTY_ITERATOR;
 		}
@@ -497,7 +496,6 @@ public class IntCollections {
 	 *                 collection.
 	 * @return an unmodifiable collection view of the specified iterable.
 	 */
-	@SuppressWarnings("unchecked")
 	public static IntCollection asCollection(final IntIterable iterable) {
 		if (iterable instanceof IntCollection)
 			return (IntCollection) iterable;

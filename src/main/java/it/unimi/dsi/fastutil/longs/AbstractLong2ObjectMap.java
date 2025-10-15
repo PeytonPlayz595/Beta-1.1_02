@@ -283,6 +283,7 @@ public abstract class AbstractLong2ObjectMap<V> extends AbstractLong2ObjectFunct
 		return entrySet().containsAll(m.entrySet());
 	}
 
+	@SuppressWarnings("unchecked")
 	public String toString() {
 		final StringBuilder s = new StringBuilder();
 		final ObjectIterator<? extends Map.Entry<Long, V>> i = entrySet().iterator();

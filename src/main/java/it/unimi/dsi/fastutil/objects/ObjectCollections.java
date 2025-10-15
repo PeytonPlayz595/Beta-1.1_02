@@ -38,7 +38,6 @@
 package it.unimi.dsi.fastutil.objects;
 
 import java.util.Collection;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
 
 /**
  * A class providing static methods and objects that do useful things with
@@ -373,7 +372,6 @@ public class ObjectCollections {
 	 *                 collection.
 	 * @return an unmodifiable collection view of the specified iterable.
 	 */
-	@SuppressWarnings("unchecked")
 	public static <K> ObjectCollection<K> asCollection(final ObjectIterable<K> iterable) {
 		if (iterable instanceof ObjectCollection)
 			return (ObjectCollection<K>) iterable;

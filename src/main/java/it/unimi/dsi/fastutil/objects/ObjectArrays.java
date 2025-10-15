@@ -770,7 +770,6 @@ public class ObjectArrays {
 	 * @param comp the comparator to determine the sorting order.
 	 * @param supp a support array containing at least <code>to</code> elements.
 	 */
-	@SuppressWarnings("unchecked")
 	public static <K> void mergeSort(final K a[], final int from, final int to, Comparator<K> comp, final K supp[]) {
 		int len = to - from;
 

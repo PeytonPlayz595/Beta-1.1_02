@@ -84,12 +84,10 @@ public class Long2IntMaps {
 			return ObjectSets.EMPTY_SET;
 		}
 
-		@SuppressWarnings("unchecked")
 		public LongSet keySet() {
 			return LongSets.EMPTY_SET;
 		}
 
-		@SuppressWarnings("unchecked")
 		public IntCollection values() {
 			return IntSets.EMPTY_SET;
 		}
@@ -133,7 +131,6 @@ public class Long2IntMaps {
 
 	/** An empty type-specific map (immutable). It is serializable and cloneable. */
 
-	@SuppressWarnings("rawtypes")
 	public static final EmptyMap EMPTY_MAP = new EmptyMap();
 
 	/**

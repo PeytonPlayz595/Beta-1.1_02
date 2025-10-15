@@ -401,7 +401,6 @@ public class IntArrays {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private static void selectionSort(final int[] a, final int from, final int to) {
 		for (int i = from; i < to - 1; i++) {
 			int m = i;
@@ -416,7 +415,6 @@ public class IntArrays {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private static void insertionSort(final int[] a, final int from, final int to) {
 		for (int i = from; ++i < to;) {
 			int t = a[i];
@@ -516,7 +514,6 @@ public class IntArrays {
 		quickSort(x, 0, x.length, comp);
 	}
 
-	@SuppressWarnings("unchecked")
 	private static int med3(final int x[], final int a, final int b, final int c) {
 		int ab = ((x[a]) < (x[b]) ? -1 : ((x[a]) == (x[b]) ? 0 : 1));
 		int ac = ((x[a]) < (x[c]) ? -1 : ((x[a]) == (x[c]) ? 0 : 1));
@@ -539,7 +536,6 @@ public class IntArrays {
 	 * @deprecated Use the corresponding {@code sort()} method in
 	 *             {@link java.util.Arrays}.
 	 */
-	@SuppressWarnings("unchecked")
 	@Deprecated
 	public static void quickSort(final int[] x, final int from, final int to) {
 		final int len = to - from;
@@ -625,7 +621,6 @@ public class IntArrays {
 	 * @param to   the index of the last element (exclusive) to be sorted.
 	 * @param supp a support array containing at least <code>to</code> elements.
 	 */
-	@SuppressWarnings("unchecked")
 	public static void mergeSort(final int a[], final int from, final int to, final int supp[]) {
 		int len = to - from;
 		// Insertion sort on smallest arrays
@@ -698,7 +693,6 @@ public class IntArrays {
 	 * @param comp the comparator to determine the sorting order.
 	 * @param supp a support array containing at least <code>to</code> elements.
 	 */
-	@SuppressWarnings("unchecked")
 	public static void mergeSort(final int a[], final int from, final int to, IntComparator comp, final int supp[]) {
 		int len = to - from;
 		// Insertion sort on smallest arrays
@@ -779,7 +773,6 @@ public class IntArrays {
 	 *         return value will be &gt;= 0 if and only if the key is found.
 	 * @see java.util.Arrays
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static int binarySearch(final int[] a, int from, int to, final int key) {
 		int midVal;
 		to--;

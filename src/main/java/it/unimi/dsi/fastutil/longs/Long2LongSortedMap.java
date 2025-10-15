@@ -39,7 +39,6 @@
  */
 package it.unimi.dsi.fastutil.longs;
 
-import it.unimi.dsi.fastutil.longs.LongCollection;
 import it.unimi.dsi.fastutil.objects.ObjectSortedSet;
 import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
 import java.util.Map;

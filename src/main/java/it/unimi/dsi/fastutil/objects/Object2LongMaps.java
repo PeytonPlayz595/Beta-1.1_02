@@ -38,8 +38,6 @@
  */
 package it.unimi.dsi.fastutil.objects;
 
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import it.unimi.dsi.fastutil.objects.ObjectSets;
 import it.unimi.dsi.fastutil.longs.LongCollection;
 import it.unimi.dsi.fastutil.longs.LongCollections;
 import it.unimi.dsi.fastutil.longs.LongSets;
@@ -88,7 +86,6 @@ public class Object2LongMaps {
 			return ObjectSets.EMPTY_SET;
 		}
 
-		@SuppressWarnings("unchecked")
 		public LongCollection values() {
 			return LongSets.EMPTY_SET;
 		}

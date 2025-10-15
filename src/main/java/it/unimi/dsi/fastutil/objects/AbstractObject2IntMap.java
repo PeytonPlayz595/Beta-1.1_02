@@ -42,7 +42,6 @@ import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.ints.AbstractIntCollection;
 import it.unimi.dsi.fastutil.ints.IntIterator;
 import it.unimi.dsi.fastutil.ints.AbstractIntIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -299,6 +298,7 @@ public abstract class AbstractObject2IntMap<K> extends AbstractObject2IntFunctio
 		return entrySet().containsAll(m.entrySet());
 	}
 
+	@SuppressWarnings("unchecked")
 	public String toString() {
 		final StringBuilder s = new StringBuilder();
 		final ObjectIterator<? extends Map.Entry<K, Integer>> i = entrySet().iterator();

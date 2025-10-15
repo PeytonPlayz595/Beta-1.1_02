@@ -94,7 +94,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 	 * Otherwise, we generate on-the-fly an anonymous class that wraps the
 	 * non-specific {@link Comparator} and makes it into a type-specific one.
 	 */
-	@SuppressWarnings("unchecked")
 	private void setActualComparator() {
 		/*
 		 * If the provided comparator is already type-specific, we use it. Otherwise, we
@@ -188,7 +187,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 	 * @param i an iterator whose elements will fill the set.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public IntAVLTreeSet(final Iterator<? extends Integer> i) {
 		this(IntIterators.asIntIterator(i));
 	}
@@ -274,7 +272,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 	 *         when k1 &lt; k2, k1 = k2 or k1 &gt; k2, respectively).
 	 */
 
-	@SuppressWarnings("unchecked")
 	final int compare(final int k1, final int k2) {
 		return actualComparator == null ? ((k1) < (k2) ? -1 : ((k1) == (k2) ? 0 : 1))
 				: actualComparator.compare(k1, k2);
@@ -546,7 +543,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final int k) {
 		if (tree == null)
 			return false;
@@ -843,7 +839,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final int k) {
 		return findKey(k) != null;
 	}
@@ -1053,7 +1048,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 			return prev;
 		}
 
-		@SuppressWarnings("unchecked")
 		public Entry clone() {
 			Entry c;
 			try {
@@ -1314,7 +1308,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 					&& (top || IntAVLTreeSet.this.compare(k, to) < 0);
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean contains(final int k) {
 			return in(k) && IntAVLTreeSet.this.contains(k);
 		}
@@ -1326,7 +1319,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 			return IntAVLTreeSet.this.add(k);
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean remove(final int k) {
 			if (!in(k))
 				return false;
@@ -1508,7 +1500,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 	 *
 	 * @return a deep copy of this tree set.
 	 */
-	@SuppressWarnings("unchecked")
 	public Object clone() {
 		IntAVLTreeSet c;
 		try {
@@ -1581,7 +1572,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 	 * @param succ the entry containing the key that follows the last key in the
 	 *             tree.
 	 */
-	@SuppressWarnings("unchecked")
 	private Entry readTree(final java.io.ObjectInputStream s, final int n, final Entry pred, final Entry succ)
 			throws java.io.IOException, ClassNotFoundException {
 		if (n == 1) {
@@ -1638,7 +1628,6 @@ public class IntAVLTreeSet extends AbstractIntSortedSet implements java.io.Seria
 			checkTree(tree);
 	}
 
-	@SuppressWarnings("rawtypes")
 	private static int checkTree(@SuppressWarnings("unused") Entry e) {
 		return 0;
 	}

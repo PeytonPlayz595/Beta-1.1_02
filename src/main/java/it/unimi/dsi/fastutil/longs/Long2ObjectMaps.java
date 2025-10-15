@@ -82,7 +82,6 @@ public class Long2ObjectMaps {
 			return ObjectSets.EMPTY_SET;
 		}
 
-		@SuppressWarnings("unchecked")
 		public LongSet keySet() {
 			return LongSets.EMPTY_SET;
 		}

@@ -86,7 +86,6 @@ public class FloatSets {
 	 * The class of this objects represent an abstract empty set that is a subset of
 	 * a (sorted) type-specific set.
 	 */
-	@SuppressWarnings("rawtypes")
 	public static final EmptySet EMPTY_SET = new EmptySet();
 
 	/**
@@ -143,7 +142,6 @@ public class FloatSets {
 			throw new UnsupportedOperationException();
 		}
 
-		@SuppressWarnings("unchecked")
 		public FloatListIterator iterator() {
 			return FloatIterators.singleton(element);
 		}

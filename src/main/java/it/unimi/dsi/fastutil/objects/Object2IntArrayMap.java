@@ -40,9 +40,6 @@ package it.unimi.dsi.fastutil.objects;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
-import it.unimi.dsi.fastutil.objects.AbstractObjectIterator;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.ints.IntCollections;
 import it.unimi.dsi.fastutil.ints.IntArraySet;
@@ -217,8 +214,6 @@ public class Object2IntArrayMap<K> extends AbstractObject2IntMap<K> implements j
 		return -1;
 	}
 
-	@SuppressWarnings("unchecked")
-
 	public int getInt(final Object k) {
 
 		final Object[] key = this.key;
@@ -250,7 +245,6 @@ public class Object2IntArrayMap<K> extends AbstractObject2IntMap<K> implements j
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean containsValue(int v) {
 		for (int i = size; i-- != 0;)
 			if (((value[i]) == (v)))
@@ -264,7 +258,6 @@ public class Object2IntArrayMap<K> extends AbstractObject2IntMap<K> implements j
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public int put(K k, int v) {
 		final int oldKey = findKey(k);
 		if (oldKey != -1) {
@@ -289,7 +282,6 @@ public class Object2IntArrayMap<K> extends AbstractObject2IntMap<K> implements j
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 
 	public int removeInt(final Object k) {
 
@@ -311,7 +303,6 @@ public class Object2IntArrayMap<K> extends AbstractObject2IntMap<K> implements j
 
 	@Override
 
-	@SuppressWarnings("unchecked")
 	public ObjectSet<K> keySet() {
 		return new ObjectArraySet<K>(key, size);
 	}
@@ -353,7 +344,6 @@ public class Object2IntArrayMap<K> extends AbstractObject2IntMap<K> implements j
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		key = new Object[size];

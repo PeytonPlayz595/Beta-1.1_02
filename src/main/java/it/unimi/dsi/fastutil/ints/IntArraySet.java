@@ -106,11 +106,9 @@ public class IntArraySet extends AbstractIntSet implements java.io.Serializable,
   return -1;
  }
  @Override
- @SuppressWarnings("unchecked")
  public IntIterator iterator() {
   return IntIterators.wrap( a, 0, size );
  }
- @SuppressWarnings("unchecked")
  public boolean contains( final int k ) {
   return findKey( k ) != -1;
  }
@@ -118,7 +116,6 @@ public class IntArraySet extends AbstractIntSet implements java.io.Serializable,
   return size;
  }
  @Override
- @SuppressWarnings("unchecked")
  public boolean remove( final int k ) {
   final int pos = findKey( k );
   if ( pos == -1 ) return false;
@@ -157,7 +154,6 @@ public class IntArraySet extends AbstractIntSet implements java.io.Serializable,
 	 *  @return a deep copy of this set.
 	 */
 
- @SuppressWarnings("unchecked")
  public IntArraySet clone() {
   IntArraySet c;
   try {
@@ -176,7 +172,6 @@ public class IntArraySet extends AbstractIntSet implements java.io.Serializable,
  }
 
 
- @SuppressWarnings("unchecked")
  private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
   s.defaultReadObject();
   a = new int[ size ];

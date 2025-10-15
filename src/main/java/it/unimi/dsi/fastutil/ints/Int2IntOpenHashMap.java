@@ -46,9 +46,6 @@ import static it.unimi.dsi.fastutil.HashCommon.arraySize;
 import static it.unimi.dsi.fastutil.HashCommon.maxFill;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import it.unimi.dsi.fastutil.ints.IntCollection;
-import it.unimi.dsi.fastutil.ints.AbstractIntCollection;
-import it.unimi.dsi.fastutil.ints.IntIterator;
 import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 
@@ -109,7 +106,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 	 * @param expected the expected number of elements in the hash set.
 	 * @param f        the load factor.
 	 */
-	@SuppressWarnings("unchecked")
 	public Int2IntOpenHashMap(final int expected, final float f) {
 		if (f <= 0 || f > 1)
 			throw new IllegalArgumentException("Load factor must be greater than 0 and smaller than or equal to 1");
@@ -345,7 +341,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public int remove(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -362,7 +357,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Integer remove(final Object ok) {
 		final int k = ((((Integer) (ok)).intValue()));
 		// The starting point.
@@ -393,7 +387,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 		return (null);
 	}
 
-	@SuppressWarnings("unchecked")
 	public int get(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -406,7 +399,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -626,7 +618,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();
@@ -923,7 +914,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 	 *
 	 * @param newN the new size
 	 */
-	@SuppressWarnings("unchecked")
 	protected void rehash(final int newN) {
 		int i = 0, pos;
 		final boolean used[] = this.used;
@@ -964,7 +954,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 	 *
 	 * @return a deep copy of this map.
 	 */
-	@SuppressWarnings("unchecked")
 	public Int2IntOpenHashMap clone() {
 		Int2IntOpenHashMap c;
 		try {
@@ -1016,7 +1005,6 @@ public class Int2IntOpenHashMap extends AbstractInt2IntMap implements java.io.Se
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		n = arraySize(size, f);

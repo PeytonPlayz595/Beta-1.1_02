@@ -91,7 +91,6 @@ public abstract class AbstractShort2BooleanMap extends AbstractShort2BooleanFunc
 	 *
 	 * @param m a map.
 	 */
-	@SuppressWarnings("unchecked")
 	public void putAll(Map<? extends Short, ? extends Boolean> m) {
 		int n = m.size();
 		final Iterator<? extends Map.Entry<? extends Short, ? extends Boolean>> i = m.entrySet().iterator();

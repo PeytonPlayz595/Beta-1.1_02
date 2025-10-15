@@ -91,7 +91,6 @@ public abstract class AbstractLong2ByteMap extends AbstractLong2ByteFunction
 	 *
 	 * @param m a map.
 	 */
-	@SuppressWarnings("unchecked")
 	public void putAll(Map<? extends Long, ? extends Byte> m) {
 		int n = m.size();
 		final Iterator<? extends Map.Entry<? extends Long, ? extends Byte>> i = m.entrySet().iterator();

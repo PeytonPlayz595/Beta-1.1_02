@@ -366,7 +366,6 @@ public abstract class AbstractBooleanList extends AbstractBooleanCollection impl
 	 * @throws ClassCastException if the argument is not a list.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public int compareTo(final List<? extends Boolean> l) {
 		if (l == this)
 			return 0;

@@ -37,12 +37,6 @@
  */
 package it.unimi.dsi.fastutil.objects;
 
-import it.unimi.dsi.fastutil.objects.ObjectCollection;
-import it.unimi.dsi.fastutil.objects.AbstractObjectCollection;
-import it.unimi.dsi.fastutil.objects.AbstractObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
-import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSortedSet;
 import java.util.Map;
 import java.util.Comparator;
 

@@ -366,7 +366,6 @@ public abstract class AbstractFloatList extends AbstractFloatCollection implemen
 	 * @throws ClassCastException if the argument is not a list.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public int compareTo(final List<? extends Float> l) {
 		if (l == this)
 			return 0;

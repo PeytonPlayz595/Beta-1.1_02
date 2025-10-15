@@ -113,7 +113,6 @@ public class LongIterators {
 	 * The class of this objects represent an abstract empty iterator that can
 	 * iterate as a type-specific (list) iterator.
 	 */
-	@SuppressWarnings("rawtypes")
 	public final static EmptyIterator EMPTY_ITERATOR = new EmptyIterator();
 
 	/** An iterator returning a single element. */
@@ -317,7 +316,6 @@ public class LongIterators {
 	 * @return an array containing the elements returned by the iterator (at most
 	 *         <ocde>max</code>).
 	 */
-	@SuppressWarnings("unchecked")
 	public static long[] unwrap(final LongIterator i, int max) {
 		if (max < 0)
 			throw new IllegalArgumentException("The maximum number of elements (" + max + ") is negative");
@@ -555,12 +553,10 @@ public class LongIterators {
 			return i.previousIndex();
 		}
 
-		@SuppressWarnings("unchecked")
 		public void set(long k) {
 			i.set((Long.valueOf(k)));
 		}
 
-		@SuppressWarnings("unchecked")
 		public void add(long k) {
 			i.add((Long.valueOf(k)));
 		}
@@ -771,7 +767,6 @@ public class LongIterators {
 	public static class UnmodifiableIterator extends AbstractLongIterator {
 		final protected LongIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableIterator(final LongIterator i) {
 			this.i = i;
 		}
@@ -803,7 +798,6 @@ public class LongIterators {
 	public static class UnmodifiableBidirectionalIterator extends AbstractLongBidirectionalIterator {
 		final protected LongBidirectionalIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableBidirectionalIterator(final LongBidirectionalIterator i) {
 			this.i = i;
 		}
@@ -849,7 +843,6 @@ public class LongIterators {
 	public static class UnmodifiableListIterator extends AbstractLongListIterator {
 		final protected LongListIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableListIterator(final LongListIterator i) {
 			this.i = i;
 		}

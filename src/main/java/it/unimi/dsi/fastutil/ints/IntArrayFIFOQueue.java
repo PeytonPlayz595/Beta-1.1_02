@@ -57,7 +57,6 @@ public class IntArrayFIFOQueue extends AbstractIntPriorityQueue {
 	/** The standard initial capacity of a queue. */
 	public final static int INITIAL_CAPACITY = 4;
 	/** The backing array. */
-	@SuppressWarnings("unchecked")
 	protected int array[] = IntArrays.EMPTY_ARRAY;
 	/** The current (cached) length of {@link #array}. */
 	protected int length;
@@ -78,7 +77,6 @@ public class IntArrayFIFOQueue extends AbstractIntPriorityQueue {
 	 *
 	 * @param capacity the initial capacity of this queue.
 	 */
-	@SuppressWarnings("unchecked")
 	public IntArrayFIFOQueue(final int capacity) {
 		if (capacity < 0)
 			throw new IllegalArgumentException("Initial capacity (" + capacity + ") is negative");
@@ -132,7 +130,6 @@ public class IntArrayFIFOQueue extends AbstractIntPriorityQueue {
 		return t;
 	}
 
-	@SuppressWarnings("unchecked")
 	private final void resize(final int size, final int newLength) {
 		final int[] newArray = new int[newLength];
 		if (start >= end) {
@@ -208,7 +205,6 @@ public class IntArrayFIFOQueue extends AbstractIntPriorityQueue {
 	}
 
 	/** Trims the queue to the smallest possible size. */
-	@SuppressWarnings("unchecked")
 	public void trim() {
 		final int size = size();
 		final int[] newArray =

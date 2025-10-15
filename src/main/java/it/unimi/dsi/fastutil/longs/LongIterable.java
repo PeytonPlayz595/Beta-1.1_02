@@ -69,7 +69,6 @@ public interface LongIterable extends Iterable<Long> {
 	 * @see java.lang.Iterable#forEach(java.util.function.Consumer)
 	 * @since 8.0.0
 	 */
-	@SuppressWarnings("overloads")
 	default void forEach(final java.util.function.LongConsumer action) {
 		Objects.requireNonNull(action);
 		for (final LongIterator iterator = iterator(); iterator.hasNext();)

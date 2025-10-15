@@ -28,16 +28,10 @@ public class GLAllocation {
 	}
 
 	public static void deleteTexturesAndDisplayLists() {
-		IntBuffer var2 = createDirectIntBuffer(textureNames.size());
-		var2.flip();
-		GL11.glDeleteTextures(var2);
-
-		for(int var1 = 0; var1 < textureNames.size(); ++var1) {
-			var2.put(((Integer)textureNames.get(var1)).intValue());
+		for (int i = 0, j = textureNames.size(); i < j; ++i) {
+			GL11.glDeleteTexture(textureNames.get(i));
 		}
-
-		var2.flip();
-		GL11.glDeleteTextures(var2);
+		
 		textureNames.clear();
 	}
 

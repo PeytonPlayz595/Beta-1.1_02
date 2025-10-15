@@ -294,7 +294,6 @@ public class Long2ObjectOpenHashMap<V> extends AbstractLong2ObjectMap<V>
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V remove(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -311,7 +310,6 @@ public class Long2ObjectOpenHashMap<V> extends AbstractLong2ObjectMap<V>
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V remove(final Object ok) {
 		final long k = ((((Long) (ok)).longValue()));
 		// The starting point.
@@ -342,7 +340,6 @@ public class Long2ObjectOpenHashMap<V> extends AbstractLong2ObjectMap<V>
 		return (this.defRetValue);
 	}
 
-	@SuppressWarnings("unchecked")
 	public V get(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -355,7 +352,6 @@ public class Long2ObjectOpenHashMap<V> extends AbstractLong2ObjectMap<V>
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -571,7 +567,6 @@ public class Long2ObjectOpenHashMap<V> extends AbstractLong2ObjectMap<V>
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

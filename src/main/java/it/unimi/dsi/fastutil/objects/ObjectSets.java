@@ -123,7 +123,6 @@ public class ObjectSets {
 			throw new UnsupportedOperationException();
 		}
 
-		@SuppressWarnings("unchecked")
 		public ObjectListIterator<K> iterator() {
 			return ObjectIterators.singleton(element);
 		}

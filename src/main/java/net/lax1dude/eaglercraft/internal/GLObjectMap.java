@@ -46,6 +46,7 @@ public class GLObjectMap<T> {
 		return insertIndex + 1;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T free(int obj) {
 		--obj;
 		if (obj >= size || obj < 0)
@@ -56,6 +57,7 @@ public class GLObjectMap<T> {
 		return (T) ret;
 	}
 
+	@SuppressWarnings("unchecked")
 	public T get(int obj) {
 		--obj;
 		if (obj >= size || obj < 0)

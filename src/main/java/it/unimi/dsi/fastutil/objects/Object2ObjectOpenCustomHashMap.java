@@ -44,10 +44,6 @@ import static it.unimi.dsi.fastutil.HashCommon.arraySize;
 import static it.unimi.dsi.fastutil.HashCommon.maxFill;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import it.unimi.dsi.fastutil.objects.ObjectCollection;
-import it.unimi.dsi.fastutil.objects.AbstractObjectCollection;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
 
 /**
  * A type-specific hash map with a fast, small-footprint implementation whose
@@ -537,7 +533,6 @@ public class Object2ObjectOpenCustomHashMap<K, V> extends AbstractObject2ObjectM
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

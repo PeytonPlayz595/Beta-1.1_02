@@ -38,8 +38,6 @@
  */
 package it.unimi.dsi.fastutil.objects;
 
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import it.unimi.dsi.fastutil.objects.ObjectSets;
 import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.ints.IntCollections;
 import it.unimi.dsi.fastutil.ints.IntSets;
@@ -88,7 +86,6 @@ public class Object2IntMaps {
 			return ObjectSets.EMPTY_SET;
 		}
 
-		@SuppressWarnings("unchecked")
 		public IntCollection values() {
 			return IntSets.EMPTY_SET;
 		}

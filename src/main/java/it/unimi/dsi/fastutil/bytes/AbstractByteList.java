@@ -366,7 +366,6 @@ public abstract class AbstractByteList extends AbstractByteCollection implements
 	 * @throws ClassCastException if the argument is not a list.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public int compareTo(final List<? extends Byte> l) {
 		if (l == this)
 			return 0;

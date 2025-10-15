@@ -283,6 +283,7 @@ public abstract class AbstractShort2ObjectMap<V> extends AbstractShort2ObjectFun
 		return entrySet().containsAll(m.entrySet());
 	}
 
+	@SuppressWarnings("unchecked")
 	public String toString() {
 		final StringBuilder s = new StringBuilder();
 		final ObjectIterator<? extends Map.Entry<Short, V>> i = entrySet().iterator();

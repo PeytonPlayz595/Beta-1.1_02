@@ -113,7 +113,6 @@ public class DoubleIterators {
 	 * The class of this objects represent an abstract empty iterator that can
 	 * iterate as a type-specific (list) iterator.
 	 */
-	@SuppressWarnings("rawtypes")
 	public final static EmptyIterator EMPTY_ITERATOR = new EmptyIterator();
 
 	/** An iterator returning a single element. */
@@ -317,7 +316,6 @@ public class DoubleIterators {
 	 * @return an array containing the elements returned by the iterator (at most
 	 *         <ocde>max</code>).
 	 */
-	@SuppressWarnings("unchecked")
 	public static double[] unwrap(final DoubleIterator i, int max) {
 		if (max < 0)
 			throw new IllegalArgumentException("The maximum number of elements (" + max + ") is negative");
@@ -555,12 +553,10 @@ public class DoubleIterators {
 			return i.previousIndex();
 		}
 
-		@SuppressWarnings("unchecked")
 		public void set(double k) {
 			i.set((Double.valueOf(k)));
 		}
 
-		@SuppressWarnings("unchecked")
 		public void add(double k) {
 			i.add((Double.valueOf(k)));
 		}
@@ -692,7 +688,6 @@ public class DoubleIterators {
 	public static class UnmodifiableIterator extends AbstractDoubleIterator {
 		final protected DoubleIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableIterator(final DoubleIterator i) {
 			this.i = i;
 		}
@@ -724,7 +719,6 @@ public class DoubleIterators {
 	public static class UnmodifiableBidirectionalIterator extends AbstractDoubleBidirectionalIterator {
 		final protected DoubleBidirectionalIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableBidirectionalIterator(final DoubleBidirectionalIterator i) {
 			this.i = i;
 		}
@@ -770,7 +764,6 @@ public class DoubleIterators {
 	public static class UnmodifiableListIterator extends AbstractDoubleListIterator {
 		final protected DoubleListIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableListIterator(final DoubleListIterator i) {
 			this.i = i;
 		}

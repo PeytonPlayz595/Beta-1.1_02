@@ -40,9 +40,6 @@ package it.unimi.dsi.fastutil.objects;
 
 import java.util.Map;
 import java.util.NoSuchElementException;
-import it.unimi.dsi.fastutil.objects.AbstractObjectIterator;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
-import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import it.unimi.dsi.fastutil.doubles.DoubleCollection;
 import it.unimi.dsi.fastutil.doubles.DoubleCollections;
 import it.unimi.dsi.fastutil.doubles.DoubleArraySet;
@@ -217,7 +214,6 @@ public class Object2DoubleArrayMap<K> extends AbstractObject2DoubleMap<K> implem
 		return -1;
 	}
 
-	@SuppressWarnings("unchecked")
 
 	public double getDouble(final Object k) {
 
@@ -250,7 +246,6 @@ public class Object2DoubleArrayMap<K> extends AbstractObject2DoubleMap<K> implem
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean containsValue(double v) {
 		for (int i = size; i-- != 0;)
 			if (((value[i]) == (v)))
@@ -264,7 +259,6 @@ public class Object2DoubleArrayMap<K> extends AbstractObject2DoubleMap<K> implem
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public double put(K k, double v) {
 		final int oldKey = findKey(k);
 		if (oldKey != -1) {
@@ -289,7 +283,6 @@ public class Object2DoubleArrayMap<K> extends AbstractObject2DoubleMap<K> implem
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 
 	public double removeDouble(final Object k) {
 
@@ -311,7 +304,6 @@ public class Object2DoubleArrayMap<K> extends AbstractObject2DoubleMap<K> implem
 
 	@Override
 
-	@SuppressWarnings("unchecked")
 	public ObjectSet<K> keySet() {
 		return new ObjectArraySet<K>(key, size);
 	}
@@ -353,7 +345,6 @@ public class Object2DoubleArrayMap<K> extends AbstractObject2DoubleMap<K> implem
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		key = new Object[size];

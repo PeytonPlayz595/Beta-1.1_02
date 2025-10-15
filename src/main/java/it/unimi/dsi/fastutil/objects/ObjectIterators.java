@@ -525,7 +525,6 @@ public class ObjectIterators {
 	 * @param i an iterator.
 	 * @return a type-specific iterator backed by <code>i</code>.
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static <K> ObjectIterator<K> asObjectIterator(final Iterator<K> i) {
 		if (i instanceof ObjectIterator)
 			return (ObjectIterator<K>) i;
@@ -555,12 +554,10 @@ public class ObjectIterators {
 			return i.previousIndex();
 		}
 
-		@SuppressWarnings("unchecked")
 		public void set(K k) {
 			i.set((k));
 		}
 
-		@SuppressWarnings("unchecked")
 		public void add(K k) {
 			i.add((k));
 		}
@@ -595,7 +592,6 @@ public class ObjectIterators {
 	 * @param i a list iterator.
 	 * @return a type-specific list iterator backed by <code>i</code>.
 	 */
-	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public static <K> ObjectListIterator<K> asObjectIterator(final ListIterator<K> i) {
 		if (i instanceof ObjectListIterator)
 			return (ObjectListIterator<K>) i;
@@ -693,7 +689,6 @@ public class ObjectIterators {
 	public static class UnmodifiableIterator<K> extends AbstractObjectIterator<K> {
 		final protected ObjectIterator<K> i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableIterator(final ObjectIterator<K> i) {
 			this.i = i;
 		}
@@ -721,7 +716,6 @@ public class ObjectIterators {
 	public static class UnmodifiableBidirectionalIterator<K> extends AbstractObjectBidirectionalIterator<K> {
 		final protected ObjectBidirectionalIterator<K> i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableBidirectionalIterator(final ObjectBidirectionalIterator<K> i) {
 			this.i = i;
 		}
@@ -759,7 +753,6 @@ public class ObjectIterators {
 	public static class UnmodifiableListIterator<K> extends AbstractObjectListIterator<K> {
 		final protected ObjectListIterator<K> i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableListIterator(final ObjectListIterator<K> i) {
 			this.i = i;
 		}

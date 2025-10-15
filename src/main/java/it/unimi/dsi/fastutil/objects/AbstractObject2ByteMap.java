@@ -42,7 +42,6 @@ import it.unimi.dsi.fastutil.bytes.ByteCollection;
 import it.unimi.dsi.fastutil.bytes.AbstractByteCollection;
 import it.unimi.dsi.fastutil.bytes.ByteIterator;
 import it.unimi.dsi.fastutil.bytes.AbstractByteIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSet;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -299,6 +298,7 @@ public abstract class AbstractObject2ByteMap<K> extends AbstractObject2ByteFunct
 		return entrySet().containsAll(m.entrySet());
 	}
 
+	@SuppressWarnings("unchecked")
 	public String toString() {
 		final StringBuilder s = new StringBuilder();
 		final ObjectIterator<? extends Map.Entry<K, Byte>> i = entrySet().iterator();

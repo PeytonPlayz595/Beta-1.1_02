@@ -39,10 +39,6 @@
  */
 package it.unimi.dsi.fastutil.longs;
 
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.AbstractLongCollection;
-import it.unimi.dsi.fastutil.longs.LongIterator;
-import it.unimi.dsi.fastutil.longs.AbstractLongIterator;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.Iterator;
@@ -91,7 +87,6 @@ public abstract class AbstractLong2LongMap extends AbstractLong2LongFunction
 	 *
 	 * @param m a map.
 	 */
-	@SuppressWarnings("unchecked")
 	public void putAll(Map<? extends Long, ? extends Long> m) {
 		int n = m.size();
 		final Iterator<? extends Map.Entry<? extends Long, ? extends Long>> i = m.entrySet().iterator();

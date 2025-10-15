@@ -113,7 +113,6 @@ public class FloatIterators {
 	 * The class of this objects represent an abstract empty iterator that can
 	 * iterate as a type-specific (list) iterator.
 	 */
-	@SuppressWarnings("rawtypes")
 	public final static EmptyIterator EMPTY_ITERATOR = new EmptyIterator();
 
 	/** An iterator returning a single element. */
@@ -317,7 +316,6 @@ public class FloatIterators {
 	 * @return an array containing the elements returned by the iterator (at most
 	 *         <ocde>max</code>).
 	 */
-	@SuppressWarnings("unchecked")
 	public static float[] unwrap(final FloatIterator i, int max) {
 		if (max < 0)
 			throw new IllegalArgumentException("The maximum number of elements (" + max + ") is negative");
@@ -555,12 +553,10 @@ public class FloatIterators {
 			return i.previousIndex();
 		}
 
-		@SuppressWarnings("unchecked")
 		public void set(float k) {
 			i.set((Float.valueOf(k)));
 		}
 
-		@SuppressWarnings("unchecked")
 		public void add(float k) {
 			i.add((Float.valueOf(k)));
 		}
@@ -692,7 +688,6 @@ public class FloatIterators {
 	public static class UnmodifiableIterator extends AbstractFloatIterator {
 		final protected FloatIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableIterator(final FloatIterator i) {
 			this.i = i;
 		}
@@ -724,7 +719,6 @@ public class FloatIterators {
 	public static class UnmodifiableBidirectionalIterator extends AbstractFloatBidirectionalIterator {
 		final protected FloatBidirectionalIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableBidirectionalIterator(final FloatBidirectionalIterator i) {
 			this.i = i;
 		}
@@ -770,7 +764,6 @@ public class FloatIterators {
 	public static class UnmodifiableListIterator extends AbstractFloatListIterator {
 		final protected FloatListIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableListIterator(final FloatListIterator i) {
 			this.i = i;
 		}

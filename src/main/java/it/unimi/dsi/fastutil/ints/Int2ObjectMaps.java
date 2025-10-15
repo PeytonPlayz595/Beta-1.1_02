@@ -82,7 +82,6 @@ public class Int2ObjectMaps {
 			return ObjectSets.EMPTY_SET;
 		}
 
-		@SuppressWarnings("unchecked")
 		public IntSet keySet() {
 			return IntSets.EMPTY_SET;
 		}

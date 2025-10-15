@@ -42,8 +42,6 @@ import it.unimi.dsi.fastutil.bytes.ByteCollection;
 import it.unimi.dsi.fastutil.bytes.AbstractByteCollection;
 import it.unimi.dsi.fastutil.bytes.AbstractByteIterator;
 import it.unimi.dsi.fastutil.bytes.ByteIterator;
-import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSortedSet;
 import java.util.Map;
 import java.util.Comparator;
 

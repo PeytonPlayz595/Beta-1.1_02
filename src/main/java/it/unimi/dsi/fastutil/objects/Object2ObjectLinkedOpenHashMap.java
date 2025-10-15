@@ -43,14 +43,7 @@ import static it.unimi.dsi.fastutil.HashCommon.arraySize;
 import static it.unimi.dsi.fastutil.HashCommon.maxFill;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import it.unimi.dsi.fastutil.objects.ObjectCollection;
-import it.unimi.dsi.fastutil.objects.AbstractObjectCollection;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
 import java.util.Comparator;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSortedSet;
 
 /**
  * A type-specific linked hash map with with a fast, small-footprint
@@ -333,7 +326,6 @@ public class Object2ObjectLinkedOpenHashMap<K, V> extends AbstractObject2ObjectS
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V remove(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -572,7 +564,6 @@ public class Object2ObjectLinkedOpenHashMap<K, V> extends AbstractObject2ObjectS
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V get(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -585,7 +576,6 @@ public class Object2ObjectLinkedOpenHashMap<K, V> extends AbstractObject2ObjectS
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -937,7 +927,6 @@ public class Object2ObjectLinkedOpenHashMap<K, V> extends AbstractObject2ObjectS
 			return curr;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			ensureIndexKnown();
 			if (curr == -1)

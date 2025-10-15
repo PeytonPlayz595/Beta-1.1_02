@@ -103,7 +103,6 @@ public class Long2IntFunctions {
 	 * An empty type-specific function (immutable). It is serializable and
 	 * cloneable.
 	 */
-	@SuppressWarnings("rawtypes")
 	public static final EmptyFunction EMPTY_FUNCTION = new EmptyFunction();
 
 	/**

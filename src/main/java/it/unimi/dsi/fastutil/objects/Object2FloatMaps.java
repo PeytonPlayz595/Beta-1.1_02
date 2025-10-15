@@ -38,8 +38,6 @@
  */
 package it.unimi.dsi.fastutil.objects;
 
-import it.unimi.dsi.fastutil.objects.ObjectSet;
-import it.unimi.dsi.fastutil.objects.ObjectSets;
 import it.unimi.dsi.fastutil.floats.FloatCollection;
 import it.unimi.dsi.fastutil.floats.FloatCollections;
 import it.unimi.dsi.fastutil.floats.FloatSets;
@@ -88,7 +86,6 @@ public class Object2FloatMaps {
 			return ObjectSets.EMPTY_SET;
 		}
 
-		@SuppressWarnings("unchecked")
 		public FloatCollection values() {
 			return FloatSets.EMPTY_SET;
 		}

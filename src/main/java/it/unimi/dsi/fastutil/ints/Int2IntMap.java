@@ -39,7 +39,6 @@
  */
 package it.unimi.dsi.fastutil.ints;
 
-import it.unimi.dsi.fastutil.ints.IntCollection;
 import it.unimi.dsi.fastutil.objects.ObjectSet;
 import it.unimi.dsi.fastutil.objects.ObjectIterator;
 import java.util.Map;

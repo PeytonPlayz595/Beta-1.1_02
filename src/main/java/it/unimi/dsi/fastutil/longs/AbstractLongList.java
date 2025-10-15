@@ -366,7 +366,6 @@ public abstract class AbstractLongList extends AbstractLongCollection implements
 	 * @throws ClassCastException if the argument is not a list.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public int compareTo(final List<? extends Long> l) {
 		if (l == this)
 			return 0;

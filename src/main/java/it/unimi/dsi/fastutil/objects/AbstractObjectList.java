@@ -629,7 +629,6 @@ public abstract class AbstractObjectList<K> extends AbstractObjectCollection<K> 
 			return new ObjectSubList<K>(this, from, to);
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean remove(final Object o) {
 			int index = indexOf(o);
 			if (index == -1)

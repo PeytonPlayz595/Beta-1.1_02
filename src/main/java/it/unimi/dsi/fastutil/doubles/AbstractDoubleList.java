@@ -366,7 +366,6 @@ public abstract class AbstractDoubleList extends AbstractDoubleCollection implem
 	 * @throws ClassCastException if the argument is not a list.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public int compareTo(final List<? extends Double> l) {
 		if (l == this)
 			return 0;

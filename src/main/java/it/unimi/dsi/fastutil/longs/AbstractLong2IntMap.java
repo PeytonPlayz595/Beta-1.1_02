@@ -91,7 +91,6 @@ public abstract class AbstractLong2IntMap extends AbstractLong2IntFunction
 	 *
 	 * @param m a map.
 	 */
-	@SuppressWarnings("unchecked")
 	public void putAll(Map<? extends Long, ? extends Integer> m) {
 		int n = m.size();
 		final Iterator<? extends Map.Entry<? extends Long, ? extends Integer>> i = m.entrySet().iterator();

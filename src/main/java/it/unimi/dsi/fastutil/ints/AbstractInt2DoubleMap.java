@@ -91,7 +91,6 @@ public abstract class AbstractInt2DoubleMap extends AbstractInt2DoubleFunction
 	 *
 	 * @param m a map.
 	 */
-	@SuppressWarnings("unchecked")
 	public void putAll(Map<? extends Integer, ? extends Double> m) {
 		int n = m.size();
 		final Iterator<? extends Map.Entry<? extends Integer, ? extends Double>> i = m.entrySet().iterator();

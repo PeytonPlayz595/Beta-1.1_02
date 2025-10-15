@@ -45,12 +45,8 @@ import static it.unimi.dsi.fastutil.HashCommon.arraySize;
 import static it.unimi.dsi.fastutil.HashCommon.maxFill;
 import java.util.Map;
 import java.util.NoSuchElementException;
-import it.unimi.dsi.fastutil.longs.LongCollection;
-import it.unimi.dsi.fastutil.longs.AbstractLongCollection;
-import it.unimi.dsi.fastutil.longs.LongIterator;
 import java.util.Comparator;
 
-import it.unimi.dsi.fastutil.longs.LongListIterator;
 
 import it.unimi.dsi.fastutil.objects.AbstractObjectSortedSet;
 import it.unimi.dsi.fastutil.objects.ObjectListIterator;
@@ -164,7 +160,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 	 * @param expected the expected number of elements in the hash set.
 	 * @param f        the load factor.
 	 */
-	@SuppressWarnings("unchecked")
 	public Long2LongLinkedOpenHashMap(final int expected, final float f) {
 		if (f <= 0 || f > 1)
 			throw new IllegalArgumentException("Load factor must be greater than 0 and smaller than or equal to 1");
@@ -429,7 +424,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public long remove(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -447,7 +441,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public Long remove(final Object ok) {
 		final long k = ((((Long) (ok)).longValue()));
 		// The starting point.
@@ -700,7 +693,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 		return (null);
 	}
 
-	@SuppressWarnings("unchecked")
 	public long get(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -713,7 +705,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final long k) {
 		// The starting point.
 		int pos = (int) it.unimi.dsi.fastutil.HashCommon.murmurHash3(k) & mask;
@@ -1073,7 +1064,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 			return curr;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			ensureIndexKnown();
 			if (curr == -1)
@@ -1571,7 +1561,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 	 *
 	 * @param newN the new size
 	 */
-	@SuppressWarnings("unchecked")
 	protected void rehash(final int newN) {
 		int i = first, prev = -1, newPrev = -1, t, pos;
 		long k;
@@ -1628,7 +1617,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 	 *
 	 * @return a deep copy of this map.
 	 */
-	@SuppressWarnings("unchecked")
 	public Long2LongLinkedOpenHashMap clone() {
 		Long2LongLinkedOpenHashMap c;
 		try {
@@ -1681,7 +1669,6 @@ public class Long2LongLinkedOpenHashMap extends AbstractLong2LongSortedMap
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		n = arraySize(size, f);

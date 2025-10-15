@@ -538,7 +538,6 @@ public class ObjectArrayList<K> extends AbstractObjectList<K> implements RandomA
 		};
 	}
 
-	@SuppressWarnings("unchecked")
 	public ObjectArrayList<K> clone() {
 		ObjectArrayList<K> c = new ObjectArrayList<K>(size);
 		System.arraycopy(a, 0, c.a, 0, size);

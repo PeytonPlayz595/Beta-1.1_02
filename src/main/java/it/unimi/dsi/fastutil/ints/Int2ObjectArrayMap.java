@@ -251,7 +251,6 @@ public class Int2ObjectArrayMap<V> extends AbstractInt2ObjectMap<V> implements j
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean containsValue(Object v) {
 		for (int i = size; i-- != 0;)
 			if (((value[i]) == null ? (v) == null : (value[i]).equals(v)))
@@ -312,7 +311,6 @@ public class Int2ObjectArrayMap<V> extends AbstractInt2ObjectMap<V> implements j
 
 	@Override
 
-	@SuppressWarnings("unchecked")
 	public IntSet keySet() {
 		return new IntArraySet(key, size);
 	}
@@ -354,7 +352,6 @@ public class Int2ObjectArrayMap<V> extends AbstractInt2ObjectMap<V> implements j
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		key = new int[size];

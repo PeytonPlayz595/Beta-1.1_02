@@ -113,7 +113,6 @@ public class ByteIterators {
 	 * The class of this objects represent an abstract empty iterator that can
 	 * iterate as a type-specific (list) iterator.
 	 */
-	@SuppressWarnings("rawtypes")
 	public final static EmptyIterator EMPTY_ITERATOR = new EmptyIterator();
 
 	/** An iterator returning a single element. */
@@ -317,7 +316,6 @@ public class ByteIterators {
 	 * @return an array containing the elements returned by the iterator (at most
 	 *         <ocde>max</code>).
 	 */
-	@SuppressWarnings("unchecked")
 	public static byte[] unwrap(final ByteIterator i, int max) {
 		if (max < 0)
 			throw new IllegalArgumentException("The maximum number of elements (" + max + ") is negative");
@@ -555,12 +553,10 @@ public class ByteIterators {
 			return i.previousIndex();
 		}
 
-		@SuppressWarnings("unchecked")
 		public void set(byte k) {
 			i.set((Byte.valueOf(k)));
 		}
 
-		@SuppressWarnings("unchecked")
 		public void add(byte k) {
 			i.add((Byte.valueOf(k)));
 		}
@@ -771,7 +767,6 @@ public class ByteIterators {
 	public static class UnmodifiableIterator extends AbstractByteIterator {
 		final protected ByteIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableIterator(final ByteIterator i) {
 			this.i = i;
 		}
@@ -803,7 +798,6 @@ public class ByteIterators {
 	public static class UnmodifiableBidirectionalIterator extends AbstractByteBidirectionalIterator {
 		final protected ByteBidirectionalIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableBidirectionalIterator(final ByteBidirectionalIterator i) {
 			this.i = i;
 		}
@@ -849,7 +843,6 @@ public class ByteIterators {
 	public static class UnmodifiableListIterator extends AbstractByteListIterator {
 		final protected ByteListIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableListIterator(final ByteListIterator i) {
 			this.i = i;
 		}

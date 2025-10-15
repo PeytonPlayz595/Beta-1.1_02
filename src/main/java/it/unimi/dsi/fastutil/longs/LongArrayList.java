@@ -99,7 +99,6 @@ public class LongArrayList extends AbstractLongList implements RandomAccess, Clo
 	 *
 	 * @param capacity the initial capacity of the array list (may be 0).
 	 */
-	@SuppressWarnings("unchecked")
 	public LongArrayList(final int capacity) {
 		if (capacity < 0)
 			throw new IllegalArgumentException("Initial capacity (" + capacity + ") is negative");
@@ -231,7 +230,6 @@ public class LongArrayList extends AbstractLongList implements RandomAccess, Clo
 	 *
 	 * @param capacity the new minimum capacity for this array list.
 	 */
-	@SuppressWarnings("unchecked")
 	public void ensureCapacity(final int capacity) {
 		a = LongArrays.ensureCapacity(a, capacity, size);
 		if (ASSERTS)
@@ -245,7 +243,6 @@ public class LongArrayList extends AbstractLongList implements RandomAccess, Clo
 	 *
 	 * @param capacity the new minimum capacity for this array list.
 	 */
-	@SuppressWarnings("unchecked")
 	private void grow(final int capacity) {
 		a = LongArrays.grow(a, capacity, size);
 		if (ASSERTS)
@@ -370,7 +367,6 @@ public class LongArrayList extends AbstractLongList implements RandomAccess, Clo
 	 *
 	 * @param n the threshold for the trimming.
 	 */
-	@SuppressWarnings("unchecked")
 	public void trim(final int n) {
 		// TODO: use Arrays.trim() and preserve type only if necessary
 		if (n >= a.length || size == a.length)
@@ -526,7 +522,6 @@ public class LongArrayList extends AbstractLongList implements RandomAccess, Clo
 		};
 	}
 
-	@SuppressWarnings("unchecked")
 	public LongArrayList clone() {
 		LongArrayList c = new LongArrayList(size);
 		System.arraycopy(a, 0, c.a, 0, size);
@@ -570,7 +565,6 @@ public class LongArrayList extends AbstractLongList implements RandomAccess, Clo
 	 * @return a negative integer, zero, or a positive integer as this list is
 	 *         lexicographically less than, equal to, or greater than the argument.
 	 */
-	@SuppressWarnings("unchecked")
 	public int compareTo(final LongArrayList l) {
 		final int s1 = size(), s2 = l.size();
 		final long a1[] = a, a2[] = l.a;
@@ -591,7 +585,6 @@ public class LongArrayList extends AbstractLongList implements RandomAccess, Clo
 			s.writeLong(a[i]);
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		a = new long[size];

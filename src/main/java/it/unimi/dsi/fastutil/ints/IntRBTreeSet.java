@@ -95,7 +95,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 	 * Otherwise, we generate on-the-fly an anonymous class that wraps the
 	 * non-specific {@link Comparator} and makes it into a type-specific one.
 	 */
-	@SuppressWarnings("unchecked")
 	private void setActualComparator() {
 		/*
 		 * If the provided comparator is already type-specific, we use it. Otherwise, we
@@ -189,7 +188,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 	 * @param i an iterator whose elements will fill the set.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public IntRBTreeSet(final Iterator<? extends Integer> i) {
 		this(IntIterators.asIntIterator(i));
 	}
@@ -275,7 +273,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 	 *         when k1 &lt; k2, k1 = k2 or k1 &gt; k2, respectively).
 	 */
 
-	@SuppressWarnings("unchecked")
 	final int compare(final int k1, final int k2) {
 		return actualComparator == null ? ((k1) < (k2) ? -1 : ((k1) == (k2) ? 0 : 1))
 				: actualComparator.compare(k1, k2);
@@ -328,7 +325,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 	private transient boolean dirPath[];
 	private transient Entry nodePath[];
 
-	@SuppressWarnings("unchecked")
 	private void allocatePaths() {
 		dirPath = new boolean[64];
 
@@ -506,7 +502,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final int k) {
 		if (tree == null)
 			return false;
@@ -802,7 +797,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final int k) {
 		return findKey(k) != null;
 	}
@@ -1002,7 +996,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 			return prev;
 		}
 
-		@SuppressWarnings("unchecked")
 		public Entry clone() {
 			Entry c;
 			try {
@@ -1263,7 +1256,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 			return (bottom || IntRBTreeSet.this.compare(k, from) >= 0) && (top || IntRBTreeSet.this.compare(k, to) < 0);
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean contains(final int k) {
 			return in(k) && IntRBTreeSet.this.contains(k);
 		}
@@ -1275,7 +1267,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 			return IntRBTreeSet.this.add(k);
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean remove(final int k) {
 			if (!in(k))
 				return false;
@@ -1457,7 +1448,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 	 *
 	 * @return a deep copy of this tree set.
 	 */
-	@SuppressWarnings("unchecked")
 	public Object clone() {
 		IntRBTreeSet c;
 		try {
@@ -1530,7 +1520,6 @@ public class IntRBTreeSet extends AbstractIntSortedSet implements java.io.Serial
 	 * @param succ the entry containing the key that follows the last key in the
 	 *             tree.
 	 */
-	@SuppressWarnings("unchecked")
 	private Entry readTree(final java.io.ObjectInputStream s, final int n, final Entry pred, final Entry succ)
 			throws java.io.IOException, ClassNotFoundException {
 		if (n == 1) {

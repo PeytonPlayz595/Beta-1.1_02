@@ -366,7 +366,6 @@ public class Int2ObjectLinkedOpenHashMap<V> extends AbstractInt2ObjectSortedMap<
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V remove(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -384,7 +383,6 @@ public class Int2ObjectLinkedOpenHashMap<V> extends AbstractInt2ObjectSortedMap<
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public V remove(final Object ok) {
 		final int k = ((((Integer) (ok)).intValue()));
 		// The starting point.
@@ -637,7 +635,6 @@ public class Int2ObjectLinkedOpenHashMap<V> extends AbstractInt2ObjectSortedMap<
 		return (this.defRetValue);
 	}
 
-	@SuppressWarnings("unchecked")
 	public V get(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -650,7 +647,6 @@ public class Int2ObjectLinkedOpenHashMap<V> extends AbstractInt2ObjectSortedMap<
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final int k) {
 		// The starting point.
 		int pos = (it.unimi.dsi.fastutil.HashCommon.murmurHash3((k))) & mask;
@@ -1003,7 +999,6 @@ public class Int2ObjectLinkedOpenHashMap<V> extends AbstractInt2ObjectSortedMap<
 			return curr;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			ensureIndexKnown();
 			if (curr == -1)

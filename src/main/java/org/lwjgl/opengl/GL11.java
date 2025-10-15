@@ -10,6 +10,8 @@ import net.lax1dude.eaglercraft.opengl.RealOpenGLEnums;
 import static net.lax1dude.eaglercraft.opengl.EaglercraftGPU.*;
 
 public class GL11 extends RealOpenGLEnums {
+	
+	private static int lastBoundTexID = -1;
 
 	public static void glEnable(int p1) {
 		switch (p1) {
@@ -173,11 +175,15 @@ public class GL11 extends RealOpenGLEnums {
 		color(f, g, h, i);
 	}
 
-	public static void glBindTexture(int i, int var110) {
+	public static void glBindTexture(int i, int tex) {
+		if (tex == lastBoundTexID) {
+			return;
+		}
 		if (i != GL_TEXTURE_2D) {
 			throw new RuntimeException("Only 2D texture types are supported!");
 		}
-		bindTexture(var110);
+		lastBoundTexID = tex;
+		bindTexture2(lastBoundTexID);
 	}
 
 	public static void glBlendFunc(int i, int j) {
@@ -210,12 +216,6 @@ public class GL11 extends RealOpenGLEnums {
 		ortho(d, var3, var2, e, f, g);
 	}
 
-//	public static void glGenTextures(IntBuffer idBuffer) {
-//		for (int i = idBuffer.position(); i < idBuffer.limit(); i++) {
-//			idBuffer.put(i, generateTexture());
-//		}
-//	}
-
 	public static void glGetFloat(int glModelviewMatrix, float[] modelviewBuff) {
 		getFloat(glModelviewMatrix, modelviewBuff);
 	}
@@ -237,12 +237,6 @@ public class GL11 extends RealOpenGLEnums {
 	
 	public static void glDeleteTexture(int texture) {
 		deleteTexture(texture);
-	}
-
-	public static void glDeleteTextures(IntBuffer buffer) {
-		while (buffer.hasRemaining()) {
-			glDeleteTexture(buffer.get());
-		}
 	}
 
 	public static void glFogf(int type, float param) {

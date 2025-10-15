@@ -47,15 +47,9 @@ import java.util.NoSuchElementException;
 import it.unimi.dsi.fastutil.bytes.ByteCollection;
 import it.unimi.dsi.fastutil.bytes.AbstractByteCollection;
 import it.unimi.dsi.fastutil.bytes.ByteIterator;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
 import java.util.Comparator;
 
 import it.unimi.dsi.fastutil.bytes.ByteListIterator;
-
-import it.unimi.dsi.fastutil.objects.AbstractObjectSortedSet;
-import it.unimi.dsi.fastutil.objects.ObjectListIterator;
-import it.unimi.dsi.fastutil.objects.ObjectBidirectionalIterator;
-import it.unimi.dsi.fastutil.objects.ObjectSortedSet;
 
 /**
  * A type-specific linked hash map with with a fast, small-footprint
@@ -431,7 +425,6 @@ public class Object2ByteLinkedOpenHashMap<K> extends AbstractObject2ByteSortedMa
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public byte removeByte(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -689,7 +682,6 @@ public class Object2ByteLinkedOpenHashMap<K> extends AbstractObject2ByteSortedMa
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public byte getByte(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -702,7 +694,6 @@ public class Object2ByteLinkedOpenHashMap<K> extends AbstractObject2ByteSortedMa
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -1060,7 +1051,6 @@ public class Object2ByteLinkedOpenHashMap<K> extends AbstractObject2ByteSortedMa
 			return curr;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			ensureIndexKnown();
 			if (curr == -1)

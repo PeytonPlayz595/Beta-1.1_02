@@ -130,13 +130,14 @@ public class EaglerInputStream extends InputStream {
 				is.read(ret);
 				return ret;
 			} else {
-				EaglerOutputStream os = new EaglerOutputStream(1024);
-				byte[] buf = new byte[1024];
-				int i;
-				while ((i = is.read(buf)) != -1) {
-					os.write(buf, 0, i);
+				try (EaglerOutputStream os = new EaglerOutputStream(1024)) {
+					byte[] buf = new byte[1024];
+					int i;
+					while ((i = is.read(buf)) != -1) {
+						os.write(buf, 0, i);
+					}
+					return os.toByteArray();
 				}
-				return os.toByteArray();
 			}
 		}finally {
 			is.close();
@@ -144,13 +145,14 @@ public class EaglerInputStream extends InputStream {
 	}
 
 	public static byte[] inputStreamToBytesNoClose(InputStream is) throws IOException {
-		EaglerOutputStream os = new EaglerOutputStream(1024);
-		byte[] buf = new byte[1024];
-		int i;
-		while ((i = is.read(buf)) != -1) {
-			os.write(buf, 0, i);
+		try (EaglerOutputStream os = new EaglerOutputStream(1024)) {
+			byte[] buf = new byte[1024];
+			int i;
+			while ((i = is.read(buf)) != -1) {
+				os.write(buf, 0, i);
+			}
+			return os.toByteArray();
 		}
-		return os.toByteArray();
 	}
 
 	public byte[] getAsArray() {

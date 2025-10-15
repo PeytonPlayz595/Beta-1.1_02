@@ -94,7 +94,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 	 * Otherwise, we generate on-the-fly an anonymous class that wraps the
 	 * non-specific {@link Comparator} and makes it into a type-specific one.
 	 */
-	@SuppressWarnings("unchecked")
 	private void setActualComparator() {
 		/*
 		 * If the provided comparator is already type-specific, we use it. Otherwise, we
@@ -188,7 +187,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 	 * @param i an iterator whose elements will fill the set.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public LongAVLTreeSet(final Iterator<? extends Long> i) {
 		this(LongIterators.asLongIterator(i));
 	}
@@ -274,7 +272,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 	 *         when k1 &lt; k2, k1 = k2 or k1 &gt; k2, respectively).
 	 */
 
-	@SuppressWarnings("unchecked")
 	final int compare(final long k1, final long k2) {
 		return actualComparator == null ? ((k1) < (k2) ? -1 : ((k1) == (k2) ? 0 : 1))
 				: actualComparator.compare(k1, k2);
@@ -546,7 +543,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final long k) {
 		if (tree == null)
 			return false;
@@ -843,7 +839,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 		return true;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final long k) {
 		return findKey(k) != null;
 	}
@@ -1053,7 +1048,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 			return prev;
 		}
 
-		@SuppressWarnings("unchecked")
 		public Entry clone() {
 			Entry c;
 			try {
@@ -1314,7 +1308,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 					&& (top || LongAVLTreeSet.this.compare(k, to) < 0);
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean contains(final long k) {
 			return in(k) && LongAVLTreeSet.this.contains(k);
 		}
@@ -1326,7 +1319,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 			return LongAVLTreeSet.this.add(k);
 		}
 
-		@SuppressWarnings("unchecked")
 		public boolean remove(final long k) {
 			if (!in(k))
 				return false;
@@ -1508,7 +1500,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 	 *
 	 * @return a deep copy of this tree set.
 	 */
-	@SuppressWarnings("unchecked")
 	public Object clone() {
 		LongAVLTreeSet c;
 		try {
@@ -1581,7 +1572,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 	 * @param succ the entry containing the key that follows the last key in the
 	 *             tree.
 	 */
-	@SuppressWarnings("unchecked")
 	private Entry readTree(final java.io.ObjectInputStream s, final int n, final Entry pred, final Entry succ)
 			throws java.io.IOException, ClassNotFoundException {
 		if (n == 1) {
@@ -1638,7 +1628,6 @@ public class LongAVLTreeSet extends AbstractLongSortedSet implements java.io.Ser
 			checkTree(tree);
 	}
 
-	@SuppressWarnings("rawtypes")
 	private static int checkTree(@SuppressWarnings("unused") Entry e) {
 		return 0;
 	}

@@ -401,7 +401,6 @@ public class DoubleArrays {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private static void selectionSort(final double[] a, final int from, final int to) {
 		for (int i = from; i < to - 1; i++) {
 			int m = i;
@@ -416,7 +415,6 @@ public class DoubleArrays {
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private static void insertionSort(final double[] a, final int from, final int to) {
 		for (int i = from; ++i < to;) {
 			double t = a[i];
@@ -516,7 +514,6 @@ public class DoubleArrays {
 		quickSort(x, 0, x.length, comp);
 	}
 
-	@SuppressWarnings("unchecked")
 	private static int med3(final double x[], final int a, final int b, final int c) {
 		int ab = (Double.compare((x[a]), (x[b])));
 		int ac = (Double.compare((x[a]), (x[c])));
@@ -539,7 +536,6 @@ public class DoubleArrays {
 	 * @deprecated Use the corresponding {@code sort()} method in
 	 *             {@link java.util.Arrays}.
 	 */
-	@SuppressWarnings("unchecked")
 	@Deprecated
 	public static void quickSort(final double[] x, final int from, final int to) {
 		final int len = to - from;
@@ -625,7 +621,6 @@ public class DoubleArrays {
 	 * @param to   the index of the last element (exclusive) to be sorted.
 	 * @param supp a support array containing at least <code>to</code> elements.
 	 */
-	@SuppressWarnings("unchecked")
 	public static void mergeSort(final double a[], final int from, final int to, final double supp[]) {
 		int len = to - from;
 		// Insertion sort on smallest arrays
@@ -698,7 +693,6 @@ public class DoubleArrays {
 	 * @param comp the comparator to determine the sorting order.
 	 * @param supp a support array containing at least <code>to</code> elements.
 	 */
-	@SuppressWarnings("unchecked")
 	public static void mergeSort(final double a[], final int from, final int to, DoubleComparator comp,
 			final double supp[]) {
 		int len = to - from;
@@ -780,7 +774,6 @@ public class DoubleArrays {
 	 *         return value will be &gt;= 0 if and only if the key is found.
 	 * @see java.util.Arrays
 	 */
-	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static int binarySearch(final double[] a, int from, int to, final double key) {
 		double midVal;
 		to--;

@@ -283,6 +283,7 @@ public abstract class AbstractInt2ObjectMap<V> extends AbstractInt2ObjectFunctio
 		return entrySet().containsAll(m.entrySet());
 	}
 
+	@SuppressWarnings("unchecked")
 	public String toString() {
 		final StringBuilder s = new StringBuilder();
 		final ObjectIterator<? extends Map.Entry<Integer, V>> i = entrySet().iterator();

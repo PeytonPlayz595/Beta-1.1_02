@@ -113,7 +113,6 @@ public class BooleanIterators {
 	 * The class of this objects represent an abstract empty iterator that can
 	 * iterate as a type-specific (list) iterator.
 	 */
-	@SuppressWarnings("rawtypes")
 	public final static EmptyIterator EMPTY_ITERATOR = new EmptyIterator();
 
 	/** An iterator returning a single element. */
@@ -317,7 +316,6 @@ public class BooleanIterators {
 	 * @return an array containing the elements returned by the iterator (at most
 	 *         <ocde>max</code>).
 	 */
-	@SuppressWarnings("unchecked")
 	public static boolean[] unwrap(final BooleanIterator i, int max) {
 		if (max < 0)
 			throw new IllegalArgumentException("The maximum number of elements (" + max + ") is negative");
@@ -555,12 +553,10 @@ public class BooleanIterators {
 			return i.previousIndex();
 		}
 
-		@SuppressWarnings("unchecked")
 		public void set(boolean k) {
 			i.set((Boolean.valueOf(k)));
 		}
 
-		@SuppressWarnings("unchecked")
 		public void add(boolean k) {
 			i.add((Boolean.valueOf(k)));
 		}
@@ -692,7 +688,6 @@ public class BooleanIterators {
 	public static class UnmodifiableIterator extends AbstractBooleanIterator {
 		final protected BooleanIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableIterator(final BooleanIterator i) {
 			this.i = i;
 		}
@@ -724,7 +719,6 @@ public class BooleanIterators {
 	public static class UnmodifiableBidirectionalIterator extends AbstractBooleanBidirectionalIterator {
 		final protected BooleanBidirectionalIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableBidirectionalIterator(final BooleanBidirectionalIterator i) {
 			this.i = i;
 		}
@@ -770,7 +764,6 @@ public class BooleanIterators {
 	public static class UnmodifiableListIterator extends AbstractBooleanListIterator {
 		final protected BooleanListIterator i;
 
-		@SuppressWarnings("unchecked")
 		public UnmodifiableListIterator(final BooleanListIterator i) {
 			this.i = i;
 		}

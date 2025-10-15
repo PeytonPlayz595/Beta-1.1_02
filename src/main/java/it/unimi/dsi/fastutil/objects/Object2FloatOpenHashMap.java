@@ -48,8 +48,6 @@ import java.util.NoSuchElementException;
 import it.unimi.dsi.fastutil.floats.FloatCollection;
 import it.unimi.dsi.fastutil.floats.AbstractFloatCollection;
 import it.unimi.dsi.fastutil.floats.FloatIterator;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
 
 /**
  * A type-specific hash map with a fast, small-footprint implementation.
@@ -347,7 +345,6 @@ public class Object2FloatOpenHashMap<K> extends AbstractObject2FloatMap<K>
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public float removeFloat(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -382,7 +379,6 @@ public class Object2FloatOpenHashMap<K> extends AbstractObject2FloatMap<K>
 		return (null);
 	}
 
-	@SuppressWarnings("unchecked")
 	public float getFloat(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -395,7 +391,6 @@ public class Object2FloatOpenHashMap<K> extends AbstractObject2FloatMap<K>
 		return defRetValue;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean containsKey(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -617,7 +612,6 @@ public class Object2FloatOpenHashMap<K> extends AbstractObject2FloatMap<K>
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

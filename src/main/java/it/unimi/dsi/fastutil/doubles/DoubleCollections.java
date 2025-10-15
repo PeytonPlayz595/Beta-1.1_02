@@ -102,7 +102,6 @@ public class DoubleCollections {
 			return c.isEmpty();
 		}
 
-		@SuppressWarnings("unchecked")
 		public DoubleBidirectionalIterator iterator() {
 			return DoubleIterators.EMPTY_ITERATOR;
 		}
@@ -497,7 +496,6 @@ public class DoubleCollections {
 	 *                 collection.
 	 * @return an unmodifiable collection view of the specified iterable.
 	 */
-	@SuppressWarnings("unchecked")
 	public static DoubleCollection asCollection(final DoubleIterable iterable) {
 		if (iterable instanceof DoubleCollection)
 			return (DoubleCollection) iterable;

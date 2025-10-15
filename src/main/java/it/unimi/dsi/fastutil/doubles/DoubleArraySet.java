@@ -133,12 +133,10 @@ public class DoubleArraySet extends AbstractDoubleSet implements java.io.Seriali
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public DoubleIterator iterator() {
 		return DoubleIterators.wrap(a, 0, size);
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final double k) {
 		return findKey(k) != -1;
 	}
@@ -148,7 +146,6 @@ public class DoubleArraySet extends AbstractDoubleSet implements java.io.Seriali
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean remove(final double k) {
 		final int pos = findKey(k);
 		if (pos == -1)
@@ -196,7 +193,6 @@ public class DoubleArraySet extends AbstractDoubleSet implements java.io.Seriali
 	 * @return a deep copy of this set.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public DoubleArraySet clone() {
 		DoubleArraySet c;
 		try {
@@ -214,7 +210,6 @@ public class DoubleArraySet extends AbstractDoubleSet implements java.io.Seriali
 			s.writeDouble(a[i]);
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		a = new double[size];

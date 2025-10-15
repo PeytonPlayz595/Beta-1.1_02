@@ -102,7 +102,6 @@ public class LongCollections {
 			return c.isEmpty();
 		}
 
-		@SuppressWarnings("unchecked")
 		public LongBidirectionalIterator iterator() {
 			return LongIterators.EMPTY_ITERATOR;
 		}
@@ -497,7 +496,6 @@ public class LongCollections {
 	 *                 collection.
 	 * @return an unmodifiable collection view of the specified iterable.
 	 */
-	@SuppressWarnings("unchecked")
 	public static LongCollection asCollection(final LongIterable iterable) {
 		if (iterable instanceof LongCollection)
 			return (LongCollection) iterable;

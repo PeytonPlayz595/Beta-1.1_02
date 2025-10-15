@@ -48,8 +48,6 @@ import java.util.NoSuchElementException;
 import it.unimi.dsi.fastutil.floats.FloatCollection;
 import it.unimi.dsi.fastutil.floats.AbstractFloatCollection;
 import it.unimi.dsi.fastutil.floats.FloatIterator;
-import it.unimi.dsi.fastutil.objects.ObjectArrays;
-import it.unimi.dsi.fastutil.objects.AbstractObjectSet;
 
 /**
  * A type-specific hash map with a fast, small-footprint implementation whose
@@ -638,7 +636,6 @@ public class Object2FloatOpenCustomHashMap<K> extends AbstractObject2FloatMap<K>
 			return last;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			if (last == -1)
 				throw new IllegalStateException();

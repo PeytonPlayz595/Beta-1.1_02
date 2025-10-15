@@ -366,7 +366,6 @@ public abstract class AbstractShortList extends AbstractShortCollection implemen
 	 * @throws ClassCastException if the argument is not a list.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public int compareTo(final List<? extends Short> l) {
 		if (l == this)
 			return 0;

@@ -6,7 +6,6 @@ Public Domain.
 /**
  * Configuration base object for parsers. The configuration is immutable.
  */
-@SuppressWarnings({""})
 public class ParserConfiguration {
     /**
      * Used to indicate there's no defined limit to the maximum nesting depth when parsing a document.

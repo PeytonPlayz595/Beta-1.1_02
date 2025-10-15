@@ -343,7 +343,6 @@ public class ObjectLinkedOpenHashSet<K> extends AbstractObjectSortedSet<K>
 		return last;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean remove(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -362,7 +361,6 @@ public class ObjectLinkedOpenHashSet<K> extends AbstractObjectSortedSet<K>
 		return false;
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -382,7 +380,6 @@ public class ObjectLinkedOpenHashSet<K> extends AbstractObjectSortedSet<K>
 	 * @return the element of this set that is equal to the given key, or
 	 *         <code>null</code>.
 	 */
-	@SuppressWarnings("unchecked")
 	public K get(final Object k) {
 		// The starting point.
 		int pos = ((k) == null ? 0x87fcd5c : it.unimi.dsi.fastutil.HashCommon.murmurHash3((k).hashCode())) & mask;
@@ -836,7 +833,6 @@ public class ObjectLinkedOpenHashSet<K> extends AbstractObjectSortedSet<K>
 			return index - 1;
 		}
 
-		@SuppressWarnings("unchecked")
 		public void remove() {
 			ensureIndexKnown();
 			if (curr == -1)

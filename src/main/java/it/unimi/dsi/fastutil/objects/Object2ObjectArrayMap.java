@@ -246,7 +246,6 @@ public class Object2ObjectArrayMap<K, V> extends AbstractObject2ObjectMap<K, V>
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean containsValue(Object v) {
 		for (int i = size; i-- != 0;)
 			if (((value[i]) == null ? (v) == null : (value[i]).equals(v)))
@@ -309,7 +308,6 @@ public class Object2ObjectArrayMap<K, V> extends AbstractObject2ObjectMap<K, V>
 
 	@Override
 
-	@SuppressWarnings("unchecked")
 	public ObjectSet<K> keySet() {
 		return new ObjectArraySet<K>(key, size);
 	}
@@ -351,7 +349,6 @@ public class Object2ObjectArrayMap<K, V> extends AbstractObject2ObjectMap<K, V>
 		}
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		key = new Object[size];

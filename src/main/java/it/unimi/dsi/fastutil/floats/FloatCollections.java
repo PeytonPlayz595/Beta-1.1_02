@@ -102,7 +102,6 @@ public class FloatCollections {
 			return c.isEmpty();
 		}
 
-		@SuppressWarnings("unchecked")
 		public FloatBidirectionalIterator iterator() {
 			return FloatIterators.EMPTY_ITERATOR;
 		}
@@ -497,7 +496,6 @@ public class FloatCollections {
 	 *                 collection.
 	 * @return an unmodifiable collection view of the specified iterable.
 	 */
-	@SuppressWarnings("unchecked")
 	public static FloatCollection asCollection(final FloatIterable iterable) {
 		if (iterable instanceof FloatCollection)
 			return (FloatCollection) iterable;

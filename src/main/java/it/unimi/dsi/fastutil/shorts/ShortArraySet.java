@@ -133,12 +133,10 @@ public class ShortArraySet extends AbstractShortSet implements java.io.Serializa
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public ShortIterator iterator() {
 		return ShortIterators.wrap(a, 0, size);
 	}
 
-	@SuppressWarnings("unchecked")
 	public boolean contains(final short k) {
 		return findKey(k) != -1;
 	}
@@ -148,7 +146,6 @@ public class ShortArraySet extends AbstractShortSet implements java.io.Serializa
 	}
 
 	@Override
-	@SuppressWarnings("unchecked")
 	public boolean remove(final short k) {
 		final int pos = findKey(k);
 		if (pos == -1)
@@ -196,7 +193,6 @@ public class ShortArraySet extends AbstractShortSet implements java.io.Serializa
 	 * @return a deep copy of this set.
 	 */
 
-	@SuppressWarnings("unchecked")
 	public ShortArraySet clone() {
 		ShortArraySet c;
 		try {
@@ -214,7 +210,6 @@ public class ShortArraySet extends AbstractShortSet implements java.io.Serializa
 			s.writeShort(a[i]);
 	}
 
-	@SuppressWarnings("unchecked")
 	private void readObject(java.io.ObjectInputStream s) throws java.io.IOException, ClassNotFoundException {
 		s.defaultReadObject();
 		a = new short[size];
