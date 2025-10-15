@@ -75,6 +75,9 @@ public class GuiTexturePacks extends GuiScreen {
 					int var7 = (var2 - this.field_6459_i + this.field_6460_h - 2) / 36;
 					if(var1 >= var5 && var1 <= var6 && var7 >= 0 && var7 < var4.size() && this.mc.texturePackList.setTexturePack((TexturePackBase)var4.get(var7))) {
 						this.mc.renderEngine.refreshTextures();
+						
+						ColorizerFoliage.init();
+						ColorizerGrass.init();
 					}
 
 					this.field_6455_n = var2;

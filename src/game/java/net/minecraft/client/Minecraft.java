@@ -11,6 +11,8 @@ import net.lax1dude.eaglercraft.opengl.EaglercraftGPU;
 import net.lax1dude.eaglercraft.opengl.GlStateManager;
 import net.minecraft.src.AxisAlignedBB;
 import net.minecraft.src.Block;
+import net.minecraft.src.ColorizerFoliage;
+import net.minecraft.src.ColorizerGrass;
 import net.minecraft.src.EffectRenderer;
 import net.minecraft.src.EntityClientPlayerMP;
 import net.minecraft.src.EntityPlayer;
@@ -182,6 +184,9 @@ public class Minecraft {
 		this.fontRenderer = EaglerFontRenderer.createSupportedFontRenderer(this.gameSettings, "/font/default.png", this.renderEngine);
 		this.loadScreen();
 		this.mouseHelper = new MouseHelper();
+		
+		ColorizerFoliage.init();
+		ColorizerGrass.init();
 
 		this.checkGLError("Pre startup");
 		GL11.glEnable(GL11.GL_TEXTURE_2D);
