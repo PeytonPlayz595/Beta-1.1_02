@@ -10,11 +10,11 @@ public class RecipesWeapons {
 
 			for(int var4 = 0; var4 < this.recipeItems.length - 1; ++var4) {
 				Item var5 = (Item)this.recipeItems[var4 + 1][var2];
-				var1.addRecipe(new ItemStack(var5), new Object[]{this.recipePatterns[var4], Character.valueOf('#'), Item.stick, Character.valueOf('X'), var3});
+				var1.addRecipe(new ItemStack(var5), new Object[]{this.recipePatterns[var4], '#', Item.stick, 'X', var3});
 			}
 		}
 
-		var1.addRecipe(new ItemStack(Item.bow, 1), new Object[]{" #X", "# X", " #X", Character.valueOf('X'), Item.silk, Character.valueOf('#'), Item.stick});
-		var1.addRecipe(new ItemStack(Item.arrow, 4), new Object[]{"X", "#", "Y", Character.valueOf('Y'), Item.feather, Character.valueOf('X'), Item.flint, Character.valueOf('#'), Item.stick});
+		var1.addRecipe(new ItemStack(Item.bow, 1), new Object[]{" #X", "# X", " #X", 'X', Item.silk, '#', Item.stick});
+		var1.addRecipe(new ItemStack(Item.arrow, 4), new Object[]{"X", "#", "Y", 'Y', Item.feather, 'X', Item.flint, '#', Item.stick});
 	}
 }

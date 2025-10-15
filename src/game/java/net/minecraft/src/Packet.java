@@ -3,37 +3,40 @@ package net.minecraft.src;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.carrotsearch.hppc.ObjectIntHashMap;
+import com.carrotsearch.hppc.ObjectIntMap;
+
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.lax1dude.eaglercraft.EagRuntime;
 import net.peyton.eagler.minecraft.suppliers.PacketSupplier;
 
 public abstract class Packet {
-	private static Map<Integer, PacketSupplier<Packet>> packetIdToClassMap = new HashMap<>();
-	private static Map<Class<? extends Packet>, Integer> packetClassToIdMap = new HashMap<>();
+	private static Int2ObjectMap<PacketSupplier<Packet>> packetIdToClassMap = new Int2ObjectOpenHashMap<>();
+	private static ObjectIntMap<Class<? extends Packet>> packetClassToIdMap = new ObjectIntHashMap<>();
 	public final long field_20018_j = EagRuntime.steadyTimeMillis();
 	public boolean isChunkDataPacket = false;
 	
 	private static Logger LOGGER = LogManager.getLogger();
 
 	static void addIdClassMapping(int var0, Class<? extends Packet> var1, PacketSupplier<Packet> var2) {
-		if(packetIdToClassMap.containsKey(Integer.valueOf(var0))) {
+		if(packetIdToClassMap.containsKey(var0)) {
 			throw new IllegalArgumentException("Duplicate packet id:" + var0);
 		} else if(packetClassToIdMap.containsKey(var1)) {
 			throw new IllegalArgumentException("Duplicate packet class:" + var1);
 		} else {
-			packetIdToClassMap.put(Integer.valueOf(var0), var2);
-			packetClassToIdMap.put(var1, Integer.valueOf(var0));
+			packetIdToClassMap.put(var0, var2);
+			packetClassToIdMap.put(var1, var0);
 		}
 	}
 
 	public static Packet getNewPacket(int var0) {
 		try {
-			PacketSupplier<Packet> var1 = packetIdToClassMap.get(Integer.valueOf(var0));
+			PacketSupplier<Packet> var1 = packetIdToClassMap.get(var0);
 			return var1 == null ? null : var1.createPacket();
 		} catch (Exception var2) {
 			LOGGER.error("Skipping packet with id {}", var0);
@@ -43,7 +46,7 @@ public abstract class Packet {
 	}
 
 	public final int getPacketId() {
-		return ((Integer)packetClassToIdMap.get(this.getClass())).intValue();
+		return packetClassToIdMap.get(this.getClass());
 	}
 
 	public static Packet readPacket(DataInputStream var0) throws IOException {

@@ -249,7 +249,7 @@ public class RenderGlobal implements IWorldAccess {
 			EntityPlayerSP var7 = this.mc.thePlayer;
 			if(var7 != null) {
 				this.func_956_b(MathHelper.floor_double(var7.posX), MathHelper.floor_double(var7.posY), MathHelper.floor_double(var7.posZ));
-				LegacyMergeSort.sort(this.sortedWorldRenderers, new EntitySorter(var7));
+				LegacyMergeSort.sort(this.sortedWorldRenderers, EntitySorter.instance.setEntity(var7));
 			}
 		}
 
@@ -411,7 +411,7 @@ public class RenderGlobal implements IWorldAccess {
 				this.func_956_b(MathHelper.floor_double(var1.posX), MathHelper.floor_double(var1.posY), MathHelper.floor_double(var1.posZ));
 			}
 			
-			LegacyMergeSort.sort(this.sortedWorldRenderers, new EntitySorter(var1));
+			LegacyMergeSort.sort(this.sortedWorldRenderers, EntitySorter.instance.setEntity(var1));
 		}
 
 		return this.func_952_a(0, this.sortedWorldRenderers.length, var2, var3);

@@ -1,16 +1,17 @@
 package net.minecraft.src;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.lwjgl.opengl.GL11;
+
+import com.carrotsearch.hppc.IntArrayList;
 
 import net.lax1dude.eaglercraft.EagRuntime;
 import net.lax1dude.eaglercraft.internal.buffer.ByteBuffer;
 import net.lax1dude.eaglercraft.internal.buffer.FloatBuffer;
 import net.lax1dude.eaglercraft.internal.buffer.IntBuffer;
+import net.lax1dude.eaglercraft.opengl.EaglercraftGPU;
 
 public class GLAllocation {
-	private static List<Integer> textureNames = new ArrayList<Integer>();
+	private static IntArrayList textureNames = new IntArrayList();
 
 	public static int generateDisplayLists(int count) {
 		return GL11.glGenLists(count);
@@ -19,14 +20,11 @@ public class GLAllocation {
 	public static void deleteDisplayLists(int list) {
 		GL11.glDeleteLists(list);
 	}
-
-	public static void generateTextureNames(IntBuffer var0) {
-		GL11.glGenTextures(var0);
-
-		for(int var1 = var0.position(); var1 < var0.limit(); ++var1) {
-			textureNames.add(Integer.valueOf(var0.get(var1)));
-		}
-
+	
+	public static int generateTextureName() {
+		int i = EaglercraftGPU.generateTexture();
+		textureNames.add(i);
+		return i;
 	}
 
 	public static void deleteTexturesAndDisplayLists() {
@@ -48,10 +46,10 @@ public class GLAllocation {
 	}
 
 	public static IntBuffer createDirectIntBuffer(int var0) {
-		return createDirectByteBuffer(var0 << 2).asIntBuffer();
+		return EagRuntime.allocateIntBuffer(var0);
 	}
 
 	public static FloatBuffer createDirectFloatBuffer(int var0) {
-		return createDirectByteBuffer(var0 << 2).asFloatBuffer();
+		return EagRuntime.allocateFloatBuffer(var0);
 	}
 }

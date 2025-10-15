@@ -18,7 +18,6 @@ import com.carrotsearch.hppc.cursors.ObjectIntCursor;
 
 import net.lax1dude.eaglercraft.beta.SpriteSheetTexture;
 import net.lax1dude.eaglercraft.internal.buffer.ByteBuffer;
-import net.lax1dude.eaglercraft.opengl.EaglercraftGPU;
 import net.lax1dude.eaglercraft.opengl.ImageData;
 import net.peyton.eagler.minecraft.TextureLocation;
 
@@ -64,7 +63,7 @@ public class RenderEngine {
 			return var3;
 		} else {
 			try {
-				int var5 = EaglercraftGPU.generateTexture();
+				int var5 = GLAllocation.generateTextureName();
 				if (var1.startsWith("##")) {
 					this.setupTexture(
 							this.unwrapImageByColumns(
@@ -105,7 +104,7 @@ public class RenderEngine {
 	}
 
 	public int allocateAndSetupTexture(ImageData var1) {
-		int var2 = EaglercraftGPU.generateTexture();
+		int var2 = GLAllocation.generateTextureName();
 		this.setupTexture(var1, var2);
 		this.textureNameToImageMap.put(var2, var1);
 		return var2;

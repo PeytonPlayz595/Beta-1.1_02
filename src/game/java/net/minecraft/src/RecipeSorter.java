@@ -2,18 +2,14 @@ package net.minecraft.src;
 
 import java.util.Comparator;
 
-class RecipeSorter implements Comparator<Object> {
-	final CraftingManager craftingManager;
-
-	RecipeSorter(CraftingManager var1) {
-		this.craftingManager = var1;
+class RecipeSorter implements Comparator<CraftingRecipe> {
+	
+	public static final RecipeSorter instance = new RecipeSorter();
+	
+	private RecipeSorter() {
 	}
 
-	public int a(CraftingRecipe var1, CraftingRecipe var2) {
+	public int compare(CraftingRecipe var1, CraftingRecipe var2) {
 		return var2.getRecipeSize() < var1.getRecipeSize() ? -1 : (var2.getRecipeSize() > var1.getRecipeSize() ? 1 : 0);
-	}
-
-	public int compare(Object var1, Object var2) {
-		return this.a((CraftingRecipe)var1, (CraftingRecipe)var2);
 	}
 }

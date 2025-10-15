@@ -9,12 +9,14 @@ import org.apache.logging.log4j.Logger;
 import com.carrotsearch.hppc.ObjectIntHashMap;
 import com.carrotsearch.hppc.ObjectIntMap;
 
+import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.peyton.eagler.minecraft.suppliers.EntitySupplier;
 
 public class EntityList {
 	private static Map<String, EntitySupplier<Entity>> stringToClassMapping = new HashMap<String, EntitySupplier<Entity>>();
 	private static Map<Class<? extends Entity>, String> classToStringMapping = new HashMap<Class<? extends Entity>, String>();
-	private static Map<Integer, EntitySupplier<Entity>> IDtoClassMapping = new HashMap<Integer, EntitySupplier<Entity>>();
+	private static Int2ObjectMap<EntitySupplier<Entity>> IDtoClassMapping = new Int2ObjectOpenHashMap<>();
 	private static final ObjectIntMap<Class<? extends Entity>> classToIDMapping = new ObjectIntHashMap<>();
 	
 	private static Logger LOGGER = LogManager.getLogger();
@@ -22,8 +24,8 @@ public class EntityList {
 	private static void addMapping(Class<? extends Entity> var0, EntitySupplier<Entity> var3, String var1, int var2) {
 		stringToClassMapping.put(var1, var3);
 		classToStringMapping.put(var0, var1);
-		IDtoClassMapping.put(Integer.valueOf(var2), var3);
-		classToIDMapping.put(var0, Integer.valueOf(var2));
+		IDtoClassMapping.put(var2, var3);
+		classToIDMapping.put(var0, var2);
 	}
 
 	public static Entity createEntityInWorld(String var0, World var1) {
@@ -66,7 +68,7 @@ public class EntityList {
 		Entity var2 = null;
 
 		try {
-			EntitySupplier<Entity> var3 = IDtoClassMapping.get(Integer.valueOf(var0));
+			EntitySupplier<Entity> var3 = IDtoClassMapping.get(var0);
 			if(var3 != null) {
 				var2 = var3.createEntity(var1);
 			}

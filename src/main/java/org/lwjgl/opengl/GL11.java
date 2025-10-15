@@ -210,13 +210,13 @@ public class GL11 extends RealOpenGLEnums {
 		ortho(d, var3, var2, e, f, g);
 	}
 
-	public static void glGenTextures(IntBuffer idBuffer) {
-		for (int i = idBuffer.position(); i < idBuffer.limit(); i++) {
-			idBuffer.put(i, generateTexture());
-		}
-	}
+//	public static void glGenTextures(IntBuffer idBuffer) {
+//		for (int i = idBuffer.position(); i < idBuffer.limit(); i++) {
+//			idBuffer.put(i, generateTexture());
+//		}
+//	}
 
-	public static void glGetFloat(int glModelviewMatrix, FloatBuffer modelviewBuff) {
+	public static void glGetFloat(int glModelviewMatrix, float[] modelviewBuff) {
 		getFloat(glModelviewMatrix, modelviewBuff);
 	}
 

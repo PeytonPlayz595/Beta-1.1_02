@@ -7,8 +7,8 @@ public class RecipesIngots {
 		for(int var2 = 0; var2 < this.recipeItems.length; ++var2) {
 			Block var3 = (Block)this.recipeItems[var2][0];
 			Item var4 = (Item)this.recipeItems[var2][1];
-			var1.addRecipe(new ItemStack(var3), new Object[]{"###", "###", "###", Character.valueOf('#'), var4});
-			var1.addRecipe(new ItemStack(var4, 9), new Object[]{"#", Character.valueOf('#'), var3});
+			var1.addRecipe(new ItemStack(var3), new Object[]{"###", "###", "###", '#', var4});
+			var1.addRecipe(new ItemStack(var4, 9), new Object[]{"#", '#', var3});
 		}
 
 	}
