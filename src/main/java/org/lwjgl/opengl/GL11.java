@@ -176,6 +176,7 @@ public class GL11 extends RealOpenGLEnums {
 	}
 
 	public static void glBindTexture(int i, int tex) {
+		//TODO: Remove the lastBoundTexID check and use bindTexture instead of bindTexture2 for newer versions of the game that have more than 1 active texture
 		if (tex == lastBoundTexID) {
 			return;
 		}
