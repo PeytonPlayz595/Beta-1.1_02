@@ -5,7 +5,7 @@ import net.peyton.eagler.minecraft.TextureLocation;
 public class EntitySheep extends EntityAnimals {
 	public boolean sheared = false;
 	
-	private TextureLocation sheep = new TextureLocation("/mob/sheep.png");
+	private static final TextureLocation sheep = new TextureLocation("/mob/sheep.png");
 
 	public EntitySheep(World var1) {
 		super(var1);

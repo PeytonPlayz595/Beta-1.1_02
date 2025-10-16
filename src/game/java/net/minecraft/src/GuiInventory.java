@@ -24,8 +24,7 @@ public class GuiInventory extends GuiContainer {
 		this.ySize_lo = (float)var2;
 	}
 
-	private TextureLocation inventory = new TextureLocation("/gui/inventory.png");
-	
+	private static final TextureLocation inventory = new TextureLocation("/gui/inventory.png");
 	protected void drawGuiContainerBackgroundLayer(float var1) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		inventory.bindTexture();

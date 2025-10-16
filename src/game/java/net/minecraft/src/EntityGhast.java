@@ -12,8 +12,8 @@ public class EntityGhast extends EntityFlying implements IMobs {
 	public int field_4125_e = 0;
 	public int field_4124_f = 0;
 	
-	private TextureLocation ghast = new TextureLocation("/mob/ghast.png");
-	private TextureLocation ghastFire = new TextureLocation("/mob/ghast_fire.png");
+	private static final TextureLocation ghast = new TextureLocation("/mob/ghast.png");
+	private static final TextureLocation ghastFire = new TextureLocation("/mob/ghast_fire.png");
 
 	public EntityGhast(World var1) {
 		super(var1);

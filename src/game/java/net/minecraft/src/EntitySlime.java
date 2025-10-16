@@ -8,7 +8,7 @@ public class EntitySlime extends EntityLiving implements IMobs {
 	private int field_769_d = 0;
 	public int field_770_c = 1;
 	
-	private TextureLocation slime = new TextureLocation("/mob/slime.png");
+	private static final TextureLocation slime = new TextureLocation("/mob/slime.png");
 
 	public EntitySlime(World var1) {
 		super(var1);

@@ -23,8 +23,8 @@ public class GuiMainMenu extends GuiScreen {
 	private LogoEffectRandomizer[][] logoEffects;
 	private String splashText = "missingno";
 	
-	private TextureLocation blackTex = new TextureLocation("/title/black.png");
-	private TextureLocation logoTex = new TextureLocation("/gui/logo.png");
+	private static final TextureLocation blackTex = new TextureLocation("/title/black.png");
+	private static final TextureLocation logoTex = new TextureLocation("/gui/logo.png");
 
 	public GuiMainMenu() {
 		try {
@@ -126,7 +126,7 @@ public class GuiMainMenu extends GuiScreen {
 		this.drawDefaultBackground();
 		Tessellator var4 = Tessellator.instance;
 		this.drawLogo(var3);
-		this.logoTex.bindTexture();
+		logoTex.bindTexture();
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		var4.setColorOpaque_I(16777215);
 		GL11.glPushMatrix();
@@ -197,7 +197,7 @@ public class GuiMainMenu extends GuiScreen {
 			GL11.glTranslatef((float)(-this.minecraftLogo[0].length()) * 0.5F, (float)(-this.minecraftLogo.length) * 0.5F, 0.0F);
 			TextureLocation.terrain.bindTexture();
 			if(var5 == 0) {
-				this.blackTex.bindTexture();
+				blackTex.bindTexture();
 			}
 
 			for(int var6 = 0; var6 < this.minecraftLogo.length; ++var6) {

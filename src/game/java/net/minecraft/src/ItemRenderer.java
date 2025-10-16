@@ -207,7 +207,7 @@ public class ItemRenderer {
 		RenderHelper.disableStandardItemLighting();
 	}
 
-	private TextureLocation water = new TextureLocation("/misc/water.png");
+	private static final TextureLocation water = new TextureLocation("/misc/water.png");
 	public void renderOverlays(float var1) {
 		GL11.glDisable(GL11.GL_ALPHA_TEST);
 		if(this.mc.thePlayer.fire > 0 || this.mc.thePlayer.field_9299_bv) {

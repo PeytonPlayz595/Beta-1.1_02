@@ -26,7 +26,7 @@ public abstract class EntityPlayer extends EntityLiving {
 	private int damageRemainder = 0;
 	public EntityFish fishEntity = null;
 	
-	private TextureLocation player = new TextureLocation("/mob/char.png");
+	private static final TextureLocation player = new TextureLocation("/mob/char.png");
 
 	public EntityPlayer(World var1) {
 		super(var1);

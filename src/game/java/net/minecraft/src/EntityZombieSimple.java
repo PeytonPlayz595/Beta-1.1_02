@@ -4,7 +4,7 @@ import net.peyton.eagler.minecraft.TextureLocation;
 
 public class EntityZombieSimple extends EntityMobs {
 	
-	private TextureLocation zombie = new TextureLocation("/mob/zombie.png");
+	private static final TextureLocation zombie = new TextureLocation("/mob/zombie.png");
 	
 	public EntityZombieSimple(World var1) {
 		super(var1);

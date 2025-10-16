@@ -11,7 +11,7 @@ public class EntityChicken extends EntityAnimals {
 	public float field_755_h = 1.0F;
 	public int timeUntilNextEgg;
 	
-	private TextureLocation chicken = new TextureLocation("/mob/chicken.png");
+	private static final TextureLocation chicken = new TextureLocation("/mob/chicken.png");
 
 	public EntityChicken(World var1) {
 		super(var1);

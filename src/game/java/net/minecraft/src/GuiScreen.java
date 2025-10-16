@@ -136,8 +136,7 @@ public class GuiScreen extends Gui {
 
 	}
 	
-	private TextureLocation background = new TextureLocation("/gui/background.png");
-
+	private static final TextureLocation background = new TextureLocation("/gui/background.png");
 	public void drawBackground(int var1) {
 		GL11.glDisable(GL11.GL_LIGHTING);
 		GL11.glDisable(GL11.GL_FOG);

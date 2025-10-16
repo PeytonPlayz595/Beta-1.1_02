@@ -16,7 +16,8 @@ public class EntityLiving extends Entity {
 	protected float field_9360_w;
 	protected float field_9359_x;
 	protected boolean field_9358_y = true;
-	protected TextureLocation texture = new TextureLocation("/mob/char.png");
+	private static final TextureLocation charTex = new TextureLocation("/mob/char.png");
+	protected TextureLocation texture = charTex;
 	protected boolean unusedEntityLivingBoolean = true;
 	protected float field_9353_B = 0.0F;
 	protected String field_9351_C = null;

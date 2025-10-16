@@ -4,7 +4,7 @@ import net.peyton.eagler.minecraft.TextureLocation;
 
 public class EntitySpider extends EntityMobs {
 	
-	private TextureLocation spider = new TextureLocation("/mob/spider.png");
+	private static final TextureLocation spider = new TextureLocation("/mob/spider.png");
 	
 	public EntitySpider(World var1) {
 		super(var1);

@@ -5,7 +5,7 @@ import net.peyton.eagler.minecraft.TextureLocation;
 public class EntitySkeleton extends EntityMobs {
 	private static final ItemStack defaultHeldItem = new ItemStack(Item.bow, 1);
 	
-	private TextureLocation skeleton = new TextureLocation("/mob/skeleton.png");
+	private static final TextureLocation skeleton = new TextureLocation("/mob/skeleton.png");
 
 	public EntitySkeleton(World var1) {
 		super(var1);

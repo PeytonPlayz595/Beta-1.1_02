@@ -9,7 +9,7 @@ public class EntityPigZombie extends EntityZombie {
 	private int randomSoundDelay = 0;
 	private static final ItemStack defaultHeldItem = new ItemStack(Item.swordGold, 1);
 	
-	private TextureLocation pigZombie = new TextureLocation("/mob/pigzombie.png");
+	private static final TextureLocation pigZombie = new TextureLocation("/mob/pigzombie.png");
 
 	public EntityPigZombie(World var1) {
 		super(var1);

@@ -9,7 +9,7 @@ public class EntityCreeper extends EntityMobs {
 	int creeperState = -1;
 	int field_12241_e = -1;
 	
-	private TextureLocation creeper = new TextureLocation("/mob/creeper.png");
+	private static final TextureLocation creeper = new TextureLocation("/mob/creeper.png");
 
 	public EntityCreeper(World var1) {
 		super(var1);

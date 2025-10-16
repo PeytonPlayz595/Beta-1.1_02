@@ -19,7 +19,7 @@ public class GuiCrafting extends GuiContainer {
 		this.fontRenderer.drawString("Inventory", 8, this.ySize - 96 + 2, 4210752);
 	}
 
-	private TextureLocation crafting = new TextureLocation("/gui/crafting.png");
+	private static final TextureLocation crafting = new TextureLocation("/gui/crafting.png");
 	protected void drawGuiContainerBackgroundLayer(float var1) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		crafting.bindTexture();

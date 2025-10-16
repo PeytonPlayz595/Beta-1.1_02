@@ -50,7 +50,7 @@ public class LoadingScreenRenderer implements IProgressUpdate {
 		}
 	}
 
-	private TextureLocation background = new TextureLocation("/gui/background.png");
+	private static final TextureLocation background = new TextureLocation("/gui/background.png");
 	public void setLoadingProgress(int var1) {
 		if(this.mc.running) {
 			long var2 = EagRuntime.steadyTimeMillis();

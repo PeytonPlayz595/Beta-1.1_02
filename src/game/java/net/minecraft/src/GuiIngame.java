@@ -28,8 +28,8 @@ public class GuiIngame extends Gui {
 	float field_931_c = 1.0F;
 	float prevVignetteBrightness = 1.0F;
 	
-	private TextureLocation vignetteTexture = new TextureLocation("%blur%/misc/vignette.png");
-	private TextureLocation pumpkinBlurTexture = new TextureLocation("%blur%/misc/pumpkinblur.png");
+	private static final TextureLocation vignetteTexture = new TextureLocation("%blur%/misc/vignette.png");
+	private static final TextureLocation pumpkinBlurTexture = new TextureLocation("%blur%/misc/pumpkinblur.png");
 
 	public GuiIngame(Minecraft var1) {
 		this.mc = var1;
@@ -359,7 +359,7 @@ public class GuiIngame extends Gui {
 		GL11.glDepthMask(false);
 		GL11.glBlendFunc(GL11.GL_ZERO, GL11.GL_ONE_MINUS_SRC_COLOR);
 		GL11.glColor4f(this.prevVignetteBrightness, this.prevVignetteBrightness, this.prevVignetteBrightness, 1.0F);
-		this.vignetteTexture.bindTexture();
+		vignetteTexture.bindTexture();
 		Tessellator var4 = Tessellator.instance;
 		var4.startDrawingQuads();
 		var4.addVertexWithUV(0.0D, (double)var3, -90.0D, 0.0D, 1.0D);

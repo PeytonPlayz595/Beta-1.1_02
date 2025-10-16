@@ -17,7 +17,7 @@ public class GuiFurnace extends GuiContainer {
 		this.fontRenderer.drawString("Inventory", 8, this.ySize - 96 + 2, 4210752);
 	}
 
-	TextureLocation furnace = new TextureLocation("/gui/furnace.png");
+	private static final TextureLocation furnace = new TextureLocation("/gui/furnace.png");
 	protected void drawGuiContainerBackgroundLayer(float var1) {
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		furnace.bindTexture();
