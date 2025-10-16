@@ -602,7 +602,7 @@ public class RenderGlobal implements IWorldAccess {
 			
 			for (var9 = size - 1; var9 >= 0; --var9) {
 				var10 = var6.get(var9);
-				if(updates >= 2) {
+				if(updates >= 1) {
 					this.worldRenderersToUpdate.add(var10);
 				} else {
 					var10.updateRenderer();
