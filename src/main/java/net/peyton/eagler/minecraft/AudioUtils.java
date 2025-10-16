@@ -27,12 +27,14 @@ public class AudioUtils {
 			return null;
 		}
 		
-		String path = name.replace(".", "/");
+		String ext = ".ogg";
+		String path = name.replace(".", "/") + ext;
 		temp.clear();
 		
 		for (int i = 0, j = size; i < j; ++i) {
 			String file = sounds.get(i);
-			if (file.contains(path)) {
+			String file2 = file.replaceAll("[0-9]", "");
+			if (file2.contains(path)) {
 				temp.add(file);
 			}
 		}

@@ -13,8 +13,7 @@ import com.jcraft.jzlib.GZIPInputStream;
 import com.jcraft.jzlib.InflaterInputStream;
 
 import net.lax1dude.eaglercraft.internal.PlatformAssets;
-import net.peyton.eagler.minecraft.AudioUtils;
-
+import net.peyton.eagler.minecraft.ResourceLoader;
 import net.lax1dude.eaglercraft.IOUtils;
 
 /**
@@ -151,11 +150,7 @@ public class EPKLoader {
 				if(loadByte(zis) != ':') {
 					throw new IOException("File '" + name + "' is incomplete");
 				}
-				String s = path + name;
-				if(s.contains(".ogg")) {
-					AudioUtils.addFile(s);
-				}
-				loadedFiles.put(path + name, load);
+				ResourceLoader.onResourceLoad(path + name, load, loadedFiles);
 			}else {
 				IOUtils.skipFully(zis, len);
 			}

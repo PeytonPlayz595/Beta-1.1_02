@@ -27,6 +27,7 @@ import com.jcraft.jzlib.InflaterInputStream;
 
 import net.lax1dude.eaglercraft.internal.buffer.ByteBuffer;
 import net.lax1dude.eaglercraft.internal.buffer.EaglerBufferInputStream;
+import net.peyton.eagler.minecraft.ResourceLoader;
 import net.lax1dude.eaglercraft.IOUtils;
 
 public class EPKLoader {
@@ -149,7 +150,7 @@ public class EPKLoader {
 					throw new IOException("File '" + name + "' is incomplete");
 				}
 				
-				loadedFiles.put(path + name, load);
+				ResourceLoader.onResourceLoad(path + name, load, loadedFiles);
 			}else {
 				IOUtils.skipFully(zis, len);
 			}
