@@ -122,22 +122,19 @@ public class SoundManager {
 				IAudioResource trk;
 				if(var1 == null) return;
 				
-				var1 = var1.replace(".", "/");
-				
-				int randNum = AudioUtils.getRandomSound(var1);
-				if(randNum == 0) {
+				String sound = AudioUtils.getSound(var1);
+				if(sound == null) {
 					return;
 				}
-				String soundName = "/newsound/" + var1 + (randNum != -1 ? randNum : "") + ".ogg";
-				trk = this.sounds.get(soundName);
+				trk = this.sounds.get(sound);
 				if (trk == null) {
 					if (EagRuntime.getPlatformType() != EnumPlatformType.DESKTOP) {
-						trk = PlatformAudio.loadAudioDataNew(soundName, true, browserResourceLoader);
+						trk = PlatformAudio.loadAudioDataNew(sound, true, browserResourceLoader);
 					} else {
-						trk = PlatformAudio.loadAudioData(soundName, true);
+						trk = PlatformAudio.loadAudioData(sound, true);
 					}
 					if (trk != null) {
-						sounds.put(soundName, trk);
+						sounds.put(sound, trk);
 					}
 				}
 				
@@ -159,21 +156,19 @@ public class SoundManager {
 			IAudioResource trk;
 			if(var1 == null) return;
 			
-			var1 = var1.replace(".", "/");
-			int randNum = AudioUtils.getRandomSound(var1 + ".ogg");
-			if(randNum == 0) {
+			String sound = AudioUtils.getSound(var1);
+			if(sound == null) {
 				return;
 			}
-			String soundName = "/newsound/" + var1 + (randNum != -1 ? randNum : "") + ".ogg";
-			trk = this.sounds.get(soundName);
+			trk = this.sounds.get(sound);
 			if (trk == null) {
 				if (EagRuntime.getPlatformType() != EnumPlatformType.DESKTOP) {
-					trk = PlatformAudio.loadAudioDataNew(soundName, true, browserResourceLoader);
+					trk = PlatformAudio.loadAudioDataNew(sound, true, browserResourceLoader);
 				} else {
-					trk = PlatformAudio.loadAudioData(soundName, true);
+					trk = PlatformAudio.loadAudioData(sound, true);
 				}
 				if (trk != null) {
-					sounds.put(soundName, trk);
+					sounds.put(sound, trk);
 				}
 			}
 			

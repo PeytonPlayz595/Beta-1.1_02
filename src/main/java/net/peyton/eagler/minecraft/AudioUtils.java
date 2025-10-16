@@ -1,48 +1,67 @@
 package net.peyton.eagler.minecraft;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
+import com.carrotsearch.hppc.ObjectArrayList;
 
 import net.lax1dude.eaglercraft.Random;
 
 public class AudioUtils {
 	
-	private static List<String> files = new ArrayList<String>();
-	
-	private static Map<String, Integer> numOfSounds = new HashMap<String, Integer>();
-	
 	private static Random rand = new Random();
 	
-	public static void addFile(String name) {
-		files.add(name);
+	private static List<String> music = null;
+	private static List<String> sounds = null;
+	
+	private static ObjectArrayList<String> temp = new ObjectArrayList<>();
+	
+	private static int lastIdx = -1;
+	
+	public static String getSound(String name) {
+		if (sounds == null) {
+			sounds = ResourceLoader.getSounds();
+		}
+		
+		int size;
+		if (sounds == null || (size = sounds.size()) == 0) {
+			return null;
+		}
+		
+		String path = name.replace(".", "/");
+		temp.clear();
+		
+		for (int i = 0, j = size; i < j; ++i) {
+			String file = sounds.get(i);
+			if (file.contains(path)) {
+				temp.add(file);
+			}
+		}
+		
+		size = temp.size();
+		
+		if (size == 0) {
+			return null;
+		}
+		
+		int idx = rand.nextInt(size);
+		return temp.get(idx);
 	}
 	
-	public static int getRandomSound(String name) {
-		Integer integer = numOfSounds.get(name);
-		if(integer != null) {
-			int i = integer.intValue();
-			if(i == -1) {
-				return i;
-			}
-			return rand.nextInt(integer.intValue()) + 1;
-		} else {
-			int num = 0;
-			for(int i = 0, j = files.size(); i < j; ++i) {
-				String s = files.get(i);
-				if(s.contains(name)) {
-					num++;
-				}
-			}
-			if(num == 1) {
-				num = -1;
-				numOfSounds.put(name, Integer.valueOf(num));
-				return num;
-			}
-			numOfSounds.put(name, Integer.valueOf(num));
-			return rand.nextInt(num) + 1;
+	public static String getMusic() {
+		if (music == null) {
+			music = ResourceLoader.getMusic();
 		}
+		
+		int size;
+		if (music == null || (size = music.size()) == 0) {
+			return null;
+		}
+		
+		int idx = rand.nextInt(size);
+		while (idx == lastIdx) {
+			idx = rand.nextInt(size);
+		}
+		
+		return music.get(idx);
 	}
-
 }

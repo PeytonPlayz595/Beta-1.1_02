@@ -8,7 +8,7 @@ import javax.swing.UnsupportedLookAndFeelException;
 import net.lax1dude.eaglercraft.EagRuntime;
 import net.lax1dude.eaglercraft.EagUtils;
 import net.minecraft.client.Minecraft;
-import net.peyton.eagler.minecraft.AudioUtils;
+import net.peyton.eagler.minecraft.ResourceLoader;
 
 /**
  * Copyright (c) 2022-2023 lax1dude. All Rights Reserved.
@@ -63,23 +63,40 @@ public class LWJGLEntryPoint {
 
 		EagRuntime.create();
 		
-		File[] f = new File("resources", "newsound").listFiles();
-		
-		for(File f1 : f) {
-			addSoundsToAudioMap(f1);
+		File dir = new File("resources");
+		if (dir.exists() && dir.isDirectory()) {
+			File[] files = dir.listFiles();
+
+			if (files != null) {
+				int len = files.length;
+				if (len > 0) {
+					for (int i = 0, j = len; i < j; ++i) {
+						loadResources(files[i]);
+					}
+				}
+			}
 		}
 
 		new Minecraft().run();
-
 	}
 	
-	private static void addSoundsToAudioMap(File file) {
+	private static void loadResources(File file) {
 		if(file.isDirectory()) {
-			for(File f : file.listFiles()) {
-				addSoundsToAudioMap(f);
+			File[] files = file.listFiles();
+			
+			if (files != null) {
+				int len = files.length;
+				if (len > 0) {
+					for(int i = 0, j = len; i < j; ++i) {
+						loadResources(files[i]);
+					}
+				}
 			}
 		} else {
-			AudioUtils.addFile(file.getPath().replace("\\", "/"));
+			String path = file.getPath();
+			boolean flag = path.contains("\\");
+			path = flag ? path.replace("\\", "/") : path;
+			ResourceLoader.onResourceLoad(path);
 		}
 	}
 
