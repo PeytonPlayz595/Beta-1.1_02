@@ -12,15 +12,15 @@ import net.peyton.eagler.minecraft.LegacyMergeSort;
 import net.peyton.eagler.minecraft.Tessellator;
 import net.peyton.eagler.minecraft.TextureLocation;
 
-import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 
+import it.unimi.dsi.fastutil.objects.ObjectArrayList;
+
 public class RenderGlobal implements IWorldAccess {
-	private long lastMovedTime = EagRuntime.steadyTimeMillis();
 	public List<TileEntity> field_1458_a = new ArrayList<>();
 	private World worldObj;
 	private RenderEngine renderEngine;
-	private List<WorldRenderer> worldRenderersToUpdate = new ArrayList<>();
+	private ObjectArrayList<WorldRenderer> worldRenderersToUpdate = new ObjectArrayList<>();
 	private WorldRenderer[] sortedWorldRenderers;
 	private WorldRenderer[] worldRenderers;
 	private int renderChunksWide;
@@ -218,7 +218,8 @@ public class RenderGlobal implements IWorldAccess {
 		this.field_1426_G = this.renderChunksDeep;
 
 		int var4;
-		for(var4 = 0; var4 < this.worldRenderersToUpdate.size(); ++var4) {
+		int var8;
+		for(var4 = 0, var8 = this.worldRenderersToUpdate.size(); var4 < var8; ++var4) {
 			WorldRenderer wr = ((WorldRenderer)this.worldRenderersToUpdate.get(var4));
 			if(wr != null) {
 				wr.needsUpdate = false;
@@ -568,132 +569,54 @@ public class RenderGlobal implements IWorldAccess {
 	}
 
 	public boolean updateRenderers(EntityPlayer var1, boolean var2) {
-		if(this.worldRenderersToUpdate.size() <= 0) {
-			return false;
-		} else {
-			int num = 0;
-			int maxNum = 1;
-			if(!this.isMoving(var1)) {
-				maxNum *= 3;
-			}
-
-			byte NOT_IN_FRUSTRUM_MUL = 4;
-			int numValid = 0;
-			WorldRenderer wrBest = null;
-			float distSqBest = Float.MAX_VALUE;
-			int indexBest = -1;
-
-			int dstIndex;
-			for(dstIndex = 0; dstIndex < this.worldRenderersToUpdate.size(); ++dstIndex) {
-				WorldRenderer i = (WorldRenderer)this.worldRenderersToUpdate.get(dstIndex);
-				if(i != null) {
-					++numValid;
-					if(!i.needsUpdate) {
-						this.worldRenderersToUpdate.set(dstIndex, (WorldRenderer)null);
-					} else {
-						float wr = i.distanceToEntity(var1);
-						if(wr <= 256.0F && this.isActingNow()) {
-							if (num < maxNum) {
-								i.updateRenderer();
-								i.needsUpdate = false;
-								this.worldRenderersToUpdate.set(dstIndex, (WorldRenderer)null);
-								++num;
-							}
-						} else {
-							if(wr > 256.0F && num >= maxNum) {
-								break;
-							}
-
-							if(!i.isInFrustrum) {
-								wr *= (float)NOT_IN_FRUSTRUM_MUL;
-							}
-
-							if(wrBest == null) {
-								wrBest = i;
-								distSqBest = wr;
-								indexBest = dstIndex;
-							} else if(wr < distSqBest) {
-								wrBest = i;
-								distSqBest = wr;
-								indexBest = dstIndex;
-							}
-						}
+		RenderSorter var4 = RenderSorter.instance.setPlayer(var1);
+		ArrayList<WorldRenderer> var6 = null;
+		int var7 = this.worldRenderersToUpdate.size();
+		int var9;
+		WorldRenderer var10;
+		ObjectArrayList<WorldRenderer> laterUpdateList = new ObjectArrayList<>(var7);
+		for (var9 = 0; var9 < var7; ++var9) {
+			var10 = this.worldRenderersToUpdate.get(var9);
+			
+			if (var10 != null) {
+				if (!var10.isInFrustrum || !var10.isVisible) {
+					laterUpdateList.add(var10);
+				} else {
+					if (var6 == null) {
+						var6 = new ArrayList<>();
 					}
+					
+					var6.add(var10);
 				}
 			}
-
-			int var16;
-			if(wrBest != null) {
-				if (num < maxNum) {
-					wrBest.updateRenderer();
-					wrBest.needsUpdate = false;
-					this.worldRenderersToUpdate.set(indexBest, (WorldRenderer)null);
-					++num;
-					float var15 = distSqBest / 5.0F;
-
-					for(var16 = 0; var16 < this.worldRenderersToUpdate.size() && num < maxNum; ++var16) {
-						WorldRenderer var17 = (WorldRenderer)this.worldRenderersToUpdate.get(var16);
-						if(var17 != null) {
-							float distSq = var17.distanceToEntity(var1);
-							if(!var17.isInFrustrum) {
-								distSq *= (float)NOT_IN_FRUSTRUM_MUL;
-							}
-
-							float diffDistSq = Math.abs(distSq - distSqBest);
-							if(diffDistSq < var15) {
-								var17.updateRenderer();
-								var17.needsUpdate = false;
-								this.worldRenderersToUpdate.set(var16, (WorldRenderer)null);
-								++num;
-							}
-						}
-					}
-				}
-			}
-
-			if(numValid == 0) {
-				this.worldRenderersToUpdate.clear();
-			}
-
-			if(this.worldRenderersToUpdate.size() > 100 && numValid < this.worldRenderersToUpdate.size() * 4 / 5) {
-				dstIndex = 0;
-
-				for(var16 = 0; var16 < this.worldRenderersToUpdate.size(); ++var16) {
-					WorldRenderer var18 = this.worldRenderersToUpdate.get(var16);
-					if(var18 != null && var16 != dstIndex) {
-						this.worldRenderersToUpdate.set(dstIndex, var18);
-						++dstIndex;
-					}
-				}
-
-				for(var16 = this.worldRenderersToUpdate.size() - 1; var16 >= dstIndex; --var16) {
-					this.worldRenderersToUpdate.remove(var16);
-				}
-			}
-
-			return true;
 		}
+		
+		this.worldRenderersToUpdate = laterUpdateList;
+		
+		int updates = 0;
+		if (var6 != null) {
+			int size = var6.size();
+			if (size > 1) {
+				var6.sort(var4);
+			}
+			
+			for (var9 = size - 1; var9 >= 0; --var9) {
+				var10 = var6.get(var9);
+				if(updates >= 2) {
+					this.worldRenderersToUpdate.add(var10);
+				} else {
+					var10.updateRenderer();
+					var10.needsUpdate = false;
+					if(!var10.canRender()) {
+						++updates;
+					}
+				}
+			}
+		}
+		
+		return true;
 	}
 	
-	private boolean isMoving(EntityLiving entityliving) {
-		boolean moving = this.isMovingNow(entityliving);
-		if(moving) {
-			this.lastMovedTime = EagRuntime.steadyTimeMillis();
-			return true;
-		} else {
-			return EagRuntime.steadyTimeMillis() - this.lastMovedTime < 2000L;
-		}
-	}
-
-	private boolean isMovingNow(EntityLiving entityliving) {
-		double maxDiff = 0.001D;
-		return entityliving.isJumping ? true : (entityliving.isSneaking() ? true : ((double)entityliving.prevSwingProgress > maxDiff ? true : (this.mc.mouseHelper.field_1114_a != 0 ? true : (this.mc.mouseHelper.field_1113_b != 0 ? true : (Math.abs(entityliving.posX - entityliving.prevPosX) > maxDiff ? true : (Math.abs(entityliving.posY - entityliving.prevPosY) > maxDiff ? true : Math.abs(entityliving.posZ - entityliving.prevPosZ) > maxDiff))))));
-	}
-	
-	private boolean isActingNow() {
-		return Mouse.isButtonDown(0) ? true : Mouse.isButtonDown(1);
-	}
-
 	public void func_959_a(EntityPlayer var1, MovingObjectPosition var2, int var3, ItemStack var4, float var5) {
 		Tessellator var6 = Tessellator.instance;
 		GL11.glEnable(GL11.GL_BLEND);
