@@ -201,7 +201,7 @@ public class Minecraft {
 		GL11.glLoadIdentity();
 		GL11.glMatrixMode(GL11.GL_MODELVIEW);
 		this.checkGLError("Startup");
-		this.sndManager.loadSoundSettings(this.gameSettings);
+		this.sndManager.init(this.gameSettings);
 		
 		renderEngine.registerTextureFX(new TextureNewCompassFX());
 		renderEngine.registerTextureFX(new TextureNewClockFX());
@@ -892,7 +892,7 @@ public class Minecraft {
 	private void forceReload() {
 		LOGGER.info("FORCING RELOAD!");
 		this.sndManager = new SoundManager();
-		this.sndManager.loadSoundSettings(this.gameSettings);
+		this.sndManager.init(this.gameSettings);
 	}
 
 	public boolean isMultiplayerWorld() {

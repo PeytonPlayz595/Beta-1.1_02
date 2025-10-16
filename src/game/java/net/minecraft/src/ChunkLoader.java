@@ -40,7 +40,7 @@ public class ChunkLoader implements IChunkLoader {
 			try {
 				NBTTagCompound var6;
 				try (InputStream is = var4.getInputStream()) {
-					var6 = CompressedStreamTools.func_1138_a(is);
+					var6 = CompressedStreamTools.readCompressed(is);
 				}
 				if(!var6.hasKey("Level")) {
 					LOGGER.warn("Chunk file at {},{} is missing level data, skipping", var2, var3);

@@ -25,7 +25,7 @@ public class SoundManager {
 	
 	private String[] newMusic = new String[]{"hal1.ogg", "hal2.ogg", "hal3.ogg", "hal4.ogg", "nuance1.ogg", "nuance2.ogg", "piano1.ogg", "piano2.ogg", "piano3.ogg"};
 
-	public void loadSoundSettings(GameSettings var1) {
+	public void init(GameSettings var1) {
 		this.options = var1;
 	}
 
@@ -57,8 +57,8 @@ public class SoundManager {
 				this.field_583_i = this.rand.nextInt(12000) + 12000;
 				String name = "/newmusic/" + newMusic[var1];
 				
-				IAudioResource trk;
-				if (!music.containsKey(name)) {
+				IAudioResource trk = this.music.get(name);
+				if (trk == null) {
 					if (EagRuntime.getPlatformType() != EnumPlatformType.DESKTOP) {
 						trk = PlatformAudio.loadAudioDataNew(name, false, browserResourceLoader);
 					} else {
@@ -67,11 +67,11 @@ public class SoundManager {
 					if (trk != null) {
 						music.put(name, trk);
 					}
-				} else {
-					trk = music.get(name);
 				}
 				
-				musicHandle = PlatformAudio.beginPlaybackStatic(trk, this.options.musicVolume, 1.0f, false);
+				if (trk != null) {
+					musicHandle = PlatformAudio.beginPlaybackStatic(trk, this.options.musicVolume, 1.0f, false);
+				}
 			}
 		}
 	}
@@ -129,7 +129,8 @@ public class SoundManager {
 					return;
 				}
 				String soundName = "/newsound/" + var1 + (randNum != -1 ? randNum : "") + ".ogg";
-				if (!sounds.containsKey(soundName)) {
+				trk = this.sounds.get(soundName);
+				if (trk == null) {
 					if (EagRuntime.getPlatformType() != EnumPlatformType.DESKTOP) {
 						trk = PlatformAudio.loadAudioDataNew(soundName, true, browserResourceLoader);
 					} else {
@@ -138,8 +139,6 @@ public class SoundManager {
 					if (trk != null) {
 						sounds.put(soundName, trk);
 					}
-				} else {
-					trk = sounds.get(soundName);
 				}
 				
 				if(trk != null) {
@@ -166,7 +165,8 @@ public class SoundManager {
 				return;
 			}
 			String soundName = "/newsound/" + var1 + (randNum != -1 ? randNum : "") + ".ogg";
-			if (!sounds.containsKey(soundName)) {
+			trk = this.sounds.get(soundName);
+			if (trk == null) {
 				if (EagRuntime.getPlatformType() != EnumPlatformType.DESKTOP) {
 					trk = PlatformAudio.loadAudioDataNew(soundName, true, browserResourceLoader);
 				} else {
@@ -175,9 +175,8 @@ public class SoundManager {
 				if (trk != null) {
 					sounds.put(soundName, trk);
 				}
-			} else {
-				trk = sounds.get(soundName);
 			}
+			
 			if(trk != null) {
 				PlatformAudio.beginPlaybackStatic(trk, var2 * this.options.soundVolume, var3, false);
 			}

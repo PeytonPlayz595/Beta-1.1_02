@@ -67,7 +67,7 @@ public class World implements IBlockAccess {
 			try {
 				NBTTagCompound var5;
 				try (InputStream is = var4.getInputStream()) {
-					var5 = CompressedStreamTools.func_1138_a(is);
+					var5 = CompressedStreamTools.readCompressed(is);
 				}
 				NBTTagCompound var6 = var5.getCompoundTag("Data");
 				return var6;
@@ -232,7 +232,7 @@ public class World implements IBlockAccess {
 			try {
 				NBTTagCompound var8;
 				try (InputStream is = var18.getInputStream()) {
-					var8 = CompressedStreamTools.func_1138_a(is);
+					var8 = CompressedStreamTools.readCompressed(is);
 				}
 				NBTTagCompound var9 = var8.getCompoundTag("Data");
 				this.randomSeed = var9.getLong("RandomSeed");

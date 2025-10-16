@@ -52,7 +52,7 @@ public class EaglerProfile {
 
 		NBTTagCompound profile;
 		try {
-			profile = CompressedStreamTools.func_1138_a(new EaglerInputStream(profileStorage));
+			profile = CompressedStreamTools.readCompressed(new EaglerInputStream(profileStorage));
 		}catch(IOException ex) {
 			return;
 		}
