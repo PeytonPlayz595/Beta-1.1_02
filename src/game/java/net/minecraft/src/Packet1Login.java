@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet1Login extends Packet {
 	public int protocolVersion;
@@ -20,7 +20,7 @@ public class Packet1Login extends Packet {
 		this.protocolVersion = var3;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.protocolVersion = var1.readInt();
 		this.username = var1.readUTF();
 		this.password = var1.readUTF();
@@ -28,7 +28,7 @@ public class Packet1Login extends Packet {
 		this.field_4073_e = var1.readByte();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.protocolVersion);
 		var1.writeUTF(this.username);
 		var1.writeUTF(this.password);

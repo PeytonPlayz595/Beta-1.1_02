@@ -1,17 +1,17 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet4UpdateTime extends Packet {
 	public long time;
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.time = var1.readLong();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeLong(this.time);
 	}
 

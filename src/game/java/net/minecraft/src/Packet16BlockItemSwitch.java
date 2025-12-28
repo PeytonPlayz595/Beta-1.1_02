@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet16BlockItemSwitch extends Packet {
 	public int id;
@@ -14,11 +14,11 @@ public class Packet16BlockItemSwitch extends Packet {
 		this.id = var1;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.id = var1.readShort();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeShort(this.id);
 	}
 

@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet130 extends Packet {
 	public int field_20020_a;
@@ -22,7 +22,7 @@ public class Packet130 extends Packet {
 		this.field_20021_d = var4;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.field_20020_a = var1.readInt();
 		this.field_20019_b = var1.readShort();
 		this.field_20022_c = var1.readInt();
@@ -34,7 +34,7 @@ public class Packet130 extends Packet {
 
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.field_20020_a);
 		var1.writeShort(this.field_20019_b);
 		var1.writeInt(this.field_20022_c);

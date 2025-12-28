@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet20NamedEntitySpawn extends Packet {
 	public int entityId;
@@ -29,7 +29,7 @@ public class Packet20NamedEntitySpawn extends Packet {
 		this.currentItem = var2 == null ? 0 : var2.itemID;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.entityId = var1.readInt();
 		this.name = var1.readUTF();
 		this.xPosition = var1.readInt();
@@ -40,7 +40,7 @@ public class Packet20NamedEntitySpawn extends Packet {
 		this.currentItem = var1.readShort();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.entityId);
 		var1.writeUTF(this.name);
 		var1.writeInt(this.xPosition);

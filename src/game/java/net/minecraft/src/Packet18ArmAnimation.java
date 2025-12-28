@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet18ArmAnimation extends Packet {
 	public int entityId;
@@ -16,12 +16,12 @@ public class Packet18ArmAnimation extends Packet {
 		this.animate = var2;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.entityId = var1.readInt();
 		this.animate = var1.readByte();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.entityId);
 		var1.writeByte(this.animate);
 	}

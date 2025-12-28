@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet52MultiBlockChange extends Packet {
 	public int xPosition;
@@ -16,7 +16,7 @@ public class Packet52MultiBlockChange extends Packet {
 		this.isChunkDataPacket = true;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.xPosition = var1.readInt();
 		this.zPosition = var1.readInt();
 		this.size = var1.readShort() & '\uffff';
@@ -32,7 +32,7 @@ public class Packet52MultiBlockChange extends Packet {
 		var1.readFully(this.metadataArray);
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.xPosition);
 		var1.writeInt(this.zPosition);
 		var1.writeShort((short)this.size);

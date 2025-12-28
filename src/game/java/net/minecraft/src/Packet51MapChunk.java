@@ -1,10 +1,10 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.zip.DataFormatException;
 import java.util.zip.Inflater;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet51MapChunk extends Packet {
 	public int xPosition;
@@ -20,7 +20,7 @@ public class Packet51MapChunk extends Packet {
 		this.isChunkDataPacket = true;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.xPosition = var1.readInt();
 		this.yPosition = var1.readShort();
 		this.zPosition = var1.readInt();
@@ -41,10 +41,9 @@ public class Packet51MapChunk extends Packet {
 		} finally {
 			var4.end();
 		}
-
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.xPosition);
 		var1.writeShort(this.yPosition);
 		var1.writeInt(this.zPosition);

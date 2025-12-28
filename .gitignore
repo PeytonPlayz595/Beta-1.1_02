@@ -1,2 +1,6 @@
-.gradle
+desktopRuntime/eclipseProject/bin
+desktopRuntime/minecraft
+desktopRuntime/filesystem
+desktopRuntime/*.dat
 build
+.gradle

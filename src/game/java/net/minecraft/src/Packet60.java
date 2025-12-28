@@ -1,11 +1,11 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet60 extends Packet {
 	public double field_12236_a;
@@ -14,7 +14,7 @@ public class Packet60 extends Packet {
 	public float field_12238_d;
 	public Set<ChunkPosition> field_12237_e;
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.field_12236_a = var1.readDouble();
 		this.field_12235_b = var1.readDouble();
 		this.field_12239_c = var1.readDouble();
@@ -34,7 +34,7 @@ public class Packet60 extends Packet {
 
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeDouble(this.field_12236_a);
 		var1.writeDouble(this.field_12235_b);
 		var1.writeDouble(this.field_12239_c);

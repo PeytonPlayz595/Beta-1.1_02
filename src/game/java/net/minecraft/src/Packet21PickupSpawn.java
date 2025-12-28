@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet21PickupSpawn extends Packet {
 	public int entityId;
@@ -30,7 +30,7 @@ public class Packet21PickupSpawn extends Packet {
 		this.roll = (byte)((int)(var1.motionZ * 128.0D));
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.entityId = var1.readInt();
 		this.itemId = var1.readShort();
 		this.count = var1.readByte();
@@ -42,7 +42,7 @@ public class Packet21PickupSpawn extends Packet {
 		this.roll = var1.readByte();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.entityId);
 		var1.writeShort(this.itemId);
 		var1.writeByte(this.count);

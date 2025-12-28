@@ -1,7 +1,5 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
 
 import org.apache.logging.log4j.LogManager;
@@ -13,6 +11,7 @@ import com.carrotsearch.hppc.ObjectIntMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectMap;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.lax1dude.eaglercraft.EagRuntime;
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 import net.peyton.eagler.minecraft.suppliers.PacketSupplier;
 
 public abstract class Packet {
@@ -49,7 +48,7 @@ public abstract class Packet {
 		return packetClassToIdMap.get(this.getClass());
 	}
 
-	public static Packet readPacket(DataInputStream var0) throws IOException {
+	public static Packet readPacket(PacketBuffer var0) throws IOException {
 		int var1 = var0.read();
 		if(var1 == -1) {
 			return null;
@@ -64,14 +63,14 @@ public abstract class Packet {
 		}
 	}
 
-	public static void writePacket(Packet var0, DataOutputStream var1) throws IOException {
+	public static void writePacket(Packet var0, PacketBuffer var1) throws IOException {
 		var1.write(var0.getPacketId());
 		var0.writePacketData(var1);
 	}
 
-	public abstract void readPacketData(DataInputStream var1) throws IOException;
+	public abstract void readPacketData(PacketBuffer var1) throws IOException;
 
-	public abstract void writePacketData(DataOutputStream var1) throws IOException;
+	public abstract void writePacketData(PacketBuffer var1) throws IOException;
 
 	public abstract void processPacket(NetHandler var1);
 

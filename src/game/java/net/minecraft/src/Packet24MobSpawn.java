@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet24MobSpawn extends Packet {
 	public int entityId;
@@ -26,7 +26,7 @@ public class Packet24MobSpawn extends Packet {
 		this.pitch = (byte)((int)(var1.rotationPitch * 256.0F / 360.0F));
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.entityId = var1.readInt();
 		this.type = var1.readByte();
 		this.xPosition = var1.readInt();
@@ -36,7 +36,7 @@ public class Packet24MobSpawn extends Packet {
 		this.pitch = var1.readByte();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.entityId);
 		var1.writeByte(this.type);
 		var1.writeInt(this.xPosition);

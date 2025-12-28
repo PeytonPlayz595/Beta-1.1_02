@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet14BlockDig extends Packet {
 	public int xPosition;
@@ -22,7 +22,7 @@ public class Packet14BlockDig extends Packet {
 		this.face = var5;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.status = var1.read();
 		this.xPosition = var1.readInt();
 		this.yPosition = var1.read();
@@ -30,7 +30,7 @@ public class Packet14BlockDig extends Packet {
 		this.face = var1.read();
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.write(this.status);
 		var1.writeInt(this.xPosition);
 		var1.write(this.yPosition);

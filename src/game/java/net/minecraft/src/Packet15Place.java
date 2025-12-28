@@ -1,8 +1,8 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet15Place extends Packet {
 	public int id;
@@ -22,7 +22,7 @@ public class Packet15Place extends Packet {
 		this.direction = var5;
 	}
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.id = var1.readInt();
 		this.xPosition = var1.read();
 		this.yPosition = var1.readInt();
@@ -38,7 +38,7 @@ public class Packet15Place extends Packet {
 
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeInt(this.id);
 		var1.write(this.xPosition);
 		var1.writeInt(this.yPosition);

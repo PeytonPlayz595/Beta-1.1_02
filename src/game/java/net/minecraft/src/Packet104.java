@@ -1,14 +1,14 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.IOException;
+
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet104 extends Packet {
 	public int field_20036_a;
 	public ItemStack[] field_20035_b;
 
-	public void readPacketData(DataInputStream var1) throws IOException {
+	public void readPacketData(PacketBuffer var1) throws IOException {
 		this.field_20036_a = var1.readByte();
 		short var2 = var1.readShort();
 		this.field_20035_b = new ItemStack[var2];
@@ -24,7 +24,7 @@ public class Packet104 extends Packet {
 
 	}
 
-	public void writePacketData(DataOutputStream var1) throws IOException {
+	public void writePacketData(PacketBuffer var1) throws IOException {
 		var1.writeByte(this.field_20036_a);
 		var1.writeShort(this.field_20035_b.length);
 

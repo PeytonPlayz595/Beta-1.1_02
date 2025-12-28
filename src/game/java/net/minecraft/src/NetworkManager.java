@@ -1,8 +1,6 @@
 package net.minecraft.src;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +8,12 @@ import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import net.lax1dude.eaglercraft.EaglerOutputStream;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import net.lax1dude.eaglercraft.internal.EnumEaglerConnectionState;
 import net.lax1dude.eaglercraft.internal.IWebSocketClient;
 import net.lax1dude.eaglercraft.internal.IWebSocketFrame;
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class NetworkManager {
 	private boolean isRunning = true;
@@ -28,37 +28,47 @@ public class NetworkManager {
 	public int chunkDataSendCounter = 0;
 	
 	public IWebSocketClient webSocket;
+	protected final PacketBuffer temporaryBuffer;
+	protected int debugPacketCounter = 0;
 	
-	private static Logger LOGGER = LogManager.getLogger();
+	public static final Logger logger = LogManager.getLogger("NetworkManager");
 
 	public NetworkManager(NetHandler var3) {
 		this.netHandler = var3;
+		this.temporaryBuffer = new PacketBuffer(Unpooled.buffer(0x1FFFF));
 	}
 	
 	public void setWebsocketClient(IWebSocketClient client) {
 		this.webSocket = client;
 	}
 	
-	private EaglerOutputStream sendBuffer = new EaglerOutputStream();
-
+	
 	public void addToSendQueue(Packet var1) {
 		if(!this.isServerTerminating) {
 			if(isOpen()) {
-				sendBuffer.reset();
-				try (DataOutputStream dos = new DataOutputStream(sendBuffer)) {
-					Packet.writePacket(var1, dos);
-					webSocket.send(sendBuffer.toByteArray());
+				temporaryBuffer.clear();
+				try {
+					Packet.writePacket(var1, temporaryBuffer);
 				} catch(Exception e) {
-					this.onNetworkError(e);
+					logger.error("Failed to write packet {}!", var1.getClass().getSimpleName());
+					this.onNetworkError(e, false);
 				}
+				
+				int len = temporaryBuffer.writerIndex();
+				byte[] bytes = new byte[len];
+				temporaryBuffer.getBytes(0, bytes);
+				
+				webSocket.send(bytes);
 			} else {
 				this.networkShutdown("Connection closed");
 			}
 		}
 	}
 
-	private void onNetworkError(Exception var1) {
-		LOGGER.error(var1);
+	private void onNetworkError(Exception var1, boolean print) {
+		if(print) {
+			logger.error(var1);
+		}
 		this.networkShutdown("disconnect.genericReason", new Object[]{"Internal exception: " + var1.toString()});
 	}
 
@@ -79,23 +89,50 @@ public class NetworkManager {
 		}
 	}
 	
+	private final PacketBuffer tempBuf2 = new PacketBuffer(null);
 	public void readPacket() {
-		IWebSocketFrame frame;
-		while((frame = webSocket.getNextBinaryFrame()) != null) {
-			byte[] arr = frame.getByteArray();
-			if(arr != null) {
-				try(ByteArrayInputStream bais = new ByteArrayInputStream(arr); DataInputStream packetStream = new DataInputStream(bais)) {
-					Packet pkt = Packet.readPacket(packetStream);
-					if(pkt != null) {
-						this.readPackets.add(pkt);
-					} else {
-						this.networkShutdown("disconnect.endOfStream", new Object[0]);
-					}
+		if(netHandler == null) return;
+		int frames = webSocket.availableStringFrames();
+		if(frames > 0) {
+			logger.warn("discarding {} string frames recieved on a binary connection", frames);
+			webSocket.clearStringFrames();
+		}
+		
+		List<IWebSocketFrame> pkts = webSocket.getNextBinaryFrames();
+		if(pkts == null) {
+			return;
+		}
+		
+		for(int i = 0, j = pkts.size(); i < j; ++i) {
+			IWebSocketFrame next = pkts.get(i);
+			++debugPacketCounter;
+			
+			try {
+				byte[] asByteArray = next.getByteArray();
+				
+				ByteBuf nettyBuffer = Unpooled.buffer(asByteArray, asByteArray.length);
+				nettyBuffer.writerIndex(asByteArray.length);
+				
+				Packet pkt;
+				try {
+					pkt = Packet.readPacket(tempBuf2.setBuf(nettyBuffer));
+				} catch(EOFException e) {
+					throw new IOException("End of stream");
 				} catch(IOException e) {
 					if(!this.isTerminating) {
-						this.onNetworkError(e);
+						this.onNetworkError(e, true);
 					}
+					return;
 				}
+				
+				if(pkt == null) {
+					throw new IOException("Recieved packet type which is undefined");
+				} else {
+					this.readPackets.add(pkt);
+				}
+			} catch(Throwable t) {
+				logger.error("Failed to process websocket frame {}! It'll be skipped for debug purposes.", debugPacketCounter);
+				logger.error(t);
 			}
 		}
 	}

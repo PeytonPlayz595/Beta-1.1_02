@@ -1,17 +1,16 @@
 package net.minecraft.src;
 
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
+import net.peyton.eagler.minecraft.network.PacketBuffer;
 
 public class Packet9 extends Packet {
 	public void processPacket(NetHandler var1) {
 		var1.func_9448_a(this);
 	}
 
-	public void readPacketData(DataInputStream var1) {
+	public void readPacketData(PacketBuffer var1) {
 	}
 
-	public void writePacketData(DataOutputStream var1) {
+	public void writePacketData(PacketBuffer var1) {
 	}
 
 	public int getPacketSize() {
